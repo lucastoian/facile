@@ -34,8 +34,7 @@ public class Controller implements Initializable{
 
 
     ObservableList<Candidato> list = FXCollections.observableArrayList(
-        new Candidato("Luca", "Stoian"),
-        new Candidato("Damon", "Bianchi")
+       
     );
 
     @FXML
@@ -50,6 +49,14 @@ public class Controller implements Initializable{
 
         
     }
+
+
+    @FXML
+    void clearAll(ActionEvent event) throws SQLException {
+            PostgreSQL.queryToDatabase("DELETE FROM candidati");
+            updateList();
+    }
+
 
     public void updateList() throws SQLException{
         list.clear();
