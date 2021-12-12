@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -28,6 +29,7 @@ public class Controller implements Initializable{
 
     @FXML
     private TableColumn<Candidato, String> surname;
+   
 
     @FXML
     private TableView<Candidato> table;
@@ -58,6 +60,19 @@ public class Controller implements Initializable{
     }
 
 
+    @FXML
+    void deleteSelected(ActionEvent event) throws SQLException {
+        Candidato c = table.getSelectionModel().getSelectedItem();
+        PostgreSQL.DeleteCandidatoFromDatabase(c.getName(), c.getSurname());
+        updateList();
+    }
+
+    @FXML
+    void editSelected(ActionEvent event) {
+
+    }
+
+
     public void updateList() throws SQLException{
         list.clear();
         ResultSet result = PostgreSQL.queryToDatabase("Select * From candidati");
@@ -73,6 +88,7 @@ public class Controller implements Initializable{
         
         name.setCellValueFactory(new PropertyValueFactory<Candidato, String>("name"));
         surname.setCellValueFactory(new PropertyValueFactory<Candidato, String>("surname"));
+        
         table.setItems(list);
 
         try {

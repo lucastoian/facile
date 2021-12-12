@@ -26,7 +26,7 @@ public class App extends Application {
             Parent root = FXMLLoader.load(getClass().getResource("mainframe.fxml"));
 
             primaryStage.setTitle("Titolo della stage");
-            primaryStage.setScene(new Scene(root,700,700));
+            primaryStage.setScene(new Scene(root,800,400));
             primaryStage.show();
     
         
