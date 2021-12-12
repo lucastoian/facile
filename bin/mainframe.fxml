@@ -27,10 +27,9 @@
                 <TableColumn fx:id="surname" prefWidth="75.0" text="Surname" />
               </columns>
             </TableView>
-            <ToolBar layoutX="34.0" layoutY="30.0">
+            <ToolBar layoutX="83.0" layoutY="31.0">
               <items>
                 <Button mnemonicParsing="false" onAction="#deleteSelected" text="Delete Selected" textAlignment="CENTER" />
-                  <Button mnemonicParsing="false" onAction="#editSelected" text="Edit Selected" textAlignment="CENTER" />
                   <Button mnemonicParsing="false" onAction="#clearAll" prefWidth="89.0" text="Delete All" textAlignment="CENTER" />
               </items>
             </ToolBar>

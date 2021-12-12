@@ -35,9 +35,7 @@ public class Controller implements Initializable{
     private TableView<Candidato> table;
 
 
-    ObservableList<Candidato> list = FXCollections.observableArrayList(
-       
-    );
+    ObservableList<Candidato> list = FXCollections.observableArrayList();
 
     @FXML
     void add(ActionEvent event) throws SQLException {
@@ -67,11 +65,6 @@ public class Controller implements Initializable{
         updateList();
     }
 
-    @FXML
-    void editSelected(ActionEvent event) {
-
-    }
-
 
     public void updateList() throws SQLException{
         list.clear();
@@ -88,7 +81,8 @@ public class Controller implements Initializable{
         
         name.setCellValueFactory(new PropertyValueFactory<Candidato, String>("name"));
         surname.setCellValueFactory(new PropertyValueFactory<Candidato, String>("surname"));
-        
+        table.setEditable(true);
+        name.setEditable(true);
         table.setItems(list);
 
         try {
