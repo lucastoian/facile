@@ -1,4 +1,7 @@
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.beans.Observable;
@@ -36,10 +39,26 @@ public class Controller implements Initializable{
     );
 
     @FXML
-    void add(ActionEvent event) {
+    void add(ActionEvent event) throws SQLException {
         String name = inputName.getText();
         String surname = inputSurname.getText();
-        list.add(new Candidato(name, surname));
+        
+
+        PostgreSQL.writeToDatabase(name, surname);
+
+        updateList();
+
+        
+    }
+
+    public void updateList() throws SQLException{
+        list.clear();
+        ResultSet result = PostgreSQL.queryToDatabase("Select * From candidati");
+        while(result.next()){
+            list.add(new Candidato(result.getString(1),result.getString(2)));
+        }
+        
+        System.out.println(list);
     }
 
     @Override
@@ -48,6 +67,13 @@ public class Controller implements Initializable{
         name.setCellValueFactory(new PropertyValueFactory<Candidato, String>("name"));
         surname.setCellValueFactory(new PropertyValueFactory<Candidato, String>("surname"));
         table.setItems(list);
+
+        try {
+            updateList();
+        } catch (SQLException e) {
+            
+            e.printStackTrace();
+        }
     }
 
 }
