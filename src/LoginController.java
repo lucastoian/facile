@@ -1,4 +1,7 @@
 import java.io.IOException;
+import java.sql.SQLException;
+
+import org.postgresql.util.PSQLException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,7 +11,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class LoginController {
@@ -37,26 +42,40 @@ public class LoginController {
 
 
     @FXML
-    private Button VoteButton,LoginButton;
+    private Button VoteButton,LoginButton, RegisterButton;
+    
 
     @FXML
     void GoToElectionScene(ActionEvent event) {
 
     }
 
-
-    public void GoToManageScene(ActionEvent event) throws IOException {
+    
+    @FXML
+    public void GoToRegisterScene(ActionEvent event) throws IOException {
 		
 		try {
+                //carico la pagina di gestione 
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("RegisterScene.fxml"));
+				root = loader.load();
+
+				stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+				scene = new Scene(root); 
+				stage.setScene(scene);
+				stage.show();
+        }	
+		catch(Exception e) {
+			System.out.println(e);
+		}
+	}
+
+
+    public void GoToManageScene(ActionEvent event) throws IOException, SQLException {
+	
 			email = EmailField.getText();
             psw = PasswordField.getText();
             
-            System.out.println(email +" "+psw);
-			
-			if( !email.equals(emailPredefinita)  ||  !psw.equals(pswPredefinita)) {	
-                //mostra un messaggio di errore se la mail è errata
-                errorPane.setVisible(true);
-            }else{
+            if(PostgreSQL.login(email, psw)){
                 //carico la pagina di gestione 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("ManageElectionScene.fxml"));
 				root = loader.load();
@@ -70,12 +89,12 @@ public class LoginController {
 				scene = new Scene(root); 
 				stage.setScene(scene);
 				stage.show();
-
             }
-        }	
-		catch(Exception e) {
-			System.out.println(e);
-		}
+            
+           
+            
+        	
+		
 	}
 
 

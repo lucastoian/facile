@@ -7,8 +7,11 @@ import javafx.scene.Scene;
 
 
 public class Main extends Application {
+
+	private static Stage primarystage;
 	@Override
 	public void start(Stage primaryStage) {
+		Main.primarystage = primaryStage;
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("LoginScene.fxml"));
 			Scene scene = new Scene(root);
@@ -23,4 +26,8 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
+
+	public static Stage getStage() {
+        return primarystage;
+    }
 }
