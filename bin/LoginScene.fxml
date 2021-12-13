@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #e9f5f9;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginController">
+   <children>
+      <Text fill="#145369" layoutX="329.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome Applicazione">
+         <font>
+            <Font name="System Bold Italic" size="36.0" />
+         </font>
+      </Text>
+      <AnchorPane layoutX="118.0" layoutY="176.0" prefHeight="359.0" prefWidth="298.0" style="-fx-background-color: #ffffff; -fx-border-color: #145369; -fx-border-radius: 10; -fx-background-radius: 10;">
+         <children>
+            <Button fx:id="LoginButton" layoutX="15.0" layoutY="271.0" mnemonicParsing="false" onAction="#GoToManageScene" prefHeight="25.0" prefWidth="266.0" style="-fx-background-color: #be4d25;" text="LOGIN" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <TextField fx:id="PasswordField" layoutX="14.0" layoutY="191.0" prefHeight="27.0" prefWidth="266.0" />
+            <Label layoutX="15.0" layoutY="164.0" prefHeight="17.0" prefWidth="267.0" text="password" textFill="#145369">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="EmailField" layoutX="17.0" layoutY="66.0" prefHeight="31.0" prefWidth="266.0" />
+            <Label layoutX="16.0" layoutY="39.0" prefHeight="17.0" prefWidth="268.0" text="indirizzo email" textFill="#145369">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Text fill="#145369" layoutX="14.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="non sei registrato?" />
+         </children>
+      </AnchorPane>
+      <Label alignment="CENTER" layoutX="118.0" layoutY="139.0" prefHeight="31.0" prefWidth="298.0" text="Accedi per creare le tue elezioni" textFill="#145369">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="534.0" layoutY="170.0" prefHeight="413.0" prefWidth="345.0" style="-fx-background-color: #ffffff; -fx-border-color: #145369; -fx-background-radius: 10; -fx-border-radius: 10;">
+         <children>
+            <Button fx:id="VoteButton" layoutX="14.0" layoutY="342.0" mnemonicParsing="false" onAction="#GoToElectionScene" prefHeight="31.0" prefWidth="319.0" style="-fx-background-color: #be4d25;" text="VOTA" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <TextField fx:id="VotazioneField" layoutX="14.0" layoutY="304.0" prefHeight="27.0" prefWidth="319.0" />
+            <Label layoutX="15.0" layoutY="277.0" prefHeight="27.0" prefWidth="319.0" text="ID Votazione" textFill="#145369">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="ElettoreField" layoutX="15.0" layoutY="244.0" prefHeight="31.0" prefWidth="319.0" />
+            <Label layoutX="15.0" layoutY="217.0" prefHeight="27.0" prefWidth="319.0" text="ID Elettore" textFill="#145369">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Text fill="#145369" layoutX="13.0" layoutY="395.0" strokeType="OUTSIDE" strokeWidth="0.0" text="inserisci le credenziali per recuperare l'ID" />
+            <TextField fx:id="NameField" layoutX="13.0" layoutY="41.0" prefHeight="31.0" prefWidth="319.0" />
+            <Label layoutX="13.0" layoutY="14.0" prefHeight="17.0" prefWidth="268.0" text="Nome" textFill="#145369">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="SurnameField" layoutX="13.0" layoutY="106.0" prefHeight="31.0" prefWidth="319.0" />
+            <Label layoutX="13.0" layoutY="79.0" prefHeight="27.0" prefWidth="319.0" text="Cognome" textFill="#145369">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="CODField" layoutX="14.0" layoutY="176.0" prefHeight="31.0" prefWidth="319.0" />
+            <Label layoutX="14.0" layoutY="149.0" prefHeight="17.0" prefWidth="268.0" text="Codice Fiscale" textFill="#145369">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label alignment="CENTER" layoutX="534.0" layoutY="139.0" prefHeight="31.0" prefWidth="345.0" text="inserisci i dati per partecipare all'elezione" textFill="#145369">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Pane fx:id="errorPane" layoutX="125.0" layoutY="99.0" prefHeight="40.0" prefWidth="285.0" style="-fx-border-color: red; -fx-background-color: white;" visible="false">
+         <children>
+            <Text fill="#e83a3a" layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="credenziali inserite errate!" textAlignment="CENTER" wrappingWidth="238.13671875">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Text layoutX="47.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="email@gmail.com " wrappingWidth="109.79296875" />
+      <Text layoutX="47.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password" wrappingWidth="59.13671875" />
+   </children>
+</AnchorPane>
