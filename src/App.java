@@ -20,8 +20,7 @@ public class App extends Application {
     public void start(Stage primaryStage) throws Exception {      
       
 
-            Parent root = FXMLLoader.load(getClass().getResource("mainframe.fxml"));
-
+            Parent root = FXMLLoader.load(getClass().getResource("CreateElectionScene.fxml"));
             primaryStage.setTitle("Titolo della stage");
             primaryStage.setScene(new Scene(root,800,400));
             primaryStage.show();

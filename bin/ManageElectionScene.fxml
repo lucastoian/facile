@@ -70,7 +70,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <Button layoutX="855.0" layoutY="107.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="131.0" style="-fx-background-color: #be4d25;" text="+ nuova elezione" textFill="WHITE">
+      <Button layoutX="855.0" layoutY="107.0" mnemonicParsing="false" onAction="#newElection" prefHeight="41.0" prefWidth="131.0" style="-fx-background-color: #be4d25;" text="+ nuova elezione" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>

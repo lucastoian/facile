@@ -34,7 +34,11 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Text fill="#145369" layoutX="14.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="non sei registrato?" />
+            <Button fx:id="RegisterButton" layoutX="16.0" layoutY="314.0" mnemonicParsing="false" onAction="#GoToRegisterScene" prefHeight="31.0" prefWidth="59.0" style="-fx-background-color: #be4d25;" text="Register" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
       <Label alignment="CENTER" layoutX="118.0" layoutY="139.0" prefHeight="31.0" prefWidth="298.0" text="Accedi per creare le tue elezioni" textFill="#145369">

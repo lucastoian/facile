@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<SplitPane dividerPositions="0.4280936454849498" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <TextField fx:id="inputName" layoutX="52.0" layoutY="48.0" AnchorPane.bottomAnchor="325.0" AnchorPane.leftAnchor="52.0" AnchorPane.rightAnchor="52.0" AnchorPane.topAnchor="48.0" />
+            <TextField fx:id="inputSurname" layoutX="52.0" layoutY="122.0" AnchorPane.bottomAnchor="251.0" AnchorPane.leftAnchor="52.0" AnchorPane.rightAnchor="52.0" AnchorPane.topAnchor="122.0" />
+            <Button layoutX="90.0" layoutY="190.0" mnemonicParsing="false" onAction="#add" prefHeight="41.0" prefWidth="73.0" text="Add" AnchorPane.bottomAnchor="167.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="190.0" />
+            <Text layoutX="52.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+            <Text layoutX="52.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Surname" AnchorPane.bottomAnchor="276.98828125" AnchorPane.leftAnchor="52.0" AnchorPane.rightAnchor="154.154296875" AnchorPane.topAnchor="105.05078125" />
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <TableView fx:id="table" layoutX="70.0" layoutY="73.0" prefHeight="279.0" prefWidth="229.0" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="73.0">
+              <columns>
+                <TableColumn fx:id="name" prefWidth="75.0" text="Name" />
+                <TableColumn fx:id="surname" prefWidth="75.0" text="Surname" />
+              </columns>
+            </TableView>
+            <ToolBar layoutX="83.0" layoutY="31.0">
+              <items>
+                <Button mnemonicParsing="false" onAction="#deleteSelected" text="Delete Selected" textAlignment="CENTER" />
+                  <Button mnemonicParsing="false" onAction="#clearAll" prefWidth="89.0" text="Delete All" textAlignment="CENTER" />
+              </items>
+            </ToolBar>
+         </children></AnchorPane>
+  </items>
+</SplitPane>

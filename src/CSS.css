@@ -1,4 +1,4 @@
-/* .button
+.button
 {
     -fx-background-color : #0fcfcf;
     -fx-background-radius : 30 0 0 30; 
@@ -14,4 +14,13 @@
 {
     -fx-background-color :#0fcfcf;
     -fx-background-radius : 30 0 0 30; 
-} */
+} 
+
+.AnchorPane
+{
+
+    -fx-background-color: #ffffff; 
+    -fx-border-color: #145369; 
+    -fx-border-radius: 10; 
+    -fx-background-radius: 10
+}

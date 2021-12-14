@@ -5,14 +5,14 @@
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "c:\\Users\\lucas\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.base.jar",
-        "c:\\Users\\lucas\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.controls.jar",
-        "c:\\Users\\lucas\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.fxml.jar",
-        "c:\\Users\\lucas\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.graphics.jar",
-        "c:\\Users\\lucas\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.media.jar",
-        "c:\\Users\\lucas\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.swing.jar",
-        "c:\\Users\\lucas\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.web.jar",
-        "c:\\Users\\lucas\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx-swt.jar",
-        "c:\\Users\\lucas\\Desktop\\postgresql-42.3.1.jar"
+        "c:\\Users\\lucas\\OneDrive\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.base.jar",
+        "c:\\Users\\lucas\\OneDrive\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.controls.jar",
+        "c:\\Users\\lucas\\OneDrive\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.fxml.jar",
+        "c:\\Users\\lucas\\OneDrive\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.graphics.jar",
+        "c:\\Users\\lucas\\OneDrive\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.media.jar",
+        "c:\\Users\\lucas\\OneDrive\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.swing.jar",
+        "c:\\Users\\lucas\\OneDrive\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.web.jar",
+        "c:\\Users\\lucas\\OneDrive\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx-swt.jar",
+        "c:\\Users\\lucas\\OneDrive\\Desktop\\postgresql-42.3.1.jar"
     ]
 }

@@ -50,6 +50,23 @@ public class ManagerController {
 	}
 
 
+    @FXML
+    void newElection(ActionEvent event) {
+        try {
+            //carico la pagina di gestione 
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("CreateElectionScene.fxml"));
+            root = loader.load();
+
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root); 
+            stage.setScene(scene);
+            stage.show();
+    }	
+    catch(Exception e) {
+        System.out.println(e);
+    }
+    }
+
 
 
     
