@@ -13,9 +13,13 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		Main.primarystage = primaryStage;
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("LoginScene.fxml"));
+
+			
+			
+
+			Parent root = FXMLLoader.load(getClass().getResource("fxml/LoginScene.fxml"));
 			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("CSS.css").toExternalForm());
+			//scene.getStylesheets().add(getClass().getResource("CSS.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {

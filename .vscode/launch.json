@@ -18,6 +18,7 @@
             "request": "launch",
             "mainClass": "${file}",
             "vmArgs": "--module-path C:/Users/lucas/Desktop/javafx-sdk-17.0.1/lib --add-modules javafx.controls,javafx.fxml"
+<<<<<<< Updated upstream
             
         },
         {
@@ -28,5 +29,8 @@
             "projectName": "facile_45ae570d",
             "vmArgs": "--module-path C:/Users/lucas/Desktop/javafx-sdk-17.0.1/lib --add-modules javafx.controls,javafx.fxml"
         }
+=======
+        },
+>>>>>>> Stashed changes
     ]
 }

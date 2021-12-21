@@ -1,11 +1,15 @@
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 import org.postgresql.util.PSQLException;
 
+import Utente.UtenteDaoImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,7 +20,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class LoginController {
+public class LoginController implements Initializable{
 
     String email,psw; 
     String emailPredefinita = "email@gmail.com"; 
@@ -25,7 +29,8 @@ public class LoginController {
     
     private Stage stage; 
 	private Scene scene; 
-	private Parent root; 
+	private Parent root;
+    private UtenteDaoImpl utenteDao; 
 	
 
     @FXML
@@ -54,9 +59,14 @@ public class LoginController {
     @FXML
     public void GoToRegisterScene(ActionEvent event) throws IOException {
 		
+
+
 		try {
                 //carico la pagina di gestione 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("RegisterScene.fxml"));
+
+
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/RegisterScene.fxml"));
 				root = loader.load();
 
 				stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -75,9 +85,9 @@ public class LoginController {
 			email = EmailField.getText();
             psw = PasswordField.getText();
             
-            if(PostgreSQL.login(email, psw)){
+            if(utenteDao.validateLogin(email, psw)){
                 //carico la pagina di gestione 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("ManageElectionScene.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/ManageElectionScene.fxml"));
 				root = loader.load();
 
 
@@ -96,6 +106,17 @@ public class LoginController {
         	
 		
 	}
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        utenteDao = new UtenteDaoImpl();
+        
+    }
+
+    public UtenteDaoImpl getUtenteDao(){
+        return this.utenteDao;
+    }
 
 
 

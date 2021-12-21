@@ -1,3 +1,7 @@
+import java.util.jar.Attributes.Name;
+
+import Utente.Utente;
+import Utente.UtenteDaoImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -43,7 +47,7 @@ public class RegisterController {
         try {
             //carico la pagina di gestione 
             
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginScene.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/LoginScene.fxml"));
             root = loader.load();
 
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -62,8 +66,11 @@ public class RegisterController {
         
         try {
             //carico la pagina di gestione 
-            PostgreSQL.registerToDatabase(NameField.getText(), SurnameField.getText(), PasswordField.getText(), EmailField.getText(), CodFiscaleField.getText());
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginScene.fxml"));
+            
+            Utente u = new Utente(NameField.getText(), SurnameField.getText(), PasswordField.getText(), EmailField.getText(), CodFiscaleField.getText());
+            UtenteDaoImpl utenteDao = new UtenteDaoImpl();
+            utenteDao.addUtente(u);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/LoginScene.fxml"));
             root = loader.load();
 
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
