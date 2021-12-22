@@ -7,6 +7,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.postgresql.util.PSQLException;
+import org.postgresql.util.PSQLState;
+import org.postgresql.util.ServerErrorMessage;
+
+
 public class UtenteDaoImpl implements UtenteDao{
 
 
@@ -65,9 +70,11 @@ public class UtenteDaoImpl implements UtenteDao{
     }
 
     @Override
-    public void addUtente(Utente u) {
+    public void addUtente(Utente u) throws  PSQLException, SQLException {
+
+        
         String query = "INSERT INTO utente VALUES(?, ?, ?, ?, ?)";
-        try {
+        
             Connection con = DriverManager.getConnection(url, user, password);
             PreparedStatement pst = con.prepareStatement(query);
             pst.setString(1, u.getName());
@@ -82,11 +89,7 @@ public class UtenteDaoImpl implements UtenteDao{
             utenti.add(u);
             System.out.println("UTENTE REGISTRATO CON SUCCESSO");
 
-        } catch (SQLException ex) {
-           System.out.println("Errore nel registrare l'utente: metodo addUtente di UtenteDaoImpl");
-
-           System.out.println(ex);
-        }
+        
         
     }
 
@@ -123,3 +126,34 @@ public class UtenteDaoImpl implements UtenteDao{
     }
     
 }
+
+/**
+ * catch (PSQLException e) {
+            
+             // "23514" indica la violazione di una check constraint
+             // https://www.postgresql.org/docs/9.2/errcodes-appendix.html
+            
+            if ("23514".equals(e.getSQLState())) {
+                ServerErrorMessage postgresError = e.getServerErrorMessage();
+                if (postgresError != null) {
+                    String constraint = postgresError.getConstraint();
+                    if ("utente_cognome_check".equalsIgnoreCase(constraint)) {
+                        throw new IllegalArgumentException("Il cognome deve avere almeno 4 caratteri");
+                    }
+                    if ("utente_email_check".equalsIgnoreCase(constraint)) {
+                        throw new IllegalArgumentException("L'email deve avere almeno 6 caratteri");
+                    }
+                    if ("utente_nome_check".equalsIgnoreCase(constraint)) {
+                        throw new IllegalArgumentException("Il nome deve avere almeno 4 caratteri");
+                    }
+                    if ("utente_password_check".equalsIgnoreCase(constraint)) {
+                        throw new IllegalArgumentException("La password deve avere almeno 9 caratteri");
+                    }
+                    if ("utente_codfiscale_check".equalsIgnoreCase(constraint)) {
+                        throw new IllegalArgumentException("Il codice fiscale deve essere formato da 16 caratteri");
+                    }
+                }
+            } 
+            
+        }
+ */

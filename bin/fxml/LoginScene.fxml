@@ -39,6 +39,11 @@
                   <Font name="System Bold" size="10.0" />
                </font>
             </Button>
+            <Text fx:id="allert" fill="RED" layoutX="43.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Credenziali errate" textAlignment="CENTER" wrappingWidth="208.13671875">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
       <Label alignment="CENTER" layoutX="118.0" layoutY="139.0" prefHeight="31.0" prefWidth="298.0" text="Accedi per creare le tue elezioni" textFill="#145369">

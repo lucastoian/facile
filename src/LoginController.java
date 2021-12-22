@@ -48,6 +48,9 @@ public class LoginController implements Initializable{
     @FXML
     private TextField SurnameField,VotazioneField,PasswordField,NameField,EmailField;
 
+    @FXML
+    private Text allert;
+
 
     @FXML
     private Button VoteButton,LoginButton, RegisterButton;
@@ -102,6 +105,8 @@ public class LoginController implements Initializable{
 				scene = new Scene(root); 
 				stage.setScene(scene);
 				stage.show();
+            }else{
+                allert.setVisible(true);
             }
             
            
@@ -115,6 +120,7 @@ public class LoginController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         utenteDao = new UtenteDaoImpl();
         System.out.println(utenteDao.getAllUtenti());
+        allert.setVisible(false);
      
         
     }

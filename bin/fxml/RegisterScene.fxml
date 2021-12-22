@@ -56,6 +56,11 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
+            <Text fx:id="allert1" fill="RED" layoutX="4.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="448.13671875">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </children>
