@@ -1,3 +1,4 @@
+
 import java.util.jar.Attributes.Name;
 
 import Utente.Utente;
@@ -67,7 +68,9 @@ public class RegisterController {
         try {
             //carico la pagina di gestione 
             
-            Utente u = new Utente(NameField.getText(), SurnameField.getText(), PasswordField.getText(), EmailField.getText(), CodFiscaleField.getText());
+            
+
+            Utente u = new Utente(NameField.getText(), SurnameField.getText(), EmailField.getText(), PasswordField.getText(),CodFiscaleField.getText());
             UtenteDaoImpl utenteDao = new UtenteDaoImpl();
             utenteDao.addUtente(u);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/LoginScene.fxml"));

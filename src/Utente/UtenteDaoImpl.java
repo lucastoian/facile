@@ -13,6 +13,8 @@ public class UtenteDaoImpl implements UtenteDao{
     private static final String url = "jdbc:postgresql://ec2-34-255-134-200.eu-west-1.compute.amazonaws.com:5432/du00brnb1t9ok";
     private static final String user = "ykeiygtowzihlm";
     private static final String password = "70c908bb89427bd76a11350372a669f02b455e056c3fd572f4a94d1d2b65d48c";
+    private static final String key = "LucaDamonChiaveTopSecret";
+    private Encryption enc;
 
     private List<Utente> utenti;
 
@@ -21,6 +23,9 @@ public class UtenteDaoImpl implements UtenteDao{
         this.utenti = new ArrayList<>();
         String query = "SELECT * FROM utente";
         try {
+
+            enc = new Encryption(key);
+
             Connection con = DriverManager.getConnection(url, user, password);
             PreparedStatement pst = con.prepareStatement(query);
             ResultSet result = pst.executeQuery();
@@ -31,8 +36,11 @@ public class UtenteDaoImpl implements UtenteDao{
             }
             System.out.println("Success");
         } catch (SQLException ex) {
-           System.out.println("Err");
+           System.out.println("Errore");
         }
+        catch (Exception e) {
+            System.out.println(e);
+         }
 
     }
 
@@ -65,15 +73,19 @@ public class UtenteDaoImpl implements UtenteDao{
             pst.setString(1, u.getName());
             pst.setString(2, u.getSurname());
             pst.setString(3, u.getEmail());
-            pst.setString(4, u.getPassword());
+            pst.setString(4, enc.encrypt(u.getPassword()));
             pst.setString(5, u.getCodFiscale());
+            
+            
             pst.executeUpdate();
 
             utenti.add(u);
             System.out.println("UTENTE REGISTRATO CON SUCCESSO");
 
         } catch (SQLException ex) {
-           System.out.println("Err");
+           System.out.println("Errore nel registrare l'utente: metodo addUtente di UtenteDaoImpl");
+
+           System.out.println(ex);
         }
         
     }
@@ -82,12 +94,15 @@ public class UtenteDaoImpl implements UtenteDao{
     public boolean validateLogin(String email, String passwor) {
         String query = "SELECT * FROM utente WHERE email = ? AND password = ?";
 
+
         try {
+
+
             Connection con = DriverManager.getConnection(url, user, password);
             PreparedStatement pst = con.prepareStatement(query);
 
             pst.setString(1, email);
-            pst.setString(2, passwor);
+            pst.setString(2, enc.encrypt(passwor));
 
             ResultSet result = pst.executeQuery();
 
@@ -96,6 +111,10 @@ public class UtenteDaoImpl implements UtenteDao{
                 }
         } catch (SQLException ex) {
             System.out.println(ex);
+            return false;
+        }
+        catch(Exception e){
+            System.out.println(e);
         }
 
        

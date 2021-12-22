@@ -1,3 +1,4 @@
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -5,6 +6,7 @@ import java.util.ResourceBundle;
 
 import org.postgresql.util.PSQLException;
 
+import Utente.Encryption;
 import Utente.UtenteDaoImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,7 +32,8 @@ public class LoginController implements Initializable{
     private Stage stage; 
 	private Scene scene; 
 	private Parent root;
-    private UtenteDaoImpl utenteDao; 
+    private UtenteDaoImpl utenteDao;
+    private Encryption enc; 
 	
 
     @FXML
@@ -85,7 +88,7 @@ public class LoginController implements Initializable{
 			email = EmailField.getText();
             psw = PasswordField.getText();
             
-            if(utenteDao.validateLogin(email, psw)){
+            if(utenteDao.validateLogin(email, psw )){
                 //carico la pagina di gestione 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/ManageElectionScene.fxml"));
 				root = loader.load();
@@ -111,6 +114,8 @@ public class LoginController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         utenteDao = new UtenteDaoImpl();
+        System.out.println(utenteDao.getAllUtenti());
+     
         
     }
 
