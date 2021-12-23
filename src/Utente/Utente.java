@@ -42,7 +42,7 @@ public class Utente {
         this.codFiscale = codFiscale;
     }
 
-    public void setPassword(){
+    public void setPassword(String password){
         this.password = password;
     }
 

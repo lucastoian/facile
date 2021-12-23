@@ -51,7 +51,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="534.0" layoutY="170.0" prefHeight="413.0" prefWidth="345.0" style="-fx-background-color: #ffffff; -fx-border-color: #145369; -fx-background-radius: 10; -fx-border-radius: 10;">
+      <AnchorPane disable="true" layoutX="534.0" layoutY="170.0" prefHeight="413.0" prefWidth="345.0" style="-fx-background-color: #ffffff; -fx-border-color: #145369; -fx-background-radius: 10; -fx-border-radius: 10;">
          <children>
             <Button fx:id="VoteButton" layoutX="14.0" layoutY="342.0" mnemonicParsing="false" onAction="#GoToElectionScene" prefHeight="31.0" prefWidth="319.0" style="-fx-background-color: #be4d25;" text="VOTA" textFill="WHITE">
                <font>
@@ -105,7 +105,5 @@
             </Text>
          </children>
       </Pane>
-      <Text layoutX="47.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="email@gmail.com " wrappingWidth="109.79296875" />
-      <Text layoutX="47.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password" wrappingWidth="59.13671875" />
    </children>
 </AnchorPane>

@@ -32,8 +32,7 @@ public class LoginController implements Initializable{
     private Stage stage; 
 	private Scene scene; 
 	private Parent root;
-    private UtenteDaoImpl utenteDao;
-    private Encryption enc; 
+    private UtenteDaoImpl utenteDao; 
 	
 
     @FXML
@@ -90,7 +89,7 @@ public class LoginController implements Initializable{
 	
 			email = EmailField.getText();
             psw = PasswordField.getText();
-            
+            //se le credenziali sono corrette
             if(utenteDao.validateLogin(email, psw )){
                 //carico la pagina di gestione 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/ManageElectionScene.fxml"));

@@ -7,17 +7,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
-import org.postgresql.util.ServerErrorMessage;
 
 
 public class UtenteDaoImpl implements UtenteDao{
 
-
+    //credenziali per accedere al db hostato su heroku
     private static final String url = "jdbc:postgresql://ec2-34-255-134-200.eu-west-1.compute.amazonaws.com:5432/du00brnb1t9ok";
     private static final String user = "ykeiygtowzihlm";
     private static final String password = "70c908bb89427bd76a11350372a669f02b455e056c3fd572f4a94d1d2b65d48c";
+
+    //chiave per cryptare
     private static final String key = "LucaDamonChiaveTopSecret";
     private Encryption enc;
 
@@ -39,13 +38,14 @@ public class UtenteDaoImpl implements UtenteDao{
                 Utente u = new Utente(result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5));
                 utenti.add(u);
             }
-            System.out.println("Success");
-        } catch (SQLException ex) {
-           System.out.println("Errore");
+            System.out.println("UtenteDao si è connesso correttamente al db");
+        }   
+        catch (SQLException ex) {
+            System.out.println("UtenteDao NON si è connesso correttamente al db");
         }
         catch (Exception e) {
             System.out.println(e);
-         }
+        }
 
     }
 
@@ -70,7 +70,7 @@ public class UtenteDaoImpl implements UtenteDao{
     }
 
     @Override
-    public void addUtente(Utente u) throws  PSQLException, SQLException {
+    public void addUtente(Utente u) throws SQLException {
 
         
         String query = "INSERT INTO utente VALUES(?, ?, ?, ?, ?)";
@@ -126,34 +126,3 @@ public class UtenteDaoImpl implements UtenteDao{
     }
     
 }
-
-/**
- * catch (PSQLException e) {
-            
-             // "23514" indica la violazione di una check constraint
-             // https://www.postgresql.org/docs/9.2/errcodes-appendix.html
-            
-            if ("23514".equals(e.getSQLState())) {
-                ServerErrorMessage postgresError = e.getServerErrorMessage();
-                if (postgresError != null) {
-                    String constraint = postgresError.getConstraint();
-                    if ("utente_cognome_check".equalsIgnoreCase(constraint)) {
-                        throw new IllegalArgumentException("Il cognome deve avere almeno 4 caratteri");
-                    }
-                    if ("utente_email_check".equalsIgnoreCase(constraint)) {
-                        throw new IllegalArgumentException("L'email deve avere almeno 6 caratteri");
-                    }
-                    if ("utente_nome_check".equalsIgnoreCase(constraint)) {
-                        throw new IllegalArgumentException("Il nome deve avere almeno 4 caratteri");
-                    }
-                    if ("utente_password_check".equalsIgnoreCase(constraint)) {
-                        throw new IllegalArgumentException("La password deve avere almeno 9 caratteri");
-                    }
-                    if ("utente_codfiscale_check".equalsIgnoreCase(constraint)) {
-                        throw new IllegalArgumentException("Il codice fiscale deve essere formato da 16 caratteri");
-                    }
-                }
-            } 
-            
-        }
- */

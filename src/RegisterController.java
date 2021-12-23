@@ -11,12 +11,10 @@ import Utente.UtenteDaoImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.Node;
@@ -29,32 +27,18 @@ public class RegisterController {
 	private Parent root; 
     
     @FXML
-    private TextField CodFiscaleField;
+    private TextField CodFiscaleField,EmailField,NameField,PasswordField,SurnameField;
 
     @FXML
-    private TextField EmailField;
+    private Button RegisterButton, LoginButton;
 
-    @FXML
-    private TextField NameField;
-
-    @FXML
-    private TextField PasswordField;
-
-    @FXML
-    private Button RegisterButton;
-
-    @FXML
-    private TextField SurnameField;
-
-    @FXML
-    private Button LoginButton;
     @FXML
     private Text allert1;
 
     @FXML
     void GoToLoginScene(ActionEvent event) {
         try {
-            //carico la pagina di gestione 
+            //carico la pagina di login 
             
             FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/LoginScene.fxml"));
             root = loader.load();
@@ -63,10 +47,10 @@ public class RegisterController {
             scene = new Scene(root); 
             stage.setScene(scene);
             stage.show();
-    }	
-    catch(Exception e) {
-        System.out.println(e);
-    }
+        }	
+        catch(Exception e) {
+            System.out.println(e);
+        }
     
     }
 
@@ -81,10 +65,12 @@ public class RegisterController {
                 return;
             }
 
+            //creo il nuovo utente registrato
             Utente u = new Utente(NameField.getText(), SurnameField.getText(), EmailField.getText(), PasswordField.getText(),CodFiscaleField.getText().toUpperCase());
             UtenteDaoImpl utenteDao = new UtenteDaoImpl();
+            //lo aggiungo al db
             utenteDao.addUtente(u);
-             //carico la pagina di gestione 
+             //carico la pagina di login
             FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/LoginScene.fxml"));
             root = loader.load();
 
@@ -94,13 +80,12 @@ public class RegisterController {
             stage.show();
     }	
     catch (SQLException e) {
-            
-        // "23514" indica la violazione di una check constraint
         // https://www.postgresql.org/docs/9.2/errcodes-appendix.html
-       
-            System.out.println(e.getSQLState());
+        // faccio check della registrazione direttamente usando i constraint definiti nel database
+        // per qualche strano motivo il constraint utente_password_check non viene lanciato, lo ho gestito sopra in maniera poco bella
+        //System.out.println(e.getSQLState());
            ServerErrorMessage postgresError = ((PSQLException) e).getServerErrorMessage();
-           System.out.println(postgresError);
+        //System.out.println(postgresError);
            if (postgresError != null) {
                String constraint = postgresError.getConstraint();
                System.out.println("CONSTRAINT GENERATO = " + constraint);
