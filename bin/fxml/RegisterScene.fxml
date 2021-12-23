@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -49,7 +50,6 @@
             <TextField fx:id="SurnameField" layoutX="82.0" layoutY="139.0" prefHeight="27.0" prefWidth="266.0" />
             <TextField fx:id="NameField" layoutX="81.0" layoutY="66.0" prefHeight="31.0" prefWidth="266.0" />
             <TextField fx:id="EmailField" layoutX="79.0" layoutY="206.0" prefHeight="27.0" prefWidth="266.0" />
-            <TextField fx:id="PasswordField" layoutX="80.0" layoutY="270.0" prefHeight="31.0" prefWidth="266.0" />
             <TextField fx:id="CodFiscaleField" layoutX="80.0" layoutY="338.0" prefHeight="31.0" prefWidth="266.0" />
             <Button fx:id="LoginButton" layoutX="14.0" layoutY="463.0" mnemonicParsing="false" onAction="#GoToLoginScene" prefHeight="27.0" prefWidth="91.0" style="-fx-background-color: #be4d25;" text="LOG-IN" textFill="WHITE">
                <font>
@@ -61,6 +61,7 @@
                   <Font size="18.0" />
                </font>
             </Text>
+            <PasswordField fx:id="PasswordField" layoutX="82.0" layoutY="270.0" prefHeight="31.0" prefWidth="266.0" />
          </children>
       </AnchorPane>
    </children>

@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -27,7 +28,10 @@ public class RegisterController {
 	private Parent root; 
     
     @FXML
-    private TextField CodFiscaleField,EmailField,NameField,PasswordField,SurnameField;
+    private TextField CodFiscaleField,EmailField,NameField,SurnameField;
+
+    @FXML 
+    private PasswordField PasswordField; 
 
     @FXML
     private Button RegisterButton, LoginButton;

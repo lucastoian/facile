@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -10,9 +11,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #e9f5f9;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginController">
    <children>
-      <Text fill="#145369" layoutX="329.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome Applicazione">
+      <Text fill="#145369" layoutX="354.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VotoFacile.it">
          <font>
-            <Font name="System Bold Italic" size="36.0" />
+            <Font name="System Bold Italic" size="42.0" />
          </font>
       </Text>
       <AnchorPane layoutX="118.0" layoutY="176.0" prefHeight="359.0" prefWidth="298.0" style="-fx-background-color: #ffffff; -fx-border-color: #145369; -fx-border-radius: 10; -fx-background-radius: 10;">
@@ -22,7 +23,6 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <TextField fx:id="PasswordField" layoutX="14.0" layoutY="191.0" prefHeight="27.0" prefWidth="266.0" />
             <Label layoutX="15.0" layoutY="164.0" prefHeight="17.0" prefWidth="267.0" text="password" textFill="#145369">
                <font>
                   <Font size="18.0" />
@@ -44,6 +44,7 @@
                   <Font size="18.0" />
                </font>
             </Text>
+            <PasswordField fx:id="PasswordField" layoutX="17.0" layoutY="191.0" prefHeight="25.0" prefWidth="266.0" />
          </children>
       </AnchorPane>
       <Label alignment="CENTER" layoutX="118.0" layoutY="139.0" prefHeight="31.0" prefWidth="298.0" text="Accedi per creare le tue elezioni" textFill="#145369">

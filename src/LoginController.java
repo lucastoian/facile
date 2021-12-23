@@ -16,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -45,7 +46,10 @@ public class LoginController implements Initializable{
     private TextField ElettoreField;
 
     @FXML
-    private TextField SurnameField,VotazioneField,PasswordField,NameField,EmailField;
+    private TextField SurnameField,VotazioneField,NameField,EmailField;
+
+    @FXML 
+    private PasswordField PasswordField; 
 
     @FXML
     private Text allert;
