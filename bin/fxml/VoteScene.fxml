@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #e9f5f9;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VoteController">
+   <children>
+      <Text fill="#145369" layoutX="355.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VotoFacile.it">
+         <font>
+            <Font name="System Bold Italic" size="42.0" />
+         </font>
+      </Text>
+      <AnchorPane layoutX="146.0" layoutY="79.0" prefHeight="456.0" prefWidth="708.0" style="-fx-background-color: #ffffff; -fx-border-color: #145369; -fx-border-radius: 10; -fx-background-radius: 10;">
+         <children>
+            <Label layoutX="15.0" layoutY="25.0" prefHeight="27.0" prefWidth="298.0" text="seleziona il candidato che preferisci" textFill="#145369">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ComboBox layoutX="371.0" layoutY="26.0" prefHeight="25.0" prefWidth="278.0" />
+            <Label alignment="CENTER" layoutX="15.0" layoutY="163.0" prefHeight="31.0" prefWidth="226.0" text="ordina i candidati" textFill="#145369">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextArea layoutX="53.0" layoutY="307.0" prefHeight="81.0" prefWidth="594.0" text="testo della domanda del referendum&#10;" />
+            <RadioButton layoutX="180.0" layoutY="405.0" mnemonicParsing="false" text="si" />
+            <RadioButton layoutX="475.0" layoutY="405.0" mnemonicParsing="false" text="no" />
+            <TableView layoutX="250.0" layoutY="92.0" prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                <TableColumn prefWidth="101.0" text="nome" />
+                <TableColumn prefWidth="98.0" text="cognome" />
+              </columns>
+            </TableView>
+            <Button layoutX="473.0" layoutY="138.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="74.0" text="sposta su" />
+            <Button layoutX="473.0" layoutY="192.0" mnemonicParsing="false" text="sposta giù " />
+         </children>
+      </AnchorPane>
+      <Pane fx:id="errorPane" layoutX="125.0" layoutY="99.0" prefHeight="40.0" prefWidth="285.0" style="-fx-border-color: red; -fx-background-color: white;" visible="false">
+         <children>
+            <Text fill="#e83a3a" layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="credenziali inserite errate!" textAlignment="CENTER" wrappingWidth="238.13671875">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Button fx:id="confButton" layoutX="367.0" layoutY="548.0" mnemonicParsing="false" onAction="#confermaVoto" prefHeight="25.0" prefWidth="266.0" style="-fx-background-color: #be4d25;" text="conferma" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="clearButton" layoutX="268.0" layoutY="548.0" mnemonicParsing="false" onAction="#clearSelected" prefHeight="31.0" prefWidth="59.0" style="-fx-background-color: #be4d25;" text="pulisci" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font>
+      </Button>
+      <Button layoutX="921.0" layoutY="27.0" mnemonicParsing="false" onAction="#Logout" style="-fx-background-color: #e9f5f9;" text="Logout" textFill="#145369">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
