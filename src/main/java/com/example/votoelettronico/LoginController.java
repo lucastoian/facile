@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.sql.*;
@@ -27,6 +28,9 @@ public class LoginController implements Initializable {
 
     @FXML
     private TextField PasswordField, EmailField;
+    @FXML
+    private Text allert;
+
 
     public LoginController() throws Exception {
     }
@@ -40,6 +44,7 @@ public class LoginController implements Initializable {
                 Utils.changeScene(actionEvent, "VotazioniScene.fxml");
         }else{
             System.out.println("Log-in fallito");
+            allert.setVisible(true);
         }
 
     }
@@ -53,6 +58,7 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        allert.setVisible(false);
     }
 
 }
