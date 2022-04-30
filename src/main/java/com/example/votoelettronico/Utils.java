@@ -25,7 +25,7 @@ public class Utils {
     /**
      * data un eccezione sql, prova a vedere se si tratta di un constraint violato e restituisce
      * un messaggio sotto forma di stringa
-     * @param e generica eccezzione generata
+     * @param e eccezione sollevata
      * @return un messaggio sotto forma di stringa
      */
     public static String gestioneConstraint(SQLException e) {

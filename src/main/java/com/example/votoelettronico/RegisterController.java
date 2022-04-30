@@ -22,7 +22,6 @@ public class RegisterController {
             Utils.changeScene(actionEvent, "VotazioniScene.fxml");
         } catch (SQLException e){
             allert1.setText(Utils.gestioneConstraint(e));
-            System.out.println(Utils.gestioneConstraint(e));
         }
 
     }
