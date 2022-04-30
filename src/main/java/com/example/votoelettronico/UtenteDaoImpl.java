@@ -1,5 +1,10 @@
 package com.example.votoelettronico;
 
+import javax.crypto.NoSuchPaddingException;
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +25,7 @@ public class UtenteDaoImpl implements UtenteDao{
         con.close();
     }
 
-    public UtenteDaoImpl() throws Exception {
+    public UtenteDaoImpl() throws SQLException, UnsupportedEncodingException, NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException {
         this.utenti = new ArrayList<>();
         encryption = new Encryption("LucaDamonChiaveTopSecret");
         String query = "SELECT * FROM utente";

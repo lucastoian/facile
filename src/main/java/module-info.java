@@ -9,6 +9,7 @@ module com.example.votoelettronico {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires java.sql;
+    requires org.postgresql.jdbc;
 
     opens com.example.votoelettronico to javafx.fxml;
     exports com.example.votoelettronico;

@@ -16,7 +16,10 @@ public class LoginController implements Initializable {
     static {
         try {
             utenteDao = new UtenteDaoImpl();
-        } catch (Exception e) {
+        } catch (SQLException e) {
+            System.out.println(Utils.gestioneConstraint(e));
+        }
+        catch (Exception e){
             e.printStackTrace();
         }
     }

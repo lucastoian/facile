@@ -6,9 +6,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.controlsfx.control.action.Action;
+import org.postgresql.util.PSQLException;
+import org.postgresql.util.ServerErrorMessage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class Utils {
     public static void changeScene(ActionEvent event, String fxml) throws IOException {
@@ -19,4 +21,44 @@ public class Utils {
         stage.setScene(scene);
         stage.show();
     }
+
+    /**
+     * data un eccezione sql, prova a vedere se si tratta di un constraint violato e restituisce
+     * un messaggio sotto forma di stringa
+     * @param e generica eccezzione generata
+     * @return un messaggio sotto forma di stringa
+     */
+    public static String gestioneConstraint(SQLException e) {
+        ServerErrorMessage postgresError = ((PSQLException) e).getServerErrorMessage();
+        //System.out.println(postgresError);
+        if (postgresError != null) {
+            String constraint = postgresError.getConstraint();
+            System.out.println("CONSTRAINT GENERATO = " + constraint);
+            if ("utente_cognome_check".equalsIgnoreCase(constraint)) {
+
+                return "Il cognome deve avere almeno 4 caratteri";
+            }
+            if ("utente_email_check".equalsIgnoreCase(constraint)) {
+                return "L'email deve avere almeno 6 caratteri";
+            }
+            if ("utente_nome_check".equalsIgnoreCase(constraint)) {
+                return "Il nome deve avere almeno 4 caratteri";
+            }
+            if ("utente_password_check".equalsIgnoreCase(constraint)) {
+                return "La password deve avere almeno 9 caratteri";
+            }
+            if ("utente_codfiscale_check".equalsIgnoreCase(constraint)) {
+                return "Il codice fiscale deve essere formato da 16 caratteri";
+            }
+
+            if ("utente_pkey".equalsIgnoreCase(constraint)) {
+                return "Questo codice fiscale risulta gia registrato";
+            }
+            if ("utente_email_key".equalsIgnoreCase(constraint)) {
+                return "Questa email risulta gia registrata";
+            }
+        }
+        return "Eccezione sql, constarint non identificato";
+    }
+
 }
