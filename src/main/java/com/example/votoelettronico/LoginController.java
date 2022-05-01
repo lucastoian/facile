@@ -58,6 +58,8 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        EmailField.setText("lucastoian@outlook.com");
+        PasswordField.setText("topogigio");
         allert.setVisible(false);
     }
 
