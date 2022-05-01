@@ -18,4 +18,9 @@ public class VotazioneDaoImpl implements VotazioneDao{
     public void deleteVotazione(Votazione v) {
 
     }
+
+    @Override
+    public void changeStatus(Votazione v) {
+
+    }
 }

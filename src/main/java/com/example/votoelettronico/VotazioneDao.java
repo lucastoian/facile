@@ -8,5 +8,6 @@ public interface VotazioneDao {
     public List<Votazione> getAllVotazioni();
     public void addVotazione(Votazione v) throws SQLException;
     public void deleteVotazione(Votazione v);
+    public void changeStatus(Votazione v);
 
 }
