@@ -20,4 +20,7 @@ public interface UtenteDao {
      * @return true se esistono queste credenziali nel db
      */
     public Boolean loginUtente(String email, String password) throws SQLException;
+    public void addCandidato(Utente u, Votazione v) throws  SQLException;
+    public Utente getUtenteByCodFiscale(String codFiscale) throws  SQLException;
+    public List<Utente> getAllUtentiByIdVotazione(String id) throws SQLException;
 }

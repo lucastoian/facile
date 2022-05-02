@@ -31,6 +31,7 @@ public class VotazioniController implements Initializable {
 
     VotazioneDao votazioneDao;
     ObservableList<Votazione> votazioniList;
+    Votazione selectedVotazione;
 
     public void Logout(ActionEvent actionEvent) throws IOException {
         Utils.changeScene(actionEvent, "LoginScene.fxml");
@@ -41,10 +42,32 @@ public class VotazioniController implements Initializable {
         Utils.changeScene(actionEvent, "CreateElectionScene.fxml");
     }
 
-    public void goToElection(ActionEvent actionEvent) {
+    public void goToElection(ActionEvent actionEvent) throws IOException {
+        selectedVotazione = tabVotazioni.getSelectionModel().getSelectedItem();
+
+        switch (selectedVotazione.getTipo()){
+            case "referendum":
+                PanoramicaReferendumController pcr = new PanoramicaReferendumController();
+                pcr.setVotazione(selectedVotazione);
+                Utils.changeScene(actionEvent, "panoramicaReferendum.fxml",pcr);
+                break;
+            case "ordinale":
+            case "categorico":
+                PanoramicaCandidatiController pc = new PanoramicaCandidatiController();
+                pc.setVotazione(selectedVotazione);
+                Utils.changeScene(actionEvent, "panoramicaCandidati.fxml", pc);
+                break;
+
+        }
+
+
     }
 
     public void deleteElection(ActionEvent actionEvent) {
+    }
+
+    public Votazione getSelectedVotazione(){
+        return this.selectedVotazione;
     }
 
 

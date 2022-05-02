@@ -12,7 +12,9 @@ import java.net.URL;
 import java.time.LocalTime;
 import java.util.ResourceBundle;
 
-public class LoginController implements Initializable {
+public class LoginController implements Initializable{
+
+
 
     private static UtenteDao utenteDao = null;
 

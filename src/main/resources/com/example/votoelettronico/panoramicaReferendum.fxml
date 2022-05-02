@@ -2,6 +2,10 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
@@ -16,7 +20,7 @@
             <VBox layoutX="4.0" layoutY="1.0" prefHeight="600.0" prefWidth="231.0" spacing="20.0">
                <children>
                   <Label fx:id="NomeElezione" alignment="CENTER" prefHeight="171.0" prefWidth="231.0" style="-fx-font-size: 25;" text="NOME ELEZIONE" textAlignment="CENTER" textFill="#ff5500" />
-                  <Button mnemonicParsing="false" onAction="#goToManager" prefHeight="65.0" prefWidth="215.0" style="-fx-background-color: #145369; -fx-background-radius: 20;" text="Panoramica" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#goToManager" prefHeight="65.0" prefWidth="215.0" style="-fx-background-color: #140069; -fx-background-radius: 20;" text="Panoramica" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -27,11 +31,6 @@
                      </font>
                   </Button>
                   <Button layoutX="10.0" layoutY="95.0" mnemonicParsing="false" onAction="#goToPartecipanti" prefHeight="65.0" prefWidth="215.0" style="-fx-background-color: #145369; -fx-background-radius: 20;" text="Partecipanti" textFill="WHITE">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="candidatiButton" layoutX="10.0" layoutY="180.0" mnemonicParsing="false" onAction="#goToCandidati" prefHeight="64.0" prefWidth="215.0" style="-fx-background-color: #145369; -fx-background-radius: 20;" text="candidati" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -66,5 +65,56 @@
             </Button>
          </children>
       </AnchorPane>
+      <SplitPane dividerPositions="0.354978354978355" layoutX="268.0" layoutY="102.0" prefHeight="300.0" prefWidth="695.0" visible="false">
+         <items>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="544.0" prefWidth="255.0">
+               <children>
+                  <TextField layoutX="47.0" layoutY="51.0" />
+                  <Button layoutX="88.0" layoutY="106.0" mnemonicParsing="false" text="Aggiungi" />
+                  <Label layoutX="84.0" layoutY="22.0" text="Codice Fiscale" />
+                  <Text fx:id="allert1" fill="RED" layoutX="33.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Messaggio di errore Messaggio di errore Messaggio di erroreMessaggio di erroreMessaggio di erroreMessaggio di errore" textAlignment="CENTER" wrappingWidth="173.73675537109375">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="text1" layoutX="33.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aggiungi un candidato " textAlignment="CENTER" wrappingWidth="173.73675537109375">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="223.0" prefWidth="445.0">
+               <children>
+                  <TableView fx:id="Ctable" layoutX="8.0" layoutY="4.0" prefHeight="289.0" prefWidth="428.0" stylesheets="@../table.css">
+                     <columns>
+                        <TableColumn fx:id="name" prefWidth="216.0" text="nome " />
+                        <TableColumn fx:id="surname" prefWidth="211.0" text="cognome" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </items>
+      </SplitPane>
+      <VBox layoutX="247.0" layoutY="88.0" prefHeight="316.0" prefWidth="747.0" style="-fx-background-color: #CBF6F6;">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="INSERISCI LA DOMANDA PER IL REFERENDUM" textAlignment="CENTER" wrappingWidth="747.7366638183594">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <TextField fx:id="DomandaReferendum" prefHeight="292.0" prefWidth="748.0" />
+         </children>
+      </VBox>
+      <Button fx:id="Conferma" layoutX="508.0" layoutY="416.0" mnemonicParsing="false" onAction="#ConfermaElezione" prefHeight="65.0" prefWidth="215.0" style="-fx-background-color: #145369; -fx-background-radius: 20;" text="CONFERMA" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Text fx:id="allertConfermaElezione" fill="RED" layoutX="239.0" layoutY="543.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Messaggio di errore Messaggio di errore Messaggio di erroreMessaggio di erroreMessaggio di erroreMessaggio di errore" textAlignment="CENTER" wrappingWidth="754.5367431640625">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

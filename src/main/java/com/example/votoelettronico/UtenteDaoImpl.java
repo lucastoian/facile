@@ -91,4 +91,54 @@ public class UtenteDaoImpl implements UtenteDao{
         con.close();
         return false;
     }
+
+    @Override
+    public void addCandidato(Utente u, Votazione v) throws SQLException {
+        Connection con = openConnection();
+        String query = "INSERT INTO CANDIDATI(codfiscale,id,punteggio,nome) VALUES(?,?,?,?)";
+        PreparedStatement pst = con.prepareStatement(query);
+        pst.setString(1, u.getCodFiscale());
+        pst.setString(2, v.getId());
+        pst.setString(3,"0");
+        pst.setString(4,u.getName());
+        pst.executeUpdate();
+        con.close();
+        System.out.println("Candidato aggiunto");
+    }
+
+    @Override
+    public Utente getUtenteByCodFiscale(String codFiscale) throws SQLException {
+        Connection con = openConnection();
+        String query = "SELECT * FROM utente WHERE codfiscale = ?";
+        PreparedStatement pst = con.prepareStatement(query);
+        pst.setString(1, codFiscale);
+        ResultSet result = pst.executeQuery();
+        while(result.next()){
+            Utente u = new Utente(result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5));
+            con.close();
+            return u;
+        }
+        con.close();
+        throw new IllegalArgumentException("Utente non trovato");
+
+
+    }
+
+    @Override
+    public List<Utente> getAllUtentiByIdVotazione(String id) throws SQLException {
+        List<Utente> u = new ArrayList<>();
+
+        String query = "SELECT utente.nome, utente.cognome, utente.email, utente.password, utente.codfiscale FROM candidati JOIN utente ON utente.codfiscale = candidati.codfiscale WHERE candidati.id = ?";
+        Connection con= openConnection();
+        PreparedStatement pst = con.prepareStatement(query);
+        pst.setString(1, id);
+        ResultSet result = pst.executeQuery();
+
+        while(result.next()){
+            Utente utente = new Utente(result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5));
+            u.add(utente);
+        }
+
+        return u;
+    }
 }

@@ -9,13 +9,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ManagerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="600.0" prefWidth="231.0" style="-fx-background-color: #2596BE;">
          <children>
-            <VBox layoutX="-21.0" layoutY="177.0" prefHeight="390.0" prefWidth="215.0" spacing="20.0">
+            <VBox layoutX="4.0" layoutY="1.0" prefHeight="600.0" prefWidth="231.0" spacing="20.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#goToManager" prefHeight="65.0" prefWidth="215.0" style="-fx-background-color: #145369; -fx-background-radius: 20;" stylesheets="@manager.css" text="Panoramica" textFill="WHITE">
+                  <Label fx:id="NomeElezione" alignment="CENTER" prefHeight="171.0" prefWidth="231.0" style="-fx-font-size: 25;" text="NOME ELEZIONE" textAlignment="CENTER" textFill="#ff5500" />
+                  <Button mnemonicParsing="false" onAction="#goToManager" prefHeight="65.0" prefWidth="215.0" style="-fx-background-color: #145369; -fx-background-radius: 20;" text="Panoramica" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -42,11 +43,6 @@
                   </Button>
                </children>
             </VBox>
-            <Button layoutX="8.0" layoutY="34.0" mnemonicParsing="false" onAction="#cambiaElezione" prefHeight="101.0" prefWidth="215.0" style="-fx-background-color: #be4d25; -fx-background-radius: 10; -fx-border-radius: 10;" text="nome elezione" textFill="WHITE">
-               <font>
-                  <Font name="System Bold Italic" size="20.0" />
-               </font>
-            </Button>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="231.0" prefHeight="91.0" prefWidth="769.0" style="-fx-background-color: #e9f5f9;">
