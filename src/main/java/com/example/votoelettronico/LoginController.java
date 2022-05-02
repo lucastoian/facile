@@ -9,6 +9,7 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.sql.*;
 import java.net.URL;
+import java.time.LocalTime;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
@@ -58,6 +59,7 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        System.out.println(LocalTime.MIDNIGHT);
         EmailField.setText("lucastoian@outlook.com");
         PasswordField.setText("topogigio");
         allert.setVisible(false);

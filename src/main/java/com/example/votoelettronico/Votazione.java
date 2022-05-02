@@ -1,31 +1,33 @@
 package com.example.votoelettronico;
 
+import java.sql.Time;
+import java.sql.Timestamp;
+
 public class Votazione {
 
-    private String proprietario;
-    private String nome; 
-    private String id; 
-    private String tipo; 
-    private String inizio; 
-    private String fine; 
+    private String proprietario,nome,id,tipo,domanda,status;
+    private Timestamp inizio,fine;
 
     
-    public Votazione(String proprietario, String nome, String id, String tipo, String inizio, String fine, String domanda){
-        this.setFine(fine); 
-        this.setInizio(inizio); 
+    public Votazione(String proprietario, String nome, String id, String tipo, Timestamp inizio, Timestamp fine, String domanda, String status){
+        this.inizio = inizio;
+        this.fine = fine;
         this.setId(id); 
         this.setProp(proprietario);
         this.setNome(nome); 
-        this.setTipo(tipo); 
+        this.setTipo(tipo);
+        this.status = status;
+        this.domanda = domanda;
     }
 
-    public Votazione(String prop, String nome, String id, String tipo, String inizio, String fine){
-        this.setFine(fine); 
-        this.setInizio(inizio); 
+    public Votazione(String prop, String nome, String id, String tipo, Timestamp inizio, Timestamp fine){
+        this.inizio = inizio;
+        this.fine = fine;
         this.setId(id); 
         this.setProp(prop); 
         this.setNome(nome); 
-        this.setTipo(tipo); 
+        this.setTipo(tipo);
+        this.status = "Draft";
     }
 
 
@@ -68,29 +70,23 @@ public class Votazione {
         this.tipo = tipo;
     }
 
+    public Timestamp getInizio() {return this.inizio;}
+    public Timestamp getFine() {return this.fine;}
 
-    public String getInizio() {
-        return inizio;
+
+
+
+    public void setDomanda(String domanda) {
+        this.domanda = domanda;
     }
 
+    public String getDomanda(){return this.domanda;}
 
-    public void setInizio(String inizio) {
-        this.inizio = inizio;
-    }
-
-
-    public String getFine() {
-        return fine;
-    }
-
-
-    public void setFine(String fine) {
-        this.fine = fine;
-    }
+    public String getStatus(){return this.status;}
 
     @Override
     public String toString(){
-        return " Proprietario: " + this.proprietario + " Nome: " + this.nome + " Id: " + this.id + " Tipo: " + this.tipo + " Inizio: " + this.inizio +" Fine: "+ this.fine;
+        return " Proprietario: " + this.proprietario + " Nome: " + this.nome + " Id: " + this.id + " Tipo: " + this.tipo + " Inizio: " + this.inizio +" Fine: "+ this.fine + " Domanda: " + this.domanda + " Status: " + this.status;
     }
 
     @Override

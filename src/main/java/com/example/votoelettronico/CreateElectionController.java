@@ -9,6 +9,11 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -26,10 +31,14 @@ public class CreateElectionController implements Initializable {
         Utils.changeScene(actionEvent, "LoginScene.fxml");
     }
 
-    public void createElection(ActionEvent actionEvent) {
+    public void createElection(ActionEvent actionEvent) throws SQLException {
+        LocalDate initialDate = initialDateField.getValue();
+        LocalDate finalDate = finalDateField.getValue();
         Random r = new Random();
-        Votazione v = new Votazione("STNLCU00H23Z129G", nameField.getText(),String.valueOf(r.nextInt(1000000)), tipiBox.getValue(), String.valueOf(initialDateField.getValue()), String.valueOf(finalDateField.getValue()));
-        System.out.println(v);
+        Votazione v = new Votazione("STNLCU00H23Z129G", nameField.getText(),String.valueOf(r.nextInt(1000000)), tipiBox.getValue(), Timestamp.valueOf(LocalDateTime.of(initialDate , LocalTime.now())), Timestamp.valueOf(LocalDateTime.of(finalDate , LocalTime.now())));
+        VotazioneDaoImpl vt = new VotazioneDaoImpl();
+        vt.addVotazione(v);
+
     }
 
     @Override
