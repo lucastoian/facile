@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.votoelettronico.VotazioniController">
    <children>
       <AnchorPane prefHeight="91.0" prefWidth="1000.0" style="-fx-background-color: #e9f5f9;">
          <children>
@@ -33,18 +33,19 @@
             </Button>
          </children>
       </AnchorPane>
-      <Button fx:id="createButton" layoutX="809.0" layoutY="148.0" mnemonicParsing="false" onAction="#goToCreateElection" prefHeight="41.0" prefWidth="182.0" style="-fx-background-color: #be4d25;" text=" nuova elezione     +" textFill="WHITE">
+      <Button fx:id="createButton" layoutX="824.0" layoutY="148.0" mnemonicParsing="false" onAction="#goToCreateElection" prefHeight="42.0" prefWidth="167.0" style="-fx-background-color: #be4d25;" text=" nuova elezione     +" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="15.0" />
          </font>
       </Button>
-      <TableView fx:id="tabVotazioni" layoutX="37.0" layoutY="148.0" prefHeight="423.0" prefWidth="760.0" >
+      <TableView fx:id="tabVotazioni" layoutX="37.0" layoutY="148.0" prefHeight="423.0" prefWidth="784.0">
         <columns>
           <TableColumn fx:id="nome" prefWidth="190.0" text="NOME" />
           <TableColumn fx:id="id" prefWidth="110.0" text="ID" />
             <TableColumn fx:id="tipologia" prefWidth="152.0" text="TIPOLOGIA" />
-            <TableColumn fx:id="inizio" prefWidth="152.0" text="INIZIO" />
-            <TableColumn fx:id="fine" prefWidth="155.0" text="FINE" />
+            <TableColumn fx:id="inizio" prefWidth="115.199951171875" text="INIZIO" />
+            <TableColumn fx:id="fine" prefWidth="115.2000732421875" text="FINE" />
+            <TableColumn fx:id="status" prefWidth="101.5999755859375" text="STATUS" />
         </columns>
       </TableView>
       <Label layoutX="37.0" layoutY="104.0" prefHeight="27.0" prefWidth="760.0" text="per iniziare seleziona una votazione o creane una nuova! " textFill="#145369">
@@ -52,12 +53,12 @@
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Label>
-      <Button fx:id="ElectionButton" layoutX="809.0" layoutY="206.0" mnemonicParsing="false" onAction="#goToElection" prefHeight="41.0" prefWidth="182.0" style="-fx-background-color: #be4d25;" text="seleziona elezione  &gt; " textFill="WHITE">
+      <Button fx:id="ElectionButton" layoutX="824.0" layoutY="206.0" mnemonicParsing="false" onAction="#goToElection" prefHeight="42.0" prefWidth="167.0" style="-fx-background-color: #be4d25;" text="seleziona elezione  &gt; " textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="DeleteElectionButton" layoutX="809.0" layoutY="265.0" mnemonicParsing="false" onAction="#deleteElection" prefHeight="41.0" prefWidth="182.0" style="-fx-background-color: #be4d25;" text="cancella elezione    x" textFill="WHITE">
+      <Button fx:id="DeleteElectionButton" layoutX="824.0" layoutY="265.0" mnemonicParsing="false" onAction="#deleteElection" prefHeight="42.0" prefWidth="167.0" style="-fx-background-color: #be4d25;" text="cancella elezione    x" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="15.0" />
          </font>
