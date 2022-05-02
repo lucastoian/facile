@@ -15,6 +15,7 @@ import java.util.ResourceBundle;
 public class LoginController implements Initializable {
 
     private static UtenteDao utenteDao = null;
+    ObservableActiveUser u = new ObservableActiveUser();
     static {
         try {
             utenteDao = new UtenteDaoImpl();
@@ -34,6 +35,7 @@ public class LoginController implements Initializable {
 
 
     public LoginController() throws Exception {
+
     }
 
 
@@ -42,7 +44,18 @@ public class LoginController implements Initializable {
         String email = EmailField.getText();
         if(utenteDao.loginUtente(email, psw)){
             System.out.println("log-in riuscito");
-                Utils.changeScene(actionEvent, "VotazioniScene.fxml");
+            for (Utente utente: utenteDao.getAllUtenti()) {
+                    if(utente.getEmail().equals(email) ) {
+                        Observer o = new VotazioniController();
+                        u.setActiveUser(utente);
+
+                        Utils.changeScene(actionEvent, "VotazioniScene.fxml", o);
+                        u.addObserver(o);
+                        break;
+                    }
+            }
+
+
         }else{
             System.out.println("Log-in fallito");
             allert.setVisible(true);

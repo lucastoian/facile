@@ -22,6 +22,16 @@ public class Utils {
         stage.show();
     }
 
+    public static void changeScene(ActionEvent event, String fxml, Object controller) throws IOException {
+        FXMLLoader loader = new FXMLLoader(Utils.class.getResource(fxml));
+        loader.setController(controller);
+        Parent root = loader.load();
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     /**
      * data un eccezione sql, prova a vedere se si tratta di un constraint violato e restituisce
      * un messaggio sotto forma di stringa

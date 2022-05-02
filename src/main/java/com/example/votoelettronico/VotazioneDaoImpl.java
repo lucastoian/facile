@@ -39,18 +39,18 @@ public class VotazioneDaoImpl implements VotazioneDao{
     @Override
     public void addVotazione(Votazione v) throws SQLException {
 
-        String query = "INSERT INTO votazione VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO votazione VALUES(?, ?, default, ?, ?, ?, ?, ?)";
 
         Connection con = DriverManager.getConnection(url, user, password);
         PreparedStatement pst = con.prepareStatement(query);
         pst.setString(1, v.getProp());
         pst.setString(2, v.getNome());
-        pst.setString(3, v.getId());
-        pst.setString(4, v.getTipo());
-        pst.setTimestamp(5, v.getInizio());
-        pst.setTimestamp(6, v.getFine());
-        pst.setString(7, v.getDomanda());
-        pst.setString(8, v.getStatus());
+        //pst.setString(3, "default");
+        pst.setString(3, v.getTipo());
+        pst.setTimestamp(4, v.getInizio());
+        pst.setTimestamp(5, v.getFine());
+        pst.setString(6, v.getDomanda());
+        pst.setString(7, v.getStatus());
 
 
         pst.executeUpdate();

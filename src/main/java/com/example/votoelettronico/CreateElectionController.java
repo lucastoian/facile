@@ -31,13 +31,15 @@ public class CreateElectionController implements Initializable {
         Utils.changeScene(actionEvent, "LoginScene.fxml");
     }
 
-    public void createElection(ActionEvent actionEvent) throws SQLException {
+    public void createElection(ActionEvent actionEvent) throws SQLException, IOException {
         LocalDate initialDate = initialDateField.getValue();
         LocalDate finalDate = finalDateField.getValue();
         Random r = new Random();
         Votazione v = new Votazione("STNLCU00H23Z129G", nameField.getText(),String.valueOf(r.nextInt(1000000)), tipiBox.getValue(), Timestamp.valueOf(LocalDateTime.of(initialDate , LocalTime.now())), Timestamp.valueOf(LocalDateTime.of(finalDate , LocalTime.now())));
         VotazioneDaoImpl vt = new VotazioneDaoImpl();
         vt.addVotazione(v);
+
+        Utils.changeScene(actionEvent,"VotazioniScene.fxml");
 
     }
 
