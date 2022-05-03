@@ -38,6 +38,23 @@ public class VotazioneDaoImpl implements VotazioneDao{
     }
 
     @Override
+    public List<Votazione> getAllVotazioniByCodFiscale(String codFiscale) throws SQLException {
+        List<Votazione> v = new ArrayList<>();
+        String query = "SELECT * FROM votazione WHERE proprietario = ? ORDER BY status";
+        Connection con= openConnection();
+        PreparedStatement pst = con.prepareStatement(query);
+        pst.setString(1, codFiscale);
+        ResultSet result = pst.executeQuery();
+
+        while(result.next()){
+            Votazione vot = new Votazione(result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getTimestamp(5), result.getTimestamp(6), result.getString(7), result.getString(8));
+            v.add(vot);
+        }
+        closeConnection(con);
+        return v;
+    }
+
+    @Override
     public void addVotazione(Votazione v) throws SQLException {
 
         String query = "INSERT INTO votazione VALUES(?, ?, default, ?, ?, ?, ?, ?)";
@@ -55,7 +72,7 @@ public class VotazioneDaoImpl implements VotazioneDao{
 
 
         pst.executeUpdate();
-        votazioni.add(v);
+        //votazioni.add(v);
         System.out.println("Votazione aggiunta");
         con.close();
 

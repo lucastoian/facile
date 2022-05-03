@@ -125,6 +125,22 @@ public class UtenteDaoImpl implements UtenteDao{
     }
 
     @Override
+    public Utente getUtenteByEmail(String email) throws SQLException {
+        Connection con = openConnection();
+        String query = "SELECT * FROM utente WHERE email = ?";
+        PreparedStatement pst = con.prepareStatement(query);
+        pst.setString(1, email);
+        ResultSet result = pst.executeQuery();
+        while(result.next()){
+            Utente u = new Utente(result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5));
+            con.close();
+            return u;
+        }
+        con.close();
+        throw new IllegalArgumentException("Utente non trovato");
+    }
+
+    @Override
     public List<Utente> getAllUtentiByIdVotazione(String id) throws SQLException {
         List<Utente> u = new ArrayList<>();
 

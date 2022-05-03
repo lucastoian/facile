@@ -19,7 +19,9 @@ public class RegisterController {
         Utente u = new Utente(NameField.getText(), SurnameField.getText(), EmailField.getText(), PasswordField.getText(), CodFiscaleField.getText());
         try{
             new UtenteDaoImpl().addUtente(u);
-            Utils.changeScene(actionEvent, "VotazioniScene.fxml");
+            VotazioniController vc = new VotazioniController();
+            vc.setUtente(u);
+            Utils.changeScene(actionEvent, "VotazioniScene.fxml", vc);
         } catch (SQLException e){
             allert1.setText(Utils.gestioneConstraint(e));
         }

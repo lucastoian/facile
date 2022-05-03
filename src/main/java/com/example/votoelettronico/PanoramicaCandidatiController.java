@@ -21,6 +21,7 @@ import java.util.ResourceBundle;
 
 public class PanoramicaCandidatiController implements Initializable {
     Votazione v;
+    Utente u;
     UtenteDao utenteDao;
     VotazioneDao votazioneDao;
     @FXML
@@ -53,6 +54,11 @@ public class PanoramicaCandidatiController implements Initializable {
 
     public void cambiaElezione(ActionEvent actionEvent) {
     }
+    public void Indietro(ActionEvent actionEvent) throws IOException {
+        VotazioniController vc = new VotazioniController();
+        vc.setUtente(u);
+        Utils.changeScene(actionEvent, "VotazioniScene.fxml", vc);
+    }
     public void AggiungiCandidato(ActionEvent actionEvent) {
         try {
             Utente u = utenteDao.getUtenteByCodFiscale(codFiscalefield.getText());
@@ -70,13 +76,17 @@ public class PanoramicaCandidatiController implements Initializable {
             aggiungiUnCandidato.setVisible(false);
         }
     }
-    public void ConfermaElezione(ActionEvent actionEvent) throws SQLException {
+    public void ConfermaElezione(ActionEvent actionEvent) throws SQLException, IOException {
         if(candidatoList.size() <= 1){
             allertConfermaElezione.setText("Devi aggiungere almeno due candidati");
             allertConfermaElezione.setVisible(true);
         }else {
             votazioneDao = new VotazioneDaoImpl();
             votazioneDao.changeStatus(v, "Approvata");
+            VotazioniController vc = new VotazioniController();
+            vc.setUtente(u);
+            Utils.changeScene(actionEvent, "VotazioniScene.fxml", vc);
+
         }
     }
 
@@ -131,5 +141,9 @@ public class PanoramicaCandidatiController implements Initializable {
         codFiscale.setCellValueFactory(new PropertyValueFactory<Utente, String>("codFiscale"));
         Ctable.setItems(candidatoList);
     }
+
+        public void setUtente(Utente u){
+        this.u = u;
+        }
 
 }

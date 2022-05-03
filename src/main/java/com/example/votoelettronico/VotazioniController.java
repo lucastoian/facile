@@ -18,6 +18,7 @@ import java.util.ResourceBundle;
 
 public class VotazioniController implements Initializable {
 
+    Utente u;
 
     @FXML
     Label UserNameLabel;
@@ -39,7 +40,8 @@ public class VotazioniController implements Initializable {
 
     public void goToCreateElection(ActionEvent actionEvent) throws IOException {
         CreateElectionController c = new CreateElectionController();
-        Utils.changeScene(actionEvent, "CreateElectionScene.fxml");
+        c.setUtente(u);
+        Utils.changeScene(actionEvent, "CreateElectionScene.fxml", c);
     }
 
     public void goToElection(ActionEvent actionEvent) throws IOException {
@@ -56,6 +58,7 @@ public class VotazioniController implements Initializable {
             case "categorico":
                 PanoramicaCandidatiController pc = new PanoramicaCandidatiController();
                 pc.setVotazione(selectedVotazione);
+                pc.setUtente(u);
                 Utils.changeScene(actionEvent, "panoramicaCandidati.fxml", pc);
                 break;
 
@@ -76,7 +79,7 @@ public class VotazioniController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         try {
             votazioneDao = new VotazioneDaoImpl();
-            votazioniList = FXCollections.observableList(votazioneDao.getAllVotazioni());
+            votazioniList = FXCollections.observableList(votazioneDao.getAllVotazioniByCodFiscale(u.getCodFiscale()));
 
 
         } catch (SQLException e) {
@@ -94,5 +97,8 @@ public class VotazioniController implements Initializable {
 
     }
 
+    public void setUtente(Utente u){
+        this.u = u;
+    }
 
 }

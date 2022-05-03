@@ -19,6 +19,8 @@ import java.util.ResourceBundle;
 
 public class CreateElectionController implements Initializable {
 
+    Utente u;
+
     @FXML
     private DatePicker finalDateField, initialDateField;
     @FXML
@@ -35,12 +37,18 @@ public class CreateElectionController implements Initializable {
         LocalDate initialDate = initialDateField.getValue();
         LocalDate finalDate = finalDateField.getValue();
         Random r = new Random();
-        Votazione v = new Votazione("STNLCU00H23Z129G", nameField.getText(),String.valueOf(r.nextInt(1000000)), tipiBox.getValue(), Timestamp.valueOf(LocalDateTime.of(initialDate , LocalTime.now())), Timestamp.valueOf(LocalDateTime.of(finalDate , LocalTime.now())));
+        Votazione v = new Votazione(u.getCodFiscale(), nameField.getText(),String.valueOf(r.nextInt(1000000)), tipiBox.getValue(), Timestamp.valueOf(LocalDateTime.of(initialDate , LocalTime.now())), Timestamp.valueOf(LocalDateTime.of(finalDate , LocalTime.now())));
         VotazioneDaoImpl vt = new VotazioneDaoImpl();
         vt.addVotazione(v);
+        VotazioniController vc = new VotazioniController();
+        vc.setUtente(u);
 
-        Utils.changeScene(actionEvent,"VotazioniScene.fxml");
+        Utils.changeScene(actionEvent,"VotazioniScene.fxml", vc);
 
+    }
+
+    public void setUtente(Utente u){
+        this.u = u;
     }
 
     @Override

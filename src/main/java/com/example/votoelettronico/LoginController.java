@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
 
 public class LoginController implements Initializable{
 
-
+    private Utente u;
 
     private static UtenteDao utenteDao = null;
 
@@ -46,8 +46,9 @@ public class LoginController implements Initializable{
         String email = EmailField.getText();
         if(utenteDao.loginUtente(email, psw)){
             System.out.println("log-in riuscito");
-
-            Utils.changeScene(actionEvent, "VotazioniScene.fxml");
+            VotazioniController vc = new VotazioniController();
+            vc.setUtente(utenteDao.getUtenteByEmail(email));
+            Utils.changeScene(actionEvent, "VotazioniScene.fxml", vc);
 
 
         }else{

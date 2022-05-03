@@ -63,6 +63,11 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
+            <Button layoutX="14.0" layoutY="40.0" mnemonicParsing="false" onAction="#Indietro" style="-fx-background-color: #e9f5f9;" text="Indietro" textFill="#145369">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
       <SplitPane dividerPositions="0.354978354978355" layoutX="268.0" layoutY="102.0" prefHeight="300.0" prefWidth="695.0">
