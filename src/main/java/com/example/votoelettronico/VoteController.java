@@ -59,11 +59,11 @@ public class VoteController implements Initializable {
                 System.out.println("Votazione fatta");
                 break;
                 case "ordinale":
-                System.out.println("Ordine dei candidati = "+ tabellaCandidati.getItems());
+                votazioneDao.Vota(u,v,candidatoList);
                 System.out.println("Votazione fatta");
                 break;
         }
-      //  Utils.changeScene(actionEvent,"LoginScene.fxml");
+        Utils.changeScene(actionEvent,"LoginScene.fxml");
 
 
     }

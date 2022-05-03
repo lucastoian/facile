@@ -136,13 +136,13 @@ public class VotazioneDaoImpl implements VotazioneDao{
     public void Vota(Utente u, Votazione v, List<Utente> utentiVotatiInOrdine) throws SQLException { //ordinale
         String query = "INSERT INTO votanti VALUES (?,?,?,?,?)";
         Connection con = openConnection();
-        for(int i = 1; i<utentiVotatiInOrdine.size(); i++){
+        for(int i = utentiVotatiInOrdine.size()-1; i>=0; i--){
             PreparedStatement pst = con.prepareStatement(query);
             pst.setString(1, u.getCodFiscale());
             pst.setString(2, utentiVotatiInOrdine.get(i).getCodFiscale());
             pst.setString(3, v.getId());
-            pst.setString(4, "");
-            pst.setString(5, String.valueOf(i));
+            pst.setBoolean(4,true);
+            pst.setInt(5, (i-utentiVotatiInOrdine.size())*-1);
             pst.executeUpdate();
         }
         con.close();
