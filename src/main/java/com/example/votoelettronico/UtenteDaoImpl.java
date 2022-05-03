@@ -119,7 +119,7 @@ public class UtenteDaoImpl implements UtenteDao{
             return u;
         }
         con.close();
-        throw new IllegalArgumentException("Utente non trovato");
+        throw new IllegalArgumentException("Utente non trovato, L'utente deve prima registrarsi su VotoFacile.com");
 
 
     }
