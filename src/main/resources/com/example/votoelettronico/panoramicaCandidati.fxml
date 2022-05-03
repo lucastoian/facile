@@ -71,7 +71,7 @@
                <children>
                   <TextField fx:id="codFiscalefield" layoutX="47.0" layoutY="51.0" />
                   <Button fx:id="Aggiungi" layoutX="88.0" layoutY="106.0" mnemonicParsing="false" onAction="#AggiungiCandidato" text="Aggiungi" />
-                  <Label layoutX="84.0" layoutY="22.0" text="Codice Fiscale" />
+                  <Label fx:id="codFs" alignment="CENTER" layoutX="12.0" layoutY="23.0" prefHeight="16.0" prefWidth="222.0" text="Codice Fiscale" textAlignment="CENTER" />
                   <Text fx:id="aggiungiUnCandidato" layoutX="33.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aggiungi un candidato " textAlignment="CENTER" wrappingWidth="173.73675537109375">
                      <font>
                         <Font size="18.0" />
@@ -82,6 +82,12 @@
                         <Font size="18.0" />
                      </font>
                   </Text>
+                  <Label fx:id="DataInizio" alignment="CENTER" layoutX="8.0" layoutY="88.0" prefHeight="16.0" prefWidth="222.0" text="Data di Inizio" textAlignment="CENTER" visible="false" />
+                  <Label fx:id="DataDiFine" alignment="CENTER" layoutX="8.0" layoutY="149.0" prefHeight="16.0" prefWidth="222.0" text="Data di Fine" textAlignment="CENTER" visible="false" />
+                  <TextField fx:id="DataDiInizioField" layoutX="51.0" layoutY="117.0" visible="false" />
+                  <TextField fx:id="DataDiFineField" layoutX="49.0" layoutY="175.0" visible="false" />
+                  <Label fx:id="idElezione" alignment="CENTER" layoutX="12.0" layoutY="214.0" prefHeight="16.0" prefWidth="222.0" text="ID elezione" textAlignment="CENTER" visible="false" />
+                  <TextField fx:id="IdElezioneField" alignment="CENTER" layoutX="47.0" layoutY="243.0" visible="false" />
                </children>
             </AnchorPane>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="223.0" prefWidth="445.0">

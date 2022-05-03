@@ -72,6 +72,7 @@ public class Votazione {
 
     public Timestamp getInizio() {return this.inizio;}
     public Timestamp getFine() {return this.fine;}
+    public void setStatus(String status){this.status=status;}
 
 
 

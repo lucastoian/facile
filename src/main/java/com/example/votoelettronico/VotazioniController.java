@@ -52,6 +52,7 @@ public class VotazioniController implements Initializable {
                 Utils.changeScene(actionEvent, "panoramicaReferendum.fxml",pcr);
                 break;
             case "ordinale":
+            case "categorico con preferenze":
             case "categorico":
                 PanoramicaCandidatiController pc = new PanoramicaCandidatiController();
                 pc.setVotazione(selectedVotazione);
@@ -89,6 +90,8 @@ public class VotazioniController implements Initializable {
         status.setCellValueFactory(new PropertyValueFactory<Votazione, String>("status"));
 
         tabVotazioni.setItems(votazioniList);
+        System.out.println(votazioniList);
+
     }
 
 

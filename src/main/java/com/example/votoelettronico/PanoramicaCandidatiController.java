@@ -22,20 +22,20 @@ import java.util.ResourceBundle;
 public class PanoramicaCandidatiController implements Initializable {
     Votazione v;
     UtenteDao utenteDao;
+    VotazioneDao votazioneDao;
     @FXML
-    public Label NomeElezione, UserNameLabel;
+    public Label NomeElezione, UserNameLabel, codFs, idElezione,DataInizio,DataDiFine;
     @FXML
-    public TextField codFiscalefield;
+    public TextField codFiscalefield,DataDiInizioField,DataDiFineField,IdElezioneField;
     @FXML
-    public Button Aggiungi;
+    public Button Aggiungi,Conferma;
     @FXML
     public Text allertCandidato,allertConfermaElezione,aggiungiUnCandidato;
     @FXML
     public TableView Ctable;
     @FXML
     private TableColumn<Utente, String> name,codFiscale;
-    @FXML
-    public Button Conferma;
+
     ObservableList<Utente> candidatoList = FXCollections.observableArrayList();
 
 
@@ -53,12 +53,31 @@ public class PanoramicaCandidatiController implements Initializable {
 
     public void cambiaElezione(ActionEvent actionEvent) {
     }
-    public void AggiungiCandidato(ActionEvent actionEvent) throws SQLException {
-           Utente u = utenteDao.getUtenteByCodFiscale(codFiscalefield.getText());
-           utenteDao.addCandidato(u, v);
-           candidatoList.add(u);
+    public void AggiungiCandidato(ActionEvent actionEvent) {
+        try {
+            Utente u = utenteDao.getUtenteByCodFiscale(codFiscalefield.getText());
+            utenteDao.addCandidato(u, v);
+            candidatoList.add(u);
+            allertCandidato.setVisible(false);
+            aggiungiUnCandidato.setVisible(true);
+        }catch (SQLException sqlException){
+            allertCandidato.setText( Utils.gestioneConstraint(sqlException));
+            allertCandidato.setVisible(true);
+            aggiungiUnCandidato.setVisible(false);
+        }catch (IllegalArgumentException s){
+            allertCandidato.setText(s.getMessage());
+            allertCandidato.setVisible(true);
+            aggiungiUnCandidato.setVisible(false);
+        }
     }
-    public void ConfermaElezione(ActionEvent actionEvent) {
+    public void ConfermaElezione(ActionEvent actionEvent) throws SQLException {
+        if(candidatoList.size() <= 1){
+            allertConfermaElezione.setText("Devi aggiungere almeno due candidati");
+            allertConfermaElezione.setVisible(true);
+        }else {
+            votazioneDao = new VotazioneDaoImpl();
+            votazioneDao.changeStatus(v, "Approvata");
+        }
     }
 
     public void Logout(ActionEvent actionEvent) throws IOException {
@@ -77,13 +96,31 @@ public class PanoramicaCandidatiController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("Initialize");
+
         try {
             utenteDao = new UtenteDaoImpl();
             candidatoList = FXCollections.observableList(utenteDao.getAllUtentiByIdVotazione(v.getId()));
             System.out.println("candidato list = " + candidatoList);
         } catch (Exception e) {
             System.out.println("erroreeee");
+        }
+
+        if(v.getStatus().equals("Approvata")){
+            codFiscalefield.setVisible(false);
+            aggiungiUnCandidato.setVisible(false);
+            Aggiungi.setVisible(false);
+            Conferma.setVisible(false);
+            codFs.setText("LISTA DEI CANDIDATI AGGIUNTI");
+            codFs.setVisible(true);
+            DataDiInizioField.setText(v.getInizio().toString());
+            DataDiInizioField.setVisible(true);
+            DataDiFineField.setText(v.getFine().toString());
+            DataDiFineField.setVisible(true);
+            IdElezioneField.setText(v.getId());
+            IdElezioneField.setVisible(true);
+            DataInizio.setVisible(true);
+            DataDiFine.setVisible(true);
+            idElezione.setVisible(true);
         }
 
         NomeElezione.setText(this.v.getNome());

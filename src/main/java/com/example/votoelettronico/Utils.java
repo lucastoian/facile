@@ -81,6 +81,9 @@ public class Utils {
             if ("utente_email_key".equalsIgnoreCase(constraint)) {
                 return "Questa email risulta gia registrata";
             }
+            if ("candidati_pkey".equalsIgnoreCase(constraint)) {
+                return "Questo utente è gia stato aggiunto";
+            }
         }
         return "Eccezione sql, constarint non identificato";
     }

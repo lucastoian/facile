@@ -11,17 +11,7 @@ public class VotazioneDaoImpl implements VotazioneDao{
     private static final String password = "70c908bb89427bd76a11350372a669f02b455e056c3fd572f4a94d1d2b65d48c";
     private List<Votazione> votazioni;
     public VotazioneDaoImpl() throws SQLException {
-        this.votazioni = new ArrayList<>();
-        String query = "SELECT * FROM votazione";
-        Connection con= openConnection();
-        PreparedStatement pst = con.prepareStatement(query);
-        ResultSet result = pst.executeQuery();
 
-        while(result.next()){
-            Votazione v = new Votazione(result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getTimestamp(5), result.getTimestamp(6));
-            votazioni.add(v);
-        }
-        closeConnection(con);
     }
 
     private static Connection openConnection() throws SQLException {
@@ -32,8 +22,19 @@ public class VotazioneDaoImpl implements VotazioneDao{
     }
 
     @Override
-    public List<Votazione> getAllVotazioni() {
-        return votazioni;
+    public List<Votazione> getAllVotazioni() throws SQLException {
+        List<Votazione> v = new ArrayList<>();
+        String query = "SELECT * FROM votazione ORDER BY status";
+        Connection con= openConnection();
+        PreparedStatement pst = con.prepareStatement(query);
+        ResultSet result = pst.executeQuery();
+
+        while(result.next()){
+            Votazione vot = new Votazione(result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getTimestamp(5), result.getTimestamp(6), result.getString(7), result.getString(8));
+            v.add(vot);
+        }
+        closeConnection(con);
+        return v;
     }
 
     @Override
@@ -66,7 +67,17 @@ public class VotazioneDaoImpl implements VotazioneDao{
     }
 
     @Override
-    public void changeStatus(Votazione v) {
+    public void changeStatus(Votazione v, String status) throws SQLException {
+        String query = "UPDATE votazione SET status = ? WHERE id =?";
+        Connection con = openConnection();
+        PreparedStatement pst = con.prepareStatement(query);
+        pst.setString(1, status);
+        pst.setString(2, v.getId());
+        pst.executeUpdate();
+        System.out.println("Status aggiornato");
+        v.setStatus(status);
+        con.close();
+
 
     }
 }
