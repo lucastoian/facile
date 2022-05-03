@@ -89,6 +89,7 @@ public class LoginController implements Initializable{
             e.printStackTrace();
         }
         System.out.println(LocalTime.MIDNIGHT);
+        VotazioneField.setText("12362");
         EmailField.setText("lucastoian@outlook.com");
         PasswordField.setText("topogigio");
         allert.setVisible(false);

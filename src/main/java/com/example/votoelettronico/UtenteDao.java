@@ -23,5 +23,5 @@ public interface UtenteDao {
     public void addCandidato(Utente u, Votazione v) throws  SQLException;
     public Utente getUtenteByCodFiscale(String codFiscale) throws  SQLException;
     public Utente getUtenteByEmail(String email) throws SQLException;
-    public List<Utente> getAllUtentiByIdVotazione(String id) throws SQLException;
+    public List<Utente> getAllUtentiByIdVotazione(String id) throws SQLException;//DOVREBBE CHIAMARSI getAllCandidatiByIdVotazione
 }
