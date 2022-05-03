@@ -26,6 +26,7 @@ import java.util.ResourceBundle;
 
 public class VoteController implements Initializable {
     private Votazione v;
+    private Utente u;
     private String codiceFiscale;
     private VotazioneDao votazioneDao;
     private UtenteDao utenteDao;
@@ -44,10 +45,19 @@ public class VoteController implements Initializable {
 
     //CATEGORICO
     @FXML
+    TableView<Utente> tabellaCandidati1;
+    @FXML
+    TableColumn<Utente, String> nome1, cognome1, codFiscale1;
 
 
 
-    public void confermaVoto(ActionEvent actionEvent) throws IOException {
+    public void confermaVoto(ActionEvent actionEvent) throws IOException, SQLException {
+
+        switch (v.getTipo()) {
+            case "categorico":
+                votazioneDao.Vota(u, v, tabellaCandidati1.getSelectionModel().getSelectedItem());
+        }
+
 
     }
     public void clearSelected(ActionEvent actionEvent) throws IOException {
@@ -71,43 +81,49 @@ public class VoteController implements Initializable {
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources){
 
-        try {
-            nomeElezione.setText(v.getNome());
-            votazioneDao = new VotazioneDaoImpl();
-            utenteDao = new UtenteDaoImpl();
-            candidatoList = FXCollections.observableList(utenteDao.getAllUtentiByIdVotazione(v.getId()));//forse problemi per i referendum
-            System.out.println("Candidato lsit = "+ candidatoList);
-            nome.setCellValueFactory(new PropertyValueFactory<Utente, String>("name"));
-            cognome.setCellValueFactory(new PropertyValueFactory<Utente, String>("surname"));
-            codFiscale.setCellValueFactory(new PropertyValueFactory<Utente, String>("codFiscale"));
-            tabellaCandidati.setItems(candidatoList);
-            switch (v.getTipo()){
+            try {
+
+                nomeElezione.setText(v.getNome());
+                votazioneDao = new VotazioneDaoImpl();
+                utenteDao = new UtenteDaoImpl();
+                u = utenteDao.getUtenteByCodFiscale(codiceFiscale);
+                candidatoList = FXCollections.observableList(utenteDao.getAllUtentiByIdVotazione(v.getId()));//forse problemi per i referendum
+                System.out.println("Candidato lsit = " + candidatoList);
+                //qua schifo
+                nome.setCellValueFactory(new PropertyValueFactory<Utente, String>("name"));
+                cognome.setCellValueFactory(new PropertyValueFactory<Utente, String>("surname"));
+                codFiscale.setCellValueFactory(new PropertyValueFactory<Utente, String>("codFiscale"));
+                tabellaCandidati.setItems(candidatoList);
+                nome1.setCellValueFactory(new PropertyValueFactory<Utente, String>("name"));
+                cognome1.setCellValueFactory(new PropertyValueFactory<Utente, String>("surname"));
+                codFiscale1.setCellValueFactory(new PropertyValueFactory<Utente, String>("codFiscale"));
+                tabellaCandidati1.setItems(candidatoList);
+                switch (v.getTipo()) {
 
 
-
-                case "categorico":
-                    CATEGORICA.setVisible(true);
-                    ORDINALE.setVisible(false);
-
+                    case "categorico":
+                        CATEGORICA.setVisible(true);
+                        ORDINALE.setVisible(false);
 
 
-                    break;
-                case "referendum":
-                    REFERENDUM.setVisible(true);
-                    break;
-                case "ordinale":
-                    ORDINALE.setVisible(true);
-                    CATEGORICA.setVisible(false);
-                    break;
+                        break;
+                    case "referendum":
+                        REFERENDUM.setVisible(true);
+                        break;
+                    case "ordinale":
+                        ORDINALE.setVisible(true);
+                        CATEGORICA.setVisible(false);
 
+                        break;
+
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+
         }
 
-
-
     }
-}
+

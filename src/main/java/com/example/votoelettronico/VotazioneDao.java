@@ -12,4 +12,10 @@ public interface VotazioneDao {
     public void changeStatus(Votazione v, String status) throws SQLException;
     public Votazione getVotazioneById(String id) throws SQLException;
 
+    void Vota(Utente u, Votazione v, Utente votato) throws SQLException;
+
+    void Vota(Utente u, Votazione v, List<Utente> utentiVotatiInOrdine) throws SQLException;
+
+    void Vota(Utente u, Votazione v, int punteggio, Utente votato, Boolean favorevole) throws SQLException;
+    public boolean haGiaVotato(Utente u, Votazione v) throws SQLException;
 }

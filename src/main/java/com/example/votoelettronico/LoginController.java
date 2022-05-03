@@ -61,24 +61,32 @@ public class LoginController implements Initializable{
 
     public void goToVote(ActionEvent actionEvent) throws IOException, SQLException {
 
+
+
         VoteController vc = new VoteController();
         votazioneDao = new VotazioneDaoImpl();
         Votazione v = votazioneDao.getVotazioneById(VotazioneField.getText());
-        vc.setCodFiscaleAndVotazione(CODField.getText(), v);
-        try {
-            if(v.getStatus().equals("Approvata")) {
-                Utils.changeScene(actionEvent, "VoteScene.fxml", vc);
-            }else{
-                allertVot.setText("L'id della votazione non è corretto oppure la votazione non è ancora iniziata");
+        u = utenteDao.getUtenteByCodFiscale(CODField.getText());
+        if(votazioneDao.haGiaVotato(u,v)){
+            allertVot.setText("L'utente ha gia votato");
+            allertVot.setVisible(true);
+        }else {
+
+            vc.setCodFiscaleAndVotazione(CODField.getText(), v);
+            try {
+                if (v.getStatus().equals("Approvata")) {
+                    Utils.changeScene(actionEvent, "VoteScene.fxml", vc);
+                } else {
+                    allertVot.setText("L'id della votazione non è corretto oppure la votazione non è ancora iniziata");
+                    allertVot.setVisible(true);
+                }
+
+            } catch (Exception e) {
+                allertVot.setText("L'id della votazione non è corretto");
                 allertVot.setVisible(true);
             }
 
-        }catch (Exception e){
-            allertVot.setText("L'id della votazione non è corretto");
-            allertVot.setVisible(true);
         }
-
-
     }
 
     @Override
