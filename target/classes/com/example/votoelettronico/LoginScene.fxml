@@ -52,47 +52,39 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="534.0" layoutY="170.0" prefHeight="413.0" prefWidth="345.0" style="-fx-background-color: #ffffff; -fx-border-color: #145369; -fx-background-radius: 10; -fx-border-radius: 10;">
+      <AnchorPane layoutX="522.0" layoutY="170.0" prefHeight="359.0" prefWidth="346.0" style="-fx-background-color: #ffffff; -fx-border-color: #145369; -fx-background-radius: 10; -fx-border-radius: 10;">
          <children>
-            <Button fx:id="VoteButton" layoutX="14.0" layoutY="342.0" mnemonicParsing="false" onAction="#goToVote" prefHeight="31.0" prefWidth="319.0" style="-fx-background-color: #be4d25;" text="VOTA" textFill="WHITE">
+            <Text fx:id="allertVot" fill="RED" layoutX="6.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" MESSAGGIO DI ERRORE MESSAGGIO DI ERRORE" textAlignment="CENTER" wrappingWidth="337.7366943359375">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Button fx:id="VoteButton" layoutX="15.0" layoutY="276.0" mnemonicParsing="false" onAction="#goToVote" prefHeight="31.0" prefWidth="319.0" style="-fx-background-color: #be4d25;" text="VOTA" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <TextField fx:id="VotazioneField" layoutX="14.0" layoutY="304.0" prefHeight="27.0" prefWidth="319.0" />
-            <Label layoutX="15.0" layoutY="277.0" prefHeight="27.0" prefWidth="319.0" text="ID Votazione" textFill="#145369">
+            <TextField fx:id="VotazioneField" layoutX="12.0" layoutY="193.0" prefHeight="27.0" prefWidth="319.0" promptText="inserisci l'ID della votazione" />
+            <Label layoutX="12.0" layoutY="166.0" prefHeight="27.0" prefWidth="319.0" text="ID Votazione" textFill="#145369">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="ElettoreField" layoutX="15.0" layoutY="244.0" prefHeight="31.0" prefWidth="319.0" />
-            <Label layoutX="15.0" layoutY="217.0" prefHeight="27.0" prefWidth="319.0" text="ID Elettore" textFill="#145369">
+            <Label layoutX="15.0" layoutY="157.0" prefHeight="27.0" prefWidth="319.0" textFill="#145369">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Text fill="#145369" layoutX="13.0" layoutY="395.0" strokeType="OUTSIDE" strokeWidth="0.0" text="inserisci le credenziali per recuperare l'ID" />
-            <TextField fx:id="NameField" layoutX="13.0" layoutY="41.0" prefHeight="31.0" prefWidth="319.0" />
-            <Label layoutX="13.0" layoutY="14.0" prefHeight="17.0" prefWidth="268.0" text="Nome" textFill="#145369">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="SurnameField" layoutX="13.0" layoutY="106.0" prefHeight="31.0" prefWidth="319.0" />
-            <Label layoutX="13.0" layoutY="79.0" prefHeight="27.0" prefWidth="319.0" text="Cognome" textFill="#145369">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="CODField" layoutX="14.0" layoutY="176.0" prefHeight="31.0" prefWidth="319.0" />
-            <Label layoutX="14.0" layoutY="149.0" prefHeight="17.0" prefWidth="268.0" text="Codice Fiscale" textFill="#145369">
+            <Text fill="#145369" layoutX="15.0" layoutY="347.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Non devi essere per forza registrato per poter votare!" />
+            <TextField fx:id="CODField" layoutX="12.0" layoutY="67.0" prefHeight="31.0" prefWidth="319.0" promptText="inserisci il tuo codice fiscale" />
+            <Label layoutX="13.0" layoutY="40.0" prefHeight="17.0" prefWidth="268.0" text="Codice Fiscale" textFill="#145369">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <Label alignment="CENTER" layoutX="534.0" layoutY="139.0" prefHeight="31.0" prefWidth="345.0" text="inserisci i dati per partecipare all'elezione" textFill="#145369">
+      <Label alignment="CENTER" layoutX="522.0" layoutY="139.0" prefHeight="31.0" prefWidth="345.0" text="inserisci i dati per partecipare all'elezione" textFill="#145369">
          <font>
             <Font size="18.0" />
          </font>

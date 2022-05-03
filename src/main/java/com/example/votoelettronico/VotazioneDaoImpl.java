@@ -97,4 +97,23 @@ public class VotazioneDaoImpl implements VotazioneDao{
 
 
     }
+
+    @Override
+    public Votazione getVotazioneById(String id) throws SQLException {
+        String query = "SELECT * FROM votazione WHERE id = ?";
+        Connection con= openConnection();
+        PreparedStatement pst = con.prepareStatement(query);
+        pst.setString(1, id);
+        ResultSet result = pst.executeQuery();
+        con.close();
+        if(result.next()){
+            Votazione vot = new Votazione(result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getTimestamp(5), result.getTimestamp(6), result.getString(7), result.getString(8));
+            return vot;
+        }else{
+
+            return null;
+        }
+
+
+    }
 }

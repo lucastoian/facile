@@ -3,10 +3,16 @@ package com.example.votoelettronico;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
+import javax.crypto.NoSuchPaddingException;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.sql.*;
 import java.net.URL;
 import java.time.LocalTime;
@@ -15,25 +21,16 @@ import java.util.ResourceBundle;
 public class LoginController implements Initializable{
 
     private Utente u;
+    private VotazioneDao votazioneDao;
+    private UtenteDao utenteDao;
 
-    private static UtenteDao utenteDao = null;
-
-    static {
-        try {
-            utenteDao = new UtenteDaoImpl();
-        } catch (SQLException e) {
-            System.out.println(Utils.gestioneConstraint(e));
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-    }
 
 
     @FXML
-    private TextField PasswordField, EmailField;
+    private TextField PasswordField, EmailField, CODField, VotazioneField;
     @FXML
-    private Text allert;
+    private Text allert,allertVot;
+
 
 
     public LoginController() throws Exception {
@@ -62,15 +59,40 @@ public class LoginController implements Initializable{
         Utils.changeScene(actionEvent, "RegisterScene.fxml");
     }
 
-    public void goToVote(ActionEvent actionEvent) {
+    public void goToVote(ActionEvent actionEvent) throws IOException, SQLException {
+
+        VoteController vc = new VoteController();
+        votazioneDao = new VotazioneDaoImpl();
+        Votazione v = votazioneDao.getVotazioneById(VotazioneField.getText());
+        vc.setCodFiscaleAndVotazione(CODField.getText(), v);
+        try {
+            if(v.getStatus().equals("Approvata")) {
+                Utils.changeScene(actionEvent, "VoteScene.fxml", vc);
+            }else{
+                allertVot.setText("L'id della votazione non è corretto oppure la votazione non è ancora iniziata");
+                allertVot.setVisible(true);
+            }
+
+        }catch (Exception e){
+            allertVot.setText("L'id della votazione non è corretto");
+            allertVot.setVisible(true);
+        }
+
+
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        try {
+            utenteDao = new UtenteDaoImpl();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         System.out.println(LocalTime.MIDNIGHT);
         EmailField.setText("lucastoian@outlook.com");
         PasswordField.setText("topogigio");
         allert.setVisible(false);
+        allertVot.setVisible(false);
     }
 
 }
