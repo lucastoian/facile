@@ -56,7 +56,14 @@ public class VoteController implements Initializable {
         switch (v.getTipo()) {
             case "categorico":
                 votazioneDao.Vota(u, v, tabellaCandidati1.getSelectionModel().getSelectedItem());
+                System.out.println("Votazione fatta");
+                break;
+                case "ordinale":
+                System.out.println("Ordine dei candidati = "+ tabellaCandidati.getItems());
+                System.out.println("Votazione fatta");
+                break;
         }
+      //  Utils.changeScene(actionEvent,"LoginScene.fxml");
 
 
     }
@@ -68,10 +75,28 @@ public class VoteController implements Initializable {
     }
 
     public void spostaSu(ActionEvent actionEvent) throws IOException {
+        try {
+            int selected = tabellaCandidati.getSelectionModel().getFocusedIndex();
+            System.out.println(selected);
+            Utente selectedUtente = candidatoList.get(selected);
+            Utente over = candidatoList.get(selected - 1);
+            candidatoList.set(selected - 1, selectedUtente);
+            candidatoList.set(selected, over);
+            tabellaCandidati.setItems(candidatoList);
+        }catch (Exception e){}
 
     }
 
     public void spostaGiu(ActionEvent actionEvent) throws IOException {
+        try {
+            int selected = tabellaCandidati.getSelectionModel().getFocusedIndex();
+            System.out.println(selected);
+            Utente above = candidatoList.get(selected);
+            Utente under = candidatoList.get(selected + 1);
+            candidatoList.set(selected, under);
+            candidatoList.set(selected + 1, above);
+            tabellaCandidati.setItems(candidatoList);
+        }catch (Exception e){}
 
     }
 
