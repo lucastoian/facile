@@ -7,7 +7,9 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class UtenteDaoImpl implements UtenteDao{
     //credenziali per accedere al db hostato su heroku
@@ -95,12 +97,14 @@ public class UtenteDaoImpl implements UtenteDao{
     @Override
     public void addCandidato(Utente u, Votazione v) throws SQLException {
         Connection con = openConnection();
-        String query = "INSERT INTO CANDIDATI(codfiscale,id,punteggio,nome) VALUES(?,?,?,?)";
+        String query = "INSERT INTO CANDIDATI(codfiscale,id,nome,punteggio,cognome) VALUES(?,?,?,?,?" +
+                ")";
         PreparedStatement pst = con.prepareStatement(query);
         pst.setString(1, u.getCodFiscale());
         pst.setString(2, v.getId());
-        pst.setString(3,"0");
-        pst.setString(4,u.getName());
+        pst.setInt(4,0);
+        pst.setString(3,u.getName());
+        pst.setString(5,u.getSurname());
         pst.executeUpdate();
         con.close();
         System.out.println("Candidato aggiunto");
@@ -157,4 +161,23 @@ public class UtenteDaoImpl implements UtenteDao{
 
         return u;
     }
+
+    @Override
+    public List<Candidato> getAllCandidatoByIdVotazione(Votazione v) throws SQLException {
+        List<Candidato> u = new ArrayList<>();
+
+            String query = "SELECT * FROM candidati WHERE id = ? ORDER BY punteggio DESC";
+        Connection con= openConnection();
+        PreparedStatement pst = con.prepareStatement(query);
+        pst.setString(1, v.getId());
+        ResultSet result = pst.executeQuery();
+        while(result.next()){
+            Candidato candidato = new Candidato(result.getString(3),result.getString(5),result.getString(1),result.getString(2),result.getInt(4));
+            u.add(candidato);
+        }
+
+        return u;
+    }
+
+
 }

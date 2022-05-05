@@ -84,8 +84,17 @@ public class Utils {
             if ("candidati_pkey".equalsIgnoreCase(constraint)) {
                 return "Questo utente è gia stato aggiunto";
             }
+            if ("check_dates".equalsIgnoreCase(constraint)){
+                return "La data di fine non può precedere la data di inizio";
+            }
+            if ("votazione_nome_check".equalsIgnoreCase(constraint)){
+                return "Inserisci il nome";
+            }
+
+
+
         }
-        return "Eccezione sql, constarint non identificato";
+        return "errore non identificato";
     }
 
 }

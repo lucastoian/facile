@@ -21,6 +21,8 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -55,11 +57,11 @@ public class VoteController implements Initializable {
 
         switch (v.getTipo()) {
             case "categorico":
-                votazioneDao.Vota(u, v, tabellaCandidati1.getSelectionModel().getSelectedItem());
+                votazioneDao.Vota(u, v, tabellaCandidati1.getSelectionModel().getSelectedItem(), Timestamp.valueOf(LocalDateTime.now()));
                 System.out.println("Votazione fatta");
                 break;
                 case "ordinale":
-                votazioneDao.Vota(u,v,candidatoList);
+                votazioneDao.Vota(u,v,candidatoList,Timestamp.valueOf(LocalDateTime.now()));
                 System.out.println("Votazione fatta");
                 break;
         }

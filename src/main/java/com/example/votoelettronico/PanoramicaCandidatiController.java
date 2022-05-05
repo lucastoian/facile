@@ -44,12 +44,22 @@ public class PanoramicaCandidatiController implements Initializable {
     }
 
     public void goToPartecipanti(ActionEvent actionEvent) {
+
+    }
+    public void goToRisultati(ActionEvent actionEvent) throws IOException {
+        RisultatoController rc = new RisultatoController();
+        rc.setUtenteVotazione(u,v);
+        Utils.changeScene(actionEvent, "Risultato.fxml",rc );
     }
 
     public void goToCandidati(ActionEvent actionEvent) {
+
     }
 
-    public void goToOption(ActionEvent actionEvent) {
+    public void goToOption(ActionEvent actionEvent) throws IOException {
+        OptionController oc = new OptionController();
+        oc.setUtenteEVotazione(u,v);
+        Utils.changeScene(actionEvent,"ImpostazioniScene.fxml", oc);
     }
 
     public void cambiaElezione(ActionEvent actionEvent) {

@@ -64,6 +64,11 @@
                   <Font size="18.0" />
                </font>
             </Label>
+            <Text fx:id="allertVot" fill="RED" layoutX="6.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" MESSAGGIO DI ERRORE MESSAGGIO DI ERRORE" textAlignment="CENTER" wrappingWidth="825.7366943359375">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </children>

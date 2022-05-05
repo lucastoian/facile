@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,6 +27,8 @@ public class CreateElectionController implements Initializable {
     @FXML
     private TextField nameField;
     @FXML
+    private Text allertVot;
+    @FXML
     private ComboBox<String> tipiBox;
 
     private String[] tipiElezioni = {"ordinale","categorico","categorico con preferenze","referendum"};
@@ -33,17 +36,26 @@ public class CreateElectionController implements Initializable {
         Utils.changeScene(actionEvent, "LoginScene.fxml");
     }
 
-    public void createElection(ActionEvent actionEvent) throws SQLException, IOException {
-        LocalDate initialDate = initialDateField.getValue();
-        LocalDate finalDate = finalDateField.getValue();
-        Random r = new Random();
-        Votazione v = new Votazione(u.getCodFiscale(), nameField.getText(),String.valueOf(r.nextInt(1000000)), tipiBox.getValue(), Timestamp.valueOf(LocalDateTime.of(initialDate , LocalTime.now())), Timestamp.valueOf(LocalDateTime.of(finalDate , LocalTime.now())));
-        VotazioneDaoImpl vt = new VotazioneDaoImpl();
-        vt.addVotazione(v);
-        VotazioniController vc = new VotazioniController();
-        vc.setUtente(u);
+    public void createElection(ActionEvent actionEvent)throws IOException {
+        try {
 
-        Utils.changeScene(actionEvent,"VotazioniScene.fxml", vc);
+            LocalDate initialDate = finalDateField.getValue();
+            LocalDate finalDate = initialDateField.getValue();
+            Random r = new Random();
+            Votazione v = new Votazione(u.getCodFiscale(), nameField.getText(), String.valueOf(r.nextInt(1000000)), tipiBox.getValue(), Timestamp.valueOf(LocalDateTime.of(initialDate, LocalTime.now())), Timestamp.valueOf(LocalDateTime.of(finalDate, LocalTime.now())));
+            VotazioneDaoImpl vt = new VotazioneDaoImpl();
+            vt.addVotazione(v);
+            VotazioniController vc = new VotazioniController();
+            vc.setUtente(u);
+
+            Utils.changeScene(actionEvent, "VotazioniScene.fxml", vc);
+        }catch (SQLException sqlException){
+            allertVot.setText(Utils.gestioneConstraint(sqlException));
+            allertVot.setVisible(true);
+        } catch (NullPointerException np){
+            allertVot.setText("Compila tutti i campi");
+            allertVot.setVisible(true);
+        }
 
     }
 
@@ -53,6 +65,7 @@ public class CreateElectionController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        allertVot.setVisible(false);
         tipiBox.getItems().addAll(tipiElezioni);
     }
 }

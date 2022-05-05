@@ -120,21 +120,27 @@ public class VotazioneDaoImpl implements VotazioneDao{
 
 
     @Override
-    public void Vota(Utente u, Votazione v, Utente votato) throws SQLException { //categorico
-        String query = "INSERT INTO votanti VALUES (?,?,?,?,?)";
-        Connection con = openConnection();
-        PreparedStatement pst = con.prepareStatement(query);
-        pst.setString(1, u.getCodFiscale());
-        pst.setString(2, votato.getCodFiscale());
-        pst.setString(3, v.getId());
-        pst.setBoolean(4,true);
-        pst.setInt(5, 1);
-        pst.executeUpdate();
-        con.close();
+    public void Vota(Utente u, Votazione v, Utente votato, Timestamp data)  { //categorico
+        try {
+            String query = "INSERT INTO votanti VALUES (?,?,?,?,?,?)";
+            Connection con = openConnection();
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.setString(1, u.getCodFiscale());
+            pst.setString(2, votato.getCodFiscale());
+            pst.setString(3, v.getId());
+            pst.setBoolean(4, true);
+            pst.setInt(5, 1);
+            pst.setTimestamp(6, data);
+            pst.executeUpdate();
+            con.close();
+            System.out.println("Ho votato con successo");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
     @Override
-    public void Vota(Utente u, Votazione v, List<Utente> utentiVotatiInOrdine) throws SQLException { //ordinale
-        String query = "INSERT INTO votanti VALUES (?,?,?,?,?)";
+    public void Vota(Utente u, Votazione v, List<Utente> utentiVotatiInOrdine, Timestamp data) throws SQLException { //ordinale
+        String query = "INSERT INTO votanti VALUES (?,?,?,?,?,?)";
         Connection con = openConnection();
         for(int i = utentiVotatiInOrdine.size()-1; i>=0; i--){
             PreparedStatement pst = con.prepareStatement(query);
@@ -143,6 +149,7 @@ public class VotazioneDaoImpl implements VotazioneDao{
             pst.setString(3, v.getId());
             pst.setBoolean(4,true);
             pst.setInt(5, (i-utentiVotatiInOrdine.size())*-1);
+            pst.setTimestamp(6,data);
             pst.executeUpdate();
         }
         con.close();
@@ -151,8 +158,8 @@ public class VotazioneDaoImpl implements VotazioneDao{
     }
 
     @Override
-    public void Vota(Utente u, Votazione v, int punteggio, Utente votato, Boolean favorevole) throws SQLException {
-        String query = "INSERT INTO votanti VALUES (?,?,?,?,?)";
+    public void Vota(Utente u, Votazione v, int punteggio, Utente votato, Boolean favorevole, Timestamp data) throws SQLException {
+        String query = "INSERT INTO votanti VALUES (?,?,?,?,?,?)";
         Connection con = openConnection();
         PreparedStatement pst = con.prepareStatement(query);
         pst.setString(1, u.getCodFiscale());
@@ -160,6 +167,7 @@ public class VotazioneDaoImpl implements VotazioneDao{
         pst.setString(3, v.getId());
         pst.setString(4, String.valueOf(favorevole));
         pst.setString(5, String.valueOf(punteggio));
+        pst.setTimestamp(6,data);
 
     }
 
@@ -173,5 +181,47 @@ public class VotazioneDaoImpl implements VotazioneDao{
         ResultSet result = pst.executeQuery();
         if(result.next()) return true;
         return false;
+    }
+
+    @Override
+    public boolean checkIfInTime(Timestamp t, Votazione v) throws SQLException {
+        String query = "SELECT inizio, fine FROM votazione WHERE id = ?";
+        Connection con = openConnection();
+        PreparedStatement pst = con.prepareStatement(query);
+        pst.setString(1, v.getId());
+        ResultSet result = pst.executeQuery();
+        if(result.next()) {
+            Timestamp inizio = result.getTimestamp(1);
+            Timestamp fine = result.getTimestamp(2);
+            con.close();
+            if (t.after(inizio)&& t.before(fine)) return  true;
+        }
+        con.close();
+        return false;
+    }
+
+    @Override
+    public Timestamp getVotazioneEndTime(Votazione v) throws SQLException {
+        String query = "SELECT fine FROM votazione WHERE id = ?";
+        Connection con = openConnection();
+        PreparedStatement pst = con.prepareStatement(query);
+        pst.setString(1, v.getId());
+        ResultSet result = pst.executeQuery();
+        if(result.next()) {
+            Timestamp inizio = result.getTimestamp(1);
+            con.close();
+            return inizio;
+        }
+        return null;
+    }
+
+    public void changeEndDate(Votazione v, Timestamp t) throws SQLException {
+        String sql = "UPDATE votazione SET fine = ? WHERE id = ?";
+        Connection con = openConnection();
+        PreparedStatement pst = con.prepareStatement(sql);
+        pst.setTimestamp(1, t);
+        pst.setString(2, v.getId());
+        pst.executeUpdate();
+        con.close();
     }
 }

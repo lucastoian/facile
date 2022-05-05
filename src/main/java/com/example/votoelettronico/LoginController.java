@@ -15,6 +15,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.sql.*;
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ResourceBundle;
 
@@ -71,7 +72,11 @@ public class LoginController implements Initializable{
             allertVot.setText("L'utente ha gia votato");
             allertVot.setVisible(true);
         }else {
-
+            if(! votazioneDao.checkIfInTime(Timestamp.valueOf(LocalDateTime.now()), v)){
+                allertVot.setText("La votazione non è ancora iniziata oppure è gia finita");
+                allertVot.setVisible(true);
+                return;
+            }
             vc.setCodFiscaleAndVotazione(CODField.getText(), v);
             try {
                 if (v.getStatus().equals("Approvata")) {

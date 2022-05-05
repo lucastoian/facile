@@ -1,6 +1,7 @@
 package com.example.votoelettronico;
 
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.List;
 
 public interface VotazioneDao {
@@ -12,10 +13,14 @@ public interface VotazioneDao {
     public void changeStatus(Votazione v, String status) throws SQLException;
     public Votazione getVotazioneById(String id) throws SQLException;
 
-    void Vota(Utente u, Votazione v, Utente votato) throws SQLException;
+    void Vota(Utente u, Votazione v, Utente votato, Timestamp data) throws SQLException;
 
-    void Vota(Utente u, Votazione v, List<Utente> utentiVotatiInOrdine) throws SQLException;
+    void Vota(Utente u, Votazione v, List<Utente> utentiVotatiInOrdine,Timestamp data) throws SQLException;
 
-    void Vota(Utente u, Votazione v, int punteggio, Utente votato, Boolean favorevole) throws SQLException;
+    void Vota(Utente u, Votazione v, int punteggio, Utente votato, Boolean favorevole,Timestamp data) throws SQLException;
     public boolean haGiaVotato(Utente u, Votazione v) throws SQLException;
+
+    boolean checkIfInTime(Timestamp t, Votazione v) throws SQLException;
+    public  Timestamp getVotazioneEndTime(Votazione v) throws SQLException;
+    public void changeEndDate(Votazione v, Timestamp t) throws SQLException;
 }
