@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.QuadCurve?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="998.0" style="-fx-background-color: blu;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="220.0" prefHeight="91.0" prefWidth="778.0" style="-fx-background-color: #e9f5f9;">
+         <children>
+            <QuadCurve controlX="-10.0" controlY="-112.0" endX="7.0" endY="-75.0" fill="DODGERBLUE" layoutX="549.0" layoutY="137.0" startX="-26.0" startY="-75.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fill="DODGERBLUE" layoutX="539.0" layoutY="37.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label fx:id="UserNameLabel" layoutX="564.0" layoutY="39.0" prefHeight="17.0" prefWidth="167.0" text="nome utente">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Text fill="#145369" layoutX="98.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome Applicazione" textAlignment="CENTER" wrappingWidth="375.48046875">
+               <font>
+                  <Font name="SansSerif Bold Italic" size="36.0" />
+               </font>
+            </Text>
+            <Button layoutX="698.0" layoutY="34.0" mnemonicParsing="false" onAction="#Logout" style="-fx-background-color: #e9f5f9;" text="Logout" textFill="#145369">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="26.0" layoutY="34.0" mnemonicParsing="false" onAction="#goIndietro" style="-fx-background-color: #e9f5f9;" text="Indietro" textFill="#145369">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="224.0" layoutY="131.0" prefHeight="383.0" prefWidth="778.0">
+         <children>
+            <Text fx:id="allertVot" fill="RED" layoutX="29.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MESSAGGIO DI ERRORE MESSAGGIO DI ERRORE MESSAGGIO DI ERRORE MESSAGGIO DI ERRORE" textAlignment="CENTER" visible="false" wrappingWidth="692.936637878418">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+            <TextField fx:id="dataInizioField" editable="false" layoutX="56.0" layoutY="78.0" prefHeight="36.0" prefWidth="142.0" promptText="Data di inizio" style="-fx-background-color: #e9f5f9; -fx-border-color: #000000; -fx-border-radius: 10px; -fx-alignment: center;">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="dataFineField" editable="false" layoutX="56.0" layoutY="131.0" prefHeight="36.0" prefWidth="142.0" promptText="Data di fine" style="-fx-background-color: #e9f5f9; -fx-border-color: #000000; -fx-border-radius: 10px; -fx-alignment: center;">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="nameField" editable="false" layoutX="136.0" layoutY="33.0" prefHeight="36.0" prefWidth="142.0" promptText="nome" style="-fx-background-color: #e9f5f9; -fx-border-color: #000000; -fx-border-radius: 10px; -fx-alignment: center;">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </TextField>
+            <Button fx:id="Salva" layoutX="156.0" layoutY="202.0" mnemonicParsing="false" onAction="#SalvaButton" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: #be4d25;" text="SALVA" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="LoginButton1" layoutX="497.0" layoutY="340.0" mnemonicParsing="false" onAction="#TerminaSubitoButton" prefHeight="25.0" prefWidth="266.0" style="-fx-background-color: #be4d25;" text="TERMINA SUBITO LA VOTAZIONE" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <TextField fx:id="dataInizioField1" editable="false" layoutX="220.0" layoutY="78.0" prefHeight="36.0" prefWidth="142.0" promptText="Data di inizio" style="-fx-background-color: #e9f5f9; -fx-border-color: #000000; -fx-border-radius: 10px; -fx-alignment: center;" text="Ora di inizio">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="dataFineField1" editable="false" layoutX="220.0" layoutY="131.0" prefHeight="36.0" prefWidth="142.0" promptText="Data di fine" style="-fx-background-color: #e9f5f9; -fx-border-color: #000000; -fx-border-radius: 10px; -fx-alignment: center;" text="Ora di inizio">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </TextField>
+         </children>
+      </AnchorPane>
+      <VBox layoutX="-2.0" prefHeight="600.0" prefWidth="226.0" spacing="20.0" style="-fx-background-color: #2596BE;">
+         <children>
+            <Label fx:id="NomeElezione" alignment="CENTER" prefHeight="171.0" prefWidth="231.0" style="-fx-font-size: 25;" text="NOME ELEZIONE" textAlignment="CENTER" textFill="#ff5500" />
+            <Button mnemonicParsing="false" onAction="#goToManager" prefHeight="65.0" prefWidth="215.0" style="-fx-background-color: #145369; -fx-background-radius: 20;" text="Panoramica" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#goToRisulti" prefHeight="65.0" prefWidth="215.0" style="-fx-background-color: #145369; -fx-background-radius: 20;" text="Risultati" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="10.0" layoutY="95.0" mnemonicParsing="false" onAction="#goToPartecipanti" prefHeight="65.0" prefWidth="215.0" style="-fx-background-color: #145369; -fx-background-radius: 20;" text="Partecipanti" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="10.0" layoutY="265.0" mnemonicParsing="false" onAction="#goToOption" prefHeight="64.0" prefWidth="215.0" style="-fx-background-color: #140069; -fx-background-radius: 20;" text="Impostazioni" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
