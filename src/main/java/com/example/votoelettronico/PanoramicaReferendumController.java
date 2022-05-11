@@ -23,11 +23,12 @@ public class PanoramicaReferendumController implements Initializable {
     Votazione v;
     UtenteDao utenteDao;
     @FXML
-    public Label NomeElezione, UserNameLabel;
+    public Label UserNameLabel;
+
     @FXML
     public TextField DomandaReferendum;
     @FXML
-    public Button Aggiungi;
+    public Button Aggiungi,NomeElezione;
     @FXML
     public Text allertConfermaElezione;
     @FXML

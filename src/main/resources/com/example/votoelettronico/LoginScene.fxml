@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #e9f5f9;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.votoelettronico.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #e9f5f9;" stylesheets="@all.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.votoelettronico.LoginController">
    <children>
       <Text fill="#145369" layoutX="354.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VotoFacile.it">
          <font>
@@ -18,7 +18,7 @@
       </Text>
       <AnchorPane layoutX="118.0" layoutY="176.0" prefHeight="359.0" prefWidth="298.0" style="-fx-background-color: #ffffff; -fx-border-color: #145369; -fx-border-radius: 10; -fx-background-radius: 10;">
          <children>
-            <Button fx:id="LoginButton" layoutX="15.0" layoutY="271.0" mnemonicParsing="false" onAction="#GoToManageScene" prefHeight="25.0" prefWidth="266.0" style="-fx-background-color: #be4d25;" text="LOGIN" textFill="WHITE">
+            <Button fx:id="LoginButton" layoutX="15.0" layoutY="271.0" mnemonicParsing="false" onAction="#GoToManageScene" prefHeight="25.0" prefWidth="266.0" styleClass="button-orange" text="LOGIN" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -34,7 +34,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="RegisterButton" layoutX="16.0" layoutY="314.0" mnemonicParsing="false" onAction="#GoToRegisterScene" prefHeight="31.0" prefWidth="59.0" style="-fx-background-color: #be4d25;" text="Register" textFill="WHITE">
+            <Button fx:id="RegisterButton" layoutX="16.0" layoutY="314.0" mnemonicParsing="false" onAction="#GoToRegisterScene" prefHeight="31.0" prefWidth="59.0" styleClass="button-orange" text="Register" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>
@@ -59,7 +59,7 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <Button fx:id="VoteButton" layoutX="15.0" layoutY="276.0" mnemonicParsing="false" onAction="#goToVote" prefHeight="31.0" prefWidth="319.0" style="-fx-background-color: #be4d25;" text="VOTA" textFill="WHITE">
+            <Button fx:id="VoteButton" layoutX="15.0" layoutY="276.0" mnemonicParsing="false" onAction="#goToVote" prefHeight="31.0" prefWidth="319.0" styleClass="button-orange" text="VOTA" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>

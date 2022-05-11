@@ -90,7 +90,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#goToR" prefHeight="65.0" prefWidth="215.0" style="-fx-background-color: #145369; -fx-background-radius: 20;" text="Risultati" textFill="WHITE">
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#goToRisulti" prefHeight="65.0" prefWidth="215.0" style="-fx-background-color: #145369; -fx-background-radius: 20;" text="Risultati" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>

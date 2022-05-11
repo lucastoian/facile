@@ -13,38 +13,42 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #ffffff;" stylesheets="@all.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="600.0" prefWidth="231.0" style="-fx-background-color: #2596BE;">
          <children>
-            <VBox layoutX="4.0" layoutY="1.0" prefHeight="600.0" prefWidth="231.0" spacing="20.0">
+            <VBox layoutX="-24.0" layoutY="181.0" prefHeight="323.0" prefWidth="215.0" spacing="20.0">
                <children>
-                  <Label fx:id="NomeElezione" alignment="CENTER" prefHeight="171.0" prefWidth="231.0" style="-fx-font-size: 25;" text="NOME ELEZIONE" textAlignment="CENTER" textFill="#ff5500" />
-                  <Button mnemonicParsing="false" onAction="#goToManager" prefHeight="65.0" prefWidth="215.0" style="-fx-background-color: #140069; -fx-background-radius: 20;" text="Panoramica" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#goToManager" prefHeight="65.0" prefWidth="215.0" styleClass="button-blue" text="Panoramica" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="215.0" style="-fx-background-color: #145369; -fx-background-radius: 20;" text="Risultati" textFill="WHITE">
+                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="215.0" styleClass="button-blue" text="Risultati" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button layoutX="10.0" layoutY="95.0" mnemonicParsing="false" onAction="#goToPartecipanti" prefHeight="65.0" prefWidth="215.0" style="-fx-background-color: #145369; -fx-background-radius: 20;" text="Partecipanti" textFill="WHITE">
+                  <Button layoutX="10.0" layoutY="95.0" mnemonicParsing="false" onAction="#goToPartecipanti" prefHeight="65.0" prefWidth="215.0" styleClass="button-blue" text="Partecipanti" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button layoutX="10.0" layoutY="265.0" mnemonicParsing="false" onAction="#goToOption" prefHeight="64.0" prefWidth="215.0" style="-fx-background-color: #145369; -fx-background-radius: 20;" text="Impostazioni" textFill="WHITE">
+                  <Button layoutX="10.0" layoutY="265.0" mnemonicParsing="false" onAction="#goToOption" prefHeight="64.0" prefWidth="215.0" styleClass="button-blue" text="Impostazioni" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
                </children>
             </VBox>
+            <Button fx:id="NomeElezione" layoutX="8.0" layoutY="31.0" mnemonicParsing="false" onAction="#goToManager" prefHeight="99.0" prefWidth="215.0" styleClass="button-orange" text="NomeElezione" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="231.0" prefHeight="91.0" prefWidth="769.0" style="-fx-background-color: #e9f5f9;">
+      <AnchorPane layoutX="231.0" prefHeight="91.0" prefWidth="708.0" style="-fx-background-color: #e9f5f9;">
          <children>
             <QuadCurve controlX="-10.0" controlY="-112.0" endX="7.0" endY="-75.0" fill="DODGERBLUE" layoutX="543.0" layoutY="140.0" startX="-26.0" startY="-75.0" stroke="BLACK" strokeType="INSIDE" />
             <Circle fill="DODGERBLUE" layoutX="533.0" layoutY="40.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
@@ -53,7 +57,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Text fill="#145369" layoutX="68.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VotoFacile.com" textAlignment="CENTER" wrappingWidth="375.48046875">
+            <Text fill="#145369" layoutX="72.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VotoFacile.it" textAlignment="CENTER" wrappingWidth="375.48046875">
                <font>
                   <Font name="SansSerif Bold Italic" size="36.0" />
                </font>
@@ -96,17 +100,7 @@
             </AnchorPane>
          </items>
       </SplitPane>
-      <VBox layoutX="247.0" layoutY="88.0" prefHeight="316.0" prefWidth="747.0" style="-fx-background-color: #CBF6F6;">
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="INSERISCI LA DOMANDA PER IL REFERENDUM" textAlignment="CENTER" wrappingWidth="747.7366638183594">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <TextField fx:id="DomandaReferendum" prefHeight="292.0" prefWidth="748.0" />
-         </children>
-      </VBox>
-      <Button fx:id="Conferma" layoutX="508.0" layoutY="416.0" mnemonicParsing="false" onAction="#ConfermaElezione" prefHeight="65.0" prefWidth="215.0" style="-fx-background-color: #145369; -fx-background-radius: 20;" text="CONFERMA" textFill="WHITE">
+      <Button fx:id="Conferma" layoutX="508.0" layoutY="402.0" mnemonicParsing="false" onAction="#ConfermaElezione" prefHeight="65.0" prefWidth="215.0" styleClass="button-blue" text="CONFERMA" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
@@ -116,5 +110,12 @@
             <Font size="18.0" />
          </font>
       </Text>
+      <TextField fx:id="DomandaReferendum" layoutX="296.0" layoutY="236.0" prefHeight="128.0" prefWidth="619.0" />
+      <Text fill="#145369" layoutX="296.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INSERISCI LA DOMANDA PER IL REFERENDUM" textAlignment="CENTER" wrappingWidth="619.0">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Text>
+      <Label fx:id="nomeElezione" alignment="CENTER" layoutX="239.0" layoutY="-130.0" prefHeight="85.0" prefWidth="197.0" style="-fx-font-size: 25;" text="NOME ELEZIONE" textAlignment="CENTER" textFill="#ff5500" />
    </children>
 </AnchorPane>
