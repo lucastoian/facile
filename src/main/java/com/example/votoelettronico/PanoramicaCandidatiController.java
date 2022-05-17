@@ -9,23 +9,22 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 
-import javax.crypto.NoSuchPaddingException;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.URL;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class PanoramicaCandidatiController implements Initializable {
-    Votazione v;
-    Utente u;
+    Votazione votazione;
+    Utente utente;
     UtenteDao utenteDao;
     VotazioneDao votazioneDao;
     @FXML
-    public Label NomeElezione, UserNameLabel, codFs, idElezione,DataInizio,DataDiFine;
+    public Label  UserNameLabel, codFs, idElezione,DataInizio,DataDiFine;
+
+    @FXML
+    public Button NomeElezione;
+
     @FXML
     public TextField codFiscalefield,DataDiInizioField,DataDiFineField,IdElezioneField;
     @FXML
@@ -48,7 +47,7 @@ public class PanoramicaCandidatiController implements Initializable {
     }
     public void goToRisultati(ActionEvent actionEvent) throws IOException {
         RisultatoController rc = new RisultatoController();
-        rc.setUtenteVotazione(u,v);
+        rc.setUtenteVotazione(utente,votazione);
         Utils.changeScene(actionEvent, "Risultato.fxml",rc );
     }
 
@@ -57,22 +56,22 @@ public class PanoramicaCandidatiController implements Initializable {
     }
 
     public void goToOption(ActionEvent actionEvent) throws IOException {
-        OptionController oc = new OptionController();
-        oc.setUtenteEVotazione(u,v);
-        Utils.changeScene(actionEvent,"ImpostazioniScene.fxml", oc);
+        PanoramicaElezioniController oc = new PanoramicaElezioniController();
+        oc.setUtenteEVotazione(utente,votazione);
+        Utils.changeScene(actionEvent,"panoramicaElezioni.fxml", oc);
     }
 
     public void cambiaElezione(ActionEvent actionEvent) {
     }
     public void Indietro(ActionEvent actionEvent) throws IOException {
         VotazioniController vc = new VotazioniController();
-        vc.setUtente(u);
+        vc.setUtente(utente);
         Utils.changeScene(actionEvent, "VotazioniScene.fxml", vc);
     }
     public void AggiungiCandidato(ActionEvent actionEvent) {
         try {
             Utente u = utenteDao.getUtenteByCodFiscale(codFiscalefield.getText());
-            utenteDao.addCandidato(u, v);
+            utenteDao.addCandidato(u, votazione);
             candidatoList.add(u);
             allertCandidato.setVisible(false);
             aggiungiUnCandidato.setVisible(true);
@@ -92,9 +91,9 @@ public class PanoramicaCandidatiController implements Initializable {
             allertConfermaElezione.setVisible(true);
         }else {
             votazioneDao = new VotazioneDaoImpl();
-            votazioneDao.changeStatus(v, "Approvata");
+            votazioneDao.changeStatus(votazione, "Approvata");
             VotazioniController vc = new VotazioniController();
-            vc.setUtente(u);
+            vc.setUtente(utente);
             Utils.changeScene(actionEvent, "VotazioniScene.fxml", vc);
 
         }
@@ -105,13 +104,13 @@ public class PanoramicaCandidatiController implements Initializable {
         Utils.changeScene(actionEvent, "LoginScene.fxml");
     }
 
-
-
-    public void setVotazione(Votazione v){
-        this.v = v;
-
+    public void setUtenteEVotazione(Utente u, Votazione v){
+        this.utente=u;
+        this.votazione=v;
         System.out.println(v);
     }
+
+
 
 
     @Override
@@ -119,31 +118,31 @@ public class PanoramicaCandidatiController implements Initializable {
 
         try {
             utenteDao = new UtenteDaoImpl();
-            candidatoList = FXCollections.observableList(utenteDao.getAllUtentiByIdVotazione(v.getId()));
+            candidatoList = FXCollections.observableList(utenteDao.getAllUtentiByIdVotazione(votazione.getId()));
             System.out.println("candidato list = " + candidatoList);
         } catch (Exception e) {
             System.out.println("erroreeee");
         }
 
-        if(v.getStatus().equals("Approvata")){
+        if(votazione.getStatus().equals("Approvata")){
             codFiscalefield.setVisible(false);
             aggiungiUnCandidato.setVisible(false);
             Aggiungi.setVisible(false);
             Conferma.setVisible(false);
             codFs.setText("LISTA DEI CANDIDATI AGGIUNTI");
             codFs.setVisible(true);
-            DataDiInizioField.setText(v.getInizio().toString());
+            DataDiInizioField.setText(votazione.getInizio().toString());
             DataDiInizioField.setVisible(true);
-            DataDiFineField.setText(v.getFine().toString());
+            DataDiFineField.setText(votazione.getFine().toString());
             DataDiFineField.setVisible(true);
-            IdElezioneField.setText(v.getId());
+            IdElezioneField.setText(votazione.getId());
             IdElezioneField.setVisible(true);
             DataInizio.setVisible(true);
             DataDiFine.setVisible(true);
             idElezione.setVisible(true);
         }
 
-        NomeElezione.setText(this.v.getNome());
+        NomeElezione.setText(this.votazione.getNome());
         allertCandidato.setVisible(false);
         allertConfermaElezione.setVisible(false);
 
@@ -153,7 +152,7 @@ public class PanoramicaCandidatiController implements Initializable {
     }
 
         public void setUtente(Utente u){
-        this.u = u;
+        this.utente = u;
         }
 
 }

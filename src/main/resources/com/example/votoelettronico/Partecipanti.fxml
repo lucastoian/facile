@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="998.0" style="-fx-background-color: blu;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="998.0" style="-fx-background-color: blu;" stylesheets="@all.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="220.0" prefHeight="91.0" prefWidth="778.0" style="-fx-background-color: #e9f5f9;">
          <children>
@@ -20,7 +20,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Text fill="#145369" layoutX="98.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome Applicazione" textAlignment="CENTER" wrappingWidth="375.48046875">
+            <Text fill="#145369" layoutX="98.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VotoFacile.it" textAlignment="CENTER" wrappingWidth="375.48046875">
                <font>
                   <Font name="SansSerif Bold Italic" size="36.0" />
                </font>
@@ -30,14 +30,14 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="26.0" layoutY="34.0" mnemonicParsing="false" onAction="#goIndietro" style="-fx-background-color: #e9f5f9;" text="Indietro" textFill="#145369">
+            <Button layoutX="26.0" layoutY="34.0" mnemonicParsing="false" style="-fx-background-color: #e9f5f9;" text="Indietro" textFill="#145369" visible="false">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="226.0" layoutY="134.0" prefHeight="383.0" prefWidth="778.0">
+      <AnchorPane layoutX="231.0" layoutY="140.0" prefHeight="383.0" prefWidth="778.0">
          <children>
             <Text fx:id="allertVot" fill="RED" layoutX="29.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MESSAGGIO DI ERRORE MESSAGGIO DI ERRORE MESSAGGIO DI ERRORE MESSAGGIO DI ERRORE" textAlignment="CENTER" wrappingWidth="692.936637878418">
                <font>
@@ -46,30 +46,38 @@
             </Text>
          </children>
       </AnchorPane>
-      <VBox layoutX="-2.0" prefHeight="600.0" prefWidth="226.0" spacing="20.0" style="-fx-background-color: #2596BE;">
+      <AnchorPane prefHeight="600.0" prefWidth="231.0" style="-fx-background-color: #2596BE;">
          <children>
-            <Label fx:id="NomeElezione" alignment="CENTER" prefHeight="171.0" prefWidth="231.0" style="-fx-font-size: 25;" text="NOME ELEZIONE" textAlignment="CENTER" textFill="#ff5500" />
-            <Button mnemonicParsing="false" onAction="#goToManager" prefHeight="65.0" prefWidth="215.0" style="-fx-background-color: #145369; -fx-background-radius: 20;" text="Panoramica" textFill="WHITE">
+            <VBox layoutX="-24.0" layoutY="181.0" prefHeight="323.0" prefWidth="215.0" spacing="20.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#goToManager" prefHeight="65.0" prefWidth="215.0" styleClass="button-blue" text="Panoramica" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#goToCandidati" prefHeight="65.0" prefWidth="215.0" styleClass="button-blue" text="Candidati" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="10.0" layoutY="95.0" mnemonicParsing="false" onAction="#goToPartecipanti" prefHeight="65.0" prefWidth="215.0" styleClass="button-blue" text="Partecipanti" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="10.0" layoutY="265.0" mnemonicParsing="false" onAction="#goToOption" prefHeight="64.0" prefWidth="215.0" styleClass="button-blue" text="Impostazioni" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+            <Button fx:id="NomeElezione" layoutX="8.0" layoutY="31.0" mnemonicParsing="false" onAction="#cambiaElezione" prefHeight="99.0" prefWidth="215.0" styleClass="button-orange" text="NomeElezione" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="215.0" style="-fx-background-color: #145369; -fx-background-radius: 20;" text="Risultati" textFill="WHITE">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button layoutX="10.0" layoutY="95.0" mnemonicParsing="false" onAction="#goToPartecipanti" prefHeight="65.0" prefWidth="215.0" style="-fx-background-color: #140069; -fx-background-radius: 20;" text="Partecipanti" textFill="WHITE">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button layoutX="10.0" layoutY="265.0" mnemonicParsing="false" onAction="#goToOption" prefHeight="64.0" prefWidth="215.0" style="-fx-background-color: #145369; -fx-background-radius: 20;" text="Impostazioni" textFill="WHITE">
-               <font>
-                  <Font size="18.0" />
+                  <Font size="24.0" />
                </font>
             </Button>
          </children>
-      </VBox>
+      </AnchorPane>
    </children>
 </AnchorPane>

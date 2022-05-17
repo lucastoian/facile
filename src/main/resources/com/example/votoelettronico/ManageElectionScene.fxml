@@ -22,7 +22,7 @@
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="215.0" styleClass="button-blue" text="Risultati" textFill="WHITE">
+                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="215.0" styleClass="button-blue" text="Candidati" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>

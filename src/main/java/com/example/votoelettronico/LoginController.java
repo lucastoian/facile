@@ -62,8 +62,6 @@ public class LoginController implements Initializable{
 
     public void goToVote(ActionEvent actionEvent) throws IOException, SQLException {
 
-
-
         VoteController vc = new VoteController();
         votazioneDao = new VotazioneDaoImpl();
         Votazione v = votazioneDao.getVotazioneById(VotazioneField.getText());

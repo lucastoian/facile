@@ -20,7 +20,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class PanoramicaReferendumController implements Initializable {
-    Votazione v;
+
     UtenteDao utenteDao;
     @FXML
     public Label UserNameLabel;
@@ -34,37 +34,43 @@ public class PanoramicaReferendumController implements Initializable {
     @FXML
     public Button Conferma;
 
-    public void goToManager(ActionEvent actionEvent) {
+    private Utente utente;
+    private Votazione votazione;
+
+    public void goToManager(ActionEvent actionEvent) throws IOException {
+        PanoramicaReferendumController prc = new PanoramicaReferendumController();
+        prc.setUtenteEVotazione(utente,votazione);
+        System.out.println("refresh");
+        Utils.changeScene(actionEvent, "panoramicaReferendum.fxml",prc);
     }
 
-    public void goToPartecipanti(ActionEvent actionEvent) {
+    public void goToPartecipanti(ActionEvent actionEvent) throws IOException {
+        PartecipantiController pc = new PartecipantiController();
+        pc.setVotazione(votazione);
+        Utils.changeScene(actionEvent, "Partecipanti.fxml",pc);
     }
 
-    public void goToCandidati(ActionEvent actionEvent) {
-    }
-
-    public void goToOption(ActionEvent actionEvent) {
-    }
-
-    public void cambiaElezione(ActionEvent actionEvent) {
-    }
-
-    public void ConfermaElezione(ActionEvent actionEvent) {
-    }
 
     public void Logout(ActionEvent actionEvent) throws IOException {
-
         Utils.changeScene(actionEvent, "LoginScene.fxml");
     }
 
 
+    public void cambiaElezione(ActionEvent actionEvent) throws IOException{
 
-    public void setVotazione(Votazione v){
-        this.v = v;
-
-        System.out.println(v);
     }
 
+    public void ConfermaElezione(ActionEvent actionEvent) throws IOException {
+        Utils.changeScene(actionEvent, "Risultato.fxml");
+    }
+
+
+
+
+    public void setUtenteEVotazione(Utente u, Votazione v){
+        this.utente=u;
+        this.votazione=v;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -75,9 +81,13 @@ public class PanoramicaReferendumController implements Initializable {
 
         }
 
-        NomeElezione.setText(this.v.getNome());
+        NomeElezione.setText(this.votazione.getNome());
         allertConfermaElezione.setVisible(false);
+        UserNameLabel.setText(this.utente.getName());
 
     }
+
+
+
 
 }

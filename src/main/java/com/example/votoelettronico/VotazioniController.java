@@ -50,16 +50,15 @@ public class VotazioniController implements Initializable {
         switch (selectedVotazione.getTipo()){
             case "referendum":
                 PanoramicaReferendumController pcr = new PanoramicaReferendumController();
-                pcr.setVotazione(selectedVotazione);
+                pcr.setUtenteEVotazione(u,selectedVotazione);
                 Utils.changeScene(actionEvent, "panoramicaReferendum.fxml",pcr);
                 break;
-            case "ordinale":
-            case "categorico con preferenze":
-            case "categorico":
-                PanoramicaCandidatiController pc = new PanoramicaCandidatiController();
-                pc.setVotazione(selectedVotazione);
-                pc.setUtente(u);
-                Utils.changeScene(actionEvent, "panoramicaCandidati.fxml", pc);
+
+            default:
+                PanoramicaElezioniController pe = new PanoramicaElezioniController();
+                pe.setUtenteEVotazione(u,selectedVotazione);
+                pe.setUtenteEVotazione(u,selectedVotazione);
+                Utils.changeScene(actionEvent, "PanoramicaElezioni.fxml", pe);
                 break;
 
         }

@@ -52,8 +52,7 @@ public class RisultatoController implements Initializable {
     }
     public void goToManager(ActionEvent actionEvent) throws IOException {
         PanoramicaCandidatiController pc = new PanoramicaCandidatiController();
-        pc.setUtente(utente);
-        pc.setVotazione(votazione);
+        pc.setUtenteEVotazione(utente,votazione);
         Utils.changeScene(actionEvent, "panoramicaCandidati.fxml", pc);
     }
     public void goToPartecipanti(ActionEvent actionEvent) throws IOException {
