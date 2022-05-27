@@ -7,7 +7,6 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.QuadCurve?>
 <?import javafx.scene.text.Font?>
@@ -15,23 +14,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #ffffff;" stylesheets="@all.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane prefHeight="600.0" prefWidth="231.0" style="-fx-background-color: #2596BE;">
+      <AnchorPane prefHeight="91.0" prefWidth="231.0" style="-fx-background-color: #e9f5f9;">
          <children>
-            <VBox layoutX="-25.0" layoutY="180.0" prefHeight="168.0" prefWidth="215.0" spacing="20.0">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#goToManager" prefHeight="65.0" prefWidth="215.0" styleClass="button-blue" text="Panoramica" textFill="WHITE">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
-                  <Button layoutX="10.0" layoutY="95.0" mnemonicParsing="false" onAction="#goToPartecipanti" prefHeight="65.0" prefWidth="215.0" styleClass="button-blue" text="Partecipanti" textFill="WHITE">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
-               </children>
-            </VBox>
-            <Button fx:id="NomeElezione" layoutX="8.0" layoutY="31.0" mnemonicParsing="false" onAction="#cambiaElezione" prefHeight="99.0" prefWidth="215.0" styleClass="button-orange" text="NomeElezione" textFill="WHITE">
+            <Button fx:id="NomeElezione" layoutX="8.0" layoutY="14.0" mnemonicParsing="false" onAction="#cambiaElezione" prefHeight="71.0" prefWidth="215.0" styleClass="button-orange" text="NomeElezione" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
@@ -55,6 +40,11 @@
             <Button layoutX="704.0" layoutY="37.0" mnemonicParsing="false" onAction="#Logout" style="-fx-background-color: #e9f5f9;" text="Logout" textFill="#145369">
                <font>
                   <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="21.0" layoutY="26.0" mnemonicParsing="false" onAction="#goToManager" prefHeight="39.0" prefWidth="102.0" styleClass="button-blue" text="ricarica" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
                </font>
             </Button>
          </children>
@@ -90,54 +80,54 @@
             </AnchorPane>
          </items>
       </SplitPane>
-      <Button fx:id="Conferma" layoutX="707.0" layoutY="447.0" mnemonicParsing="false" onAction="#ConfermaElezione" prefHeight="65.0" prefWidth="215.0" styleClass="button-blue" text="CONFERMA" textFill="WHITE">
+      <Button fx:id="Conferma" layoutX="608.0" layoutY="434.0" mnemonicParsing="false" onAction="#ConfermaElezione" prefHeight="65.0" prefWidth="215.0" styleClass="button-blue" text="CONFERMA" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Text fx:id="allertConfermaElezione" fill="RED" layoutX="222.0" layoutY="548.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Messaggio di errore Messaggio di errore Messaggio di erroreMessaggio di erroreMessaggio di erroreMessaggio di errore" textAlignment="CENTER" wrappingWidth="754.5367431640625">
+      <Text fx:id="allertConfermaElezione" fill="RED" layoutX="59.0" layoutY="556.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Messaggio di errore Messaggio di errore Messaggio di erroreMessaggio di erroreMessaggio di erroreMessaggio di errore" textAlignment="CENTER" wrappingWidth="754.5367431640625">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <TextField fx:id="DomandaReferendum" layoutX="630.0" layoutY="170.0" prefHeight="243.0" prefWidth="326.0" />
-      <Text fill="#145369" layoutX="594.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INSERISCI LA DOMANDA PER IL REFERENDUM" textAlignment="CENTER" wrappingWidth="383.0">
+      <TextField fx:id="DomandaReferendum" layoutX="486.0" layoutY="170.0" prefHeight="243.0" prefWidth="470.0" />
+      <Text fill="#145369" layoutX="480.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INSERISCI LA DOMANDA PER IL REFERENDUM" textAlignment="CENTER" wrappingWidth="470.0">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Text>
       <Label fx:id="nomeElezione" alignment="CENTER" layoutX="239.0" layoutY="-130.0" prefHeight="85.0" prefWidth="197.0" style="-fx-font-size: 25;" text="NOME ELEZIONE" textAlignment="CENTER" textFill="#ff5500" />
-      <Button fx:id="LoginButton1" layoutX="278.0" layoutY="464.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="266.0" style="-fx-background-color: #be4d25;" text="TERMINA SUBITO LA VOTAZIONE" textFill="WHITE">
+      <Button fx:id="LoginButton1" layoutX="111.0" layoutY="459.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="266.0" styleClass="button-orange" text="TERMINA SUBITO LA VOTAZIONE" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <TextField fx:id="nameField" editable="false" layoutX="340.0" layoutY="139.0" prefHeight="36.0" prefWidth="142.0" promptText="nome" style="-fx-background-color: #e9f5f9; -fx-border-color: #000000; -fx-border-radius: 10px; -fx-alignment: center;">
+      <TextField fx:id="nameField" editable="false" layoutX="173.0" layoutY="134.0" prefHeight="36.0" prefWidth="142.0" promptText="nome" style="-fx-background-color: #e9f5f9; -fx-border-color: #000000; -fx-border-radius: 10px; -fx-alignment: center;">
          <font>
             <Font name="Arial" size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="dataInizioField1" editable="false" layoutX="452.0" layoutY="266.0" prefHeight="36.0" prefWidth="142.0" promptText="Data di inizio" style="-fx-background-color: #e9f5f9; -fx-border-color: #000000; -fx-border-radius: 10px; -fx-alignment: center;" text="Ora di inizio">
+      <TextField fx:id="dataInizioField1" editable="false" layoutX="285.0" layoutY="261.0" prefHeight="36.0" prefWidth="142.0" promptText="Data di inizio" style="-fx-background-color: #e9f5f9; -fx-border-color: #000000; -fx-border-radius: 10px; -fx-alignment: center;" text="Ora di inizio">
          <font>
             <Font name="Arial" size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="dataInizioField" editable="false" layoutX="244.0" layoutY="266.0" prefHeight="36.0" prefWidth="142.0" promptText="Data di inizio" style="-fx-background-color: #e9f5f9; -fx-border-color: #000000; -fx-border-radius: 10px; -fx-alignment: center;">
+      <TextField fx:id="dataInizioField" editable="false" layoutX="77.0" layoutY="261.0" prefHeight="36.0" prefWidth="142.0" promptText="Data di inizio" style="-fx-background-color: #e9f5f9; -fx-border-color: #000000; -fx-border-radius: 10px; -fx-alignment: center;">
          <font>
             <Font name="Arial" size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="dataFineField" editable="false" layoutX="238.0" layoutY="196.0" prefHeight="36.0" prefWidth="142.0" promptText="Data di fine" style="-fx-background-color: #e9f5f9; -fx-border-color: #000000; -fx-border-radius: 10px; -fx-alignment: center;">
+      <TextField fx:id="dataFineField" editable="false" layoutX="71.0" layoutY="191.0" prefHeight="36.0" prefWidth="142.0" promptText="Data di fine" style="-fx-background-color: #e9f5f9; -fx-border-color: #000000; -fx-border-radius: 10px; -fx-alignment: center;">
          <font>
             <Font name="Arial" size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="dataFineField1" editable="false" layoutX="452.0" layoutY="196.0" prefHeight="36.0" prefWidth="142.0" promptText="Data di fine" style="-fx-background-color: #e9f5f9; -fx-border-color: #000000; -fx-border-radius: 10px; -fx-alignment: center;" text="Ora di inizio">
+      <TextField fx:id="dataFineField1" editable="false" layoutX="285.0" layoutY="191.0" prefHeight="36.0" prefWidth="142.0" promptText="Data di fine" style="-fx-background-color: #e9f5f9; -fx-border-color: #000000; -fx-border-radius: 10px; -fx-alignment: center;" text="Ora di inizio">
          <font>
             <Font name="Arial" size="18.0" />
          </font>
       </TextField>
-      <Button fx:id="Salva" layoutX="360.0" layoutY="344.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: #be4d25;" text="SALVA" textFill="WHITE">
+      <Button fx:id="Salva" layoutX="193.0" layoutY="339.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="102.0" styleClass="button-orange" text="SALVA" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

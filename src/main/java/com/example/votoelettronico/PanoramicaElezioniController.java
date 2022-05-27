@@ -36,7 +36,6 @@ public class PanoramicaElezioniController implements Initializable {
     votazioneDao.changeEndDate(votazione, Timestamp.valueOf(LocalDateTime.now()));
     allertVot.setText("La votazione è terminata!");
     allertVot.setVisible(true);
-
     }
 
 
@@ -48,26 +47,25 @@ public class PanoramicaElezioniController implements Initializable {
 
 
 
-
-
-
-
     public void cambiaElezione(ActionEvent actionEvent) throws IOException{
 
     }
 
     public void goToRisultato(ActionEvent actionEvent) throws IOException{
-
+        RisultatoController rc = new RisultatoController();
+        rc.setUtenteEVotazione(utente,votazione);
+        Utils.changeScene(actionEvent, "Risultato.fxml",rc);
     }
 
     public void goToPartecipanti(ActionEvent actionEvent) throws IOException {
         PartecipantiController pc = new PartecipantiController();
-        pc.setVotazione(votazione);
+        pc.setUtenteEVotazione(utente,votazione);
         Utils.changeScene(actionEvent, "Partecipanti.fxml",pc);
     }
 
 
-    public void goToPanoramica(ActionEvent actionEvent) throws IOException {
+    public void goToManager(ActionEvent actionEvent) throws IOException {
+        System.out.println("panoramica");
         PanoramicaElezioniController op = new PanoramicaElezioniController();
         op.setUtenteEVotazione(utente,votazione);
         Utils.changeScene(actionEvent, "panoramicaElezioni.fxml",op);
@@ -86,7 +84,6 @@ public class PanoramicaElezioniController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        NomeElezione.setText(this.votazione.getNome());
         NomeElezione.setText(this.votazione.getNome());
         UserNameLabel.setText(this.utente.getName());
     }

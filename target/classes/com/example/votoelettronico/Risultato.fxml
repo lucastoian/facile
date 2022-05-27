@@ -101,7 +101,7 @@
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="215.0" styleClass="button-blue" text="Risultati" textFill="WHITE">
+                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#goToCandidati" prefHeight="65.0" prefWidth="215.0" styleClass="button-blue" text="Candidati" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -111,14 +111,14 @@
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button layoutX="10.0" layoutY="265.0" mnemonicParsing="false" onAction="#goToOption" prefHeight="64.0" prefWidth="215.0" styleClass="button-blue" text="Impostazioni" textFill="WHITE">
+                  <Button layoutX="10.0" layoutY="265.0" mnemonicParsing="false" onAction="#goToRisultato" prefHeight="64.0" prefWidth="215.0" styleClass="button-blue" text="Risultati" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
                </children>
             </VBox>
-            <Button fx:id="NomeElezione" layoutX="8.0" layoutY="31.0" mnemonicParsing="false" onAction="#goToManager" prefHeight="99.0" prefWidth="215.0" styleClass="button-orange" text="NomeElezione" textFill="WHITE">
+            <Button fx:id="NomeElezione" layoutX="8.0" layoutY="31.0" mnemonicParsing="false" onAction="#cambiaElezione" prefHeight="99.0" prefWidth="215.0" styleClass="button-orange" text="NomeElezione" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>

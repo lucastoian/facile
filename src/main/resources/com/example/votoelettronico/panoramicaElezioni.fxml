@@ -38,9 +38,9 @@
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="195.0" layoutY="138.0" prefHeight="380.0" prefWidth="801.0">
+      <AnchorPane layoutX="231.0" layoutY="93.0" prefHeight="507.0" prefWidth="769.0">
          <children>
-            <Text fx:id="allertVot" fill="RED" layoutX="213.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MESSAGGIO DI ERRORE MESSAGGIO DI ERRORE MESSAGGIO DI ERRORE MESSAGGIO DI ERRORE" textAlignment="CENTER" visible="false" wrappingWidth="692.936637878418">
+            <Text fx:id="allertVot" fill="RED" layoutX="122.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MESSAGGIO DI ERRORE MESSAGGIO DI ERRORE MESSAGGIO DI ERRORE MESSAGGIO DI ERRORE" textAlignment="CENTER" visible="false" wrappingWidth="626.936637878418">
                <font>
                   <Font size="21.0" />
                </font>
@@ -60,12 +60,12 @@
                   <Font name="Arial" size="18.0" />
                </font>
             </TextField>
-            <Button fx:id="Salva" layoutX="340.0" layoutY="202.0" mnemonicParsing="false" onAction="#SalvaButton" prefHeight="31.0" prefWidth="102.0" style="-fx-background-color: #be4d25;" text="SALVA" textFill="WHITE">
+            <Button fx:id="Salva" layoutX="340.0" layoutY="202.0" mnemonicParsing="false" onAction="#SalvaButton" prefHeight="31.0" prefWidth="102.0" styleClass="button-orange" text="SALVA" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="LoginButton1" layoutX="258.0" layoutY="312.0" mnemonicParsing="false" onAction="#TerminaSubitoButton" prefHeight="25.0" prefWidth="266.0" style="-fx-background-color: #be4d25;" text="TERMINA SUBITO LA VOTAZIONE" textFill="WHITE">
+            <Button fx:id="LoginButton1" layoutX="258.0" layoutY="337.0" mnemonicParsing="false" onAction="#TerminaSubitoButton" prefHeight="25.0" prefWidth="266.0" styleClass="button-orange" text="TERMINA SUBITO LA VOTAZIONE" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -86,7 +86,7 @@
          <children>
             <VBox layoutX="-24.0" layoutY="181.0" prefHeight="323.0" prefWidth="215.0" spacing="20.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#goToPanoramica" prefHeight="65.0" prefWidth="215.0" styleClass="button-blue" text="Panoramica" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#goToManager" prefHeight="65.0" prefWidth="215.0" styleClass="button-blue" text="Panoramica" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>

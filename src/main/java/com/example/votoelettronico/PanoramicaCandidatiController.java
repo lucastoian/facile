@@ -15,8 +15,8 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class PanoramicaCandidatiController implements Initializable {
-    Votazione votazione;
-    Utente utente;
+    private Votazione votazione;
+    private Utente utente;
     UtenteDao utenteDao;
     VotazioneDao votazioneDao;
     @FXML
@@ -39,26 +39,35 @@ public class PanoramicaCandidatiController implements Initializable {
     ObservableList<Utente> candidatoList = FXCollections.observableArrayList();
 
 
-    public void goToManager(ActionEvent actionEvent) {
+    public void goToManager(ActionEvent actionEvent) throws IOException {
+        System.out.println("panoramica");
+        PanoramicaElezioniController op = new PanoramicaElezioniController();
+        op.setUtenteEVotazione(utente,votazione);
+        Utils.changeScene(actionEvent, "panoramicaElezioni.fxml",op);
     }
 
-    public void goToPartecipanti(ActionEvent actionEvent) {
 
-    }
-    public void goToRisultati(ActionEvent actionEvent) throws IOException {
+
+    public void goToRisultato(ActionEvent actionEvent) throws IOException{
         RisultatoController rc = new RisultatoController();
-        rc.setUtenteVotazione(utente,votazione);
-        Utils.changeScene(actionEvent, "Risultato.fxml",rc );
+        rc.setUtenteEVotazione(utente,votazione);
+        Utils.changeScene(actionEvent, "Risultato.fxml",rc);
     }
 
-    public void goToCandidati(ActionEvent actionEvent) {
+    public void goToPartecipanti(ActionEvent actionEvent) throws IOException {
+        PartecipantiController pc = new PartecipantiController();
+        pc.setUtenteEVotazione(utente,votazione);
+        Utils.changeScene(actionEvent, "Partecipanti.fxml",pc);
+    }
 
+    public void goToCandidati(ActionEvent actionEvent) throws IOException {
+        PanoramicaCandidatiController ca = new PanoramicaCandidatiController();
+        ca.setUtenteEVotazione(utente,votazione);
+        Utils.changeScene(actionEvent, "PanoramicaCandidati.fxml",ca);
     }
 
     public void goToOption(ActionEvent actionEvent) throws IOException {
-        PanoramicaElezioniController oc = new PanoramicaElezioniController();
-        oc.setUtenteEVotazione(utente,votazione);
-        Utils.changeScene(actionEvent,"panoramicaElezioni.fxml", oc);
+
     }
 
     public void cambiaElezione(ActionEvent actionEvent) {
@@ -143,6 +152,7 @@ public class PanoramicaCandidatiController implements Initializable {
         }
 
         NomeElezione.setText(this.votazione.getNome());
+        UserNameLabel.setText(this.utente.getName());
         allertCandidato.setVisible(false);
         allertConfermaElezione.setVisible(false);
 
@@ -151,8 +161,5 @@ public class PanoramicaCandidatiController implements Initializable {
         Ctable.setItems(candidatoList);
     }
 
-        public void setUtente(Utente u){
-        this.utente = u;
-        }
 
 }

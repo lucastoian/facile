@@ -46,7 +46,7 @@ public class PanoramicaReferendumController implements Initializable {
 
     public void goToPartecipanti(ActionEvent actionEvent) throws IOException {
         PartecipantiController pc = new PartecipantiController();
-        pc.setVotazione(votazione);
+        pc.setUtenteEVotazione(utente,votazione);
         Utils.changeScene(actionEvent, "Partecipanti.fxml",pc);
     }
 
@@ -57,7 +57,8 @@ public class PanoramicaReferendumController implements Initializable {
 
 
     public void cambiaElezione(ActionEvent actionEvent) throws IOException{
-
+        VotazioniController vc = new VotazioniController();
+        Utils.changeScene(actionEvent, "VotazioniScene.fxml",vc);
     }
 
     public void ConfermaElezione(ActionEvent actionEvent) throws IOException {
@@ -76,7 +77,6 @@ public class PanoramicaReferendumController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         try {
             utenteDao = new UtenteDaoImpl();
-
         } catch (Exception e) {
 
         }

@@ -86,7 +86,7 @@
          <children>
             <VBox layoutX="-24.0" layoutY="181.0" prefHeight="323.0" prefWidth="215.0" spacing="20.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#goToPanoramica" prefHeight="65.0" prefWidth="215.0" styleClass="button-blue" text="Panoramica" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#goToManager" prefHeight="65.0" prefWidth="215.0" styleClass="button-blue" text="Panoramica" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
