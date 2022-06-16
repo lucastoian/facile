@@ -96,6 +96,7 @@ public class LoginController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         try {
             utenteDao = new UtenteDaoImpl();
+            System.out.println(utenteDao.getAllUtenti());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -108,3 +109,5 @@ public class LoginController implements Initializable{
     }
 
 }
+
+

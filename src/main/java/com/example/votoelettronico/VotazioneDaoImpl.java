@@ -165,10 +165,24 @@ public class VotazioneDaoImpl implements VotazioneDao{
         pst.setString(1, u.getCodFiscale());
         pst.setString(2, votato.getCodFiscale());
         pst.setString(3, v.getId());
-        pst.setString(4, String.valueOf(favorevole));
-        pst.setString(5, String.valueOf(punteggio));
+        pst.setBoolean(4, favorevole);
+        pst.setInt(5, punteggio);
         pst.setTimestamp(6,data);
+        pst.executeUpdate();
+        con.close();
+        System.out.println("Ho votato con successo");
 
+    }
+
+    @Override
+    public void setDomanda(Votazione v, String domanda) throws SQLException {
+        String sql = "UPDATE votazione SET domanda = ? WHERE id = ?";
+        Connection con = openConnection();
+        PreparedStatement pst = con.prepareStatement(sql);
+        pst.setString(1, domanda);
+        pst.setString(2, v.getId());
+        pst.executeUpdate();
+        con.close();
     }
 
     @Override
@@ -215,6 +229,8 @@ public class VotazioneDaoImpl implements VotazioneDao{
         return null;
     }
 
+
+
     public void changeEndDate(Votazione v, Timestamp t) throws SQLException {
         String sql = "UPDATE votazione SET fine = ? WHERE id = ?";
         Connection con = openConnection();
@@ -224,4 +240,28 @@ public class VotazioneDaoImpl implements VotazioneDao{
         pst.executeUpdate();
         con.close();
     }
+
+
+    @Override
+    /**
+     * @return restituisce [TotaleVotanti, TotaleVotiFavorevoli]
+     */
+    public int[] getRisultatoReferendum(Votazione v) throws SQLException {
+
+        int[] queryResult = {0, 0};
+
+        String query = "SELECT count(*), sum(favorevolecontrario::int) FROM public.votanti where id = ?";  //casto il boolean in un intero e li conto
+        Connection con = openConnection();
+        PreparedStatement pst = con.prepareStatement(query);
+        pst.setString(1, v.getId());
+        ResultSet result = pst.executeQuery();
+        con.close();
+        result.next();
+        queryResult[0] = result.getInt(1);
+
+        queryResult[1] = result.getInt(2);
+
+        return queryResult;
+    }
+
 }

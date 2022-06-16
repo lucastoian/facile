@@ -56,8 +56,8 @@
             <AnchorPane fx:id="REFERENDUM" layoutX="4.0" layoutY="64.0" prefHeight="366.0" prefWidth="710.0" visible="false">
                <children>
                   <TextArea layoutX="9.0" layoutY="72.0" prefHeight="246.0" prefWidth="963.0" text="testo della domanda del referendum&#10;" />
-                  <RadioButton layoutX="41.0" layoutY="325.0" mnemonicParsing="false" text="si" />
-                  <RadioButton layoutX="898.0" layoutY="325.0" mnemonicParsing="false" text="no" />
+                  <RadioButton fx:id="si" layoutX="41.0" layoutY="325.0" mnemonicParsing="false" text="si" />
+                  <RadioButton fx:id="no" layoutX="898.0" layoutY="325.0" mnemonicParsing="false" text="no" />
                   <Label alignment="CENTER" layoutX="9.0" layoutY="40.0" prefHeight="31.0" prefWidth="446.0" text="Rispondi alla domanda selezionando &quot;Si&quot; oppure &quot;No&quot;" textFill="#145369">
                      <font>
                         <Font size="18.0" />

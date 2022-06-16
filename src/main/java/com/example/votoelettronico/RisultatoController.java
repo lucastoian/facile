@@ -5,10 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
@@ -23,6 +20,7 @@ import java.security.spec.InvalidKeySpecException;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -38,6 +36,10 @@ public class RisultatoController implements Initializable {
     TableColumn<Candidato, String> nome, cognome, codFiscale;
     @FXML
     TableColumn<Candidato, Integer> punteggio;
+    @FXML
+    TextArea testoReferendum;
+    @FXML
+    TextField numeroVotantiReferendum,numeroVotantiFavorevoliReferendum,numeroVotantiContrariReferendum;
 
     @FXML
     public Button NomeElezione;
@@ -128,6 +130,11 @@ public class RisultatoController implements Initializable {
                 switch (votazione.getTipo()){
                     case "referendum":
                         REFERENDUM.setVisible(true);
+                        testoReferendum.setText(votazione.getDomanda());
+                        int[] risultato = votazioneDao.getRisultatoReferendum(votazione);
+                        numeroVotantiReferendum.setText("votanti totali: " + risultato[0]);
+                        numeroVotantiFavorevoliReferendum.setText("favorevoli: " + risultato[1]);
+                        numeroVotantiContrariReferendum.setText("contrari: " + (risultato[0]- risultato[1]));
                         break;
                     default:
                         ORDINALE_CATEGORICO.setVisible(true);

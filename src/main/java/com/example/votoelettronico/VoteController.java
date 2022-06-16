@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -33,6 +34,9 @@ public class VoteController implements Initializable {
     private VotazioneDao votazioneDao;
     private UtenteDao utenteDao;
     ObservableList<Utente> candidatoList = FXCollections.observableArrayList();
+
+    @FXML
+    RadioButton si, no;
 
     @FXML
     Text nomeElezione;
@@ -64,6 +68,10 @@ public class VoteController implements Initializable {
                 votazioneDao.Vota(u,v,candidatoList,Timestamp.valueOf(LocalDateTime.now()));
                 System.out.println("Votazione fatta");
                 break;
+
+            case "referendum":
+
+                votazioneDao.Vota(u, v, -1, new Utente(), si.isSelected(), Timestamp.valueOf(LocalDateTime.now()));
         }
         Utils.changeScene(actionEvent,"LoginScene.fxml");
 
@@ -133,16 +141,18 @@ public class VoteController implements Initializable {
                     case "categorico":
                         CATEGORICA.setVisible(true);
                         ORDINALE.setVisible(false);
-
+                        REFERENDUM.setVisible(false);
 
                         break;
                     case "referendum":
                         REFERENDUM.setVisible(true);
+                        CATEGORICA.setVisible(false);
+                        ORDINALE.setVisible(false);
                         break;
                     case "ordinale":
                         ORDINALE.setVisible(true);
                         CATEGORICA.setVisible(false);
-
+                        REFERENDUM.setVisible(false);
                         break;
 
                 }

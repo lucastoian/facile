@@ -18,9 +18,14 @@ public interface VotazioneDao {
     void Vota(Utente u, Votazione v, List<Utente> utentiVotatiInOrdine,Timestamp data) throws SQLException;
 
     void Vota(Utente u, Votazione v, int punteggio, Utente votato, Boolean favorevole,Timestamp data) throws SQLException;
+
+    void setDomanda(Votazione v, String domanda) throws SQLException;
+
     public boolean haGiaVotato(Utente u, Votazione v) throws SQLException;
 
     boolean checkIfInTime(Timestamp t, Votazione v) throws SQLException;
     public  Timestamp getVotazioneEndTime(Votazione v) throws SQLException;
     public void changeEndDate(Votazione v, Timestamp t) throws SQLException;
+
+    int[] getRisultatoReferendum(Votazione v) throws SQLException;
 }

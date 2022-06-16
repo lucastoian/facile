@@ -43,7 +43,7 @@
       </AnchorPane>
       <AnchorPane layoutX="226.0" layoutY="134.0" prefHeight="383.0" prefWidth="778.0">
          <children>
-            <AnchorPane fx:id="ORDINALE_CATEGORICO" layoutX="12.0" layoutY="-31.0" prefHeight="434.0" prefWidth="744.0">
+            <AnchorPane fx:id="ORDINALE_CATEGORICO" layoutX="12.0" layoutY="-31.0" prefHeight="434.0" prefWidth="744.0" visible="false">
                <children>
                   <TableView fx:id="tabellaCandidati" layoutX="19.0" layoutY="101.0" prefHeight="318.0" prefWidth="716.0">
                      <columns>
@@ -67,7 +67,7 @@
                         <Font name="Arial" size="18.0" />
                      </font>
                   </TextField>
-                  <TextArea editable="false" layoutX="1.0" layoutY="54.0" prefHeight="139.0" prefWidth="765.0" text="TESTO DELLA DOMANDA TESTO DELLA DOMANDATESTO DELLA DOMANDATESTO DELLA DOMANDATESTO DELLA DOMANDATESTO DELLA DOMANDATESTO DELLA DOMANDATESTO DELLA DOMANDATESTO DELLA DOMANDA&#10;TESTO DELLA DOMANDATESTO DELLA DOMANDATESTO DELLA DOMANDATESTO DELLA DOMANDATESTO DELLA DOMANDATESTO DELLA DOMANDA&#10;TESTO DELLA DOMANDATESTO DELLA DOMANDATESTO DELLA DOMANDATESTO DELLA DOMANDATESTO DELLA DOMANDATESTO DELLA DOMANDA&#10;TESTO DELLA DOMANDATESTO DELLA DOMANDATESTO DELLA DOMANDATESTO DELLA DOMANDA" wrapText="true" />
+                  <TextArea fx:id="testoReferendum" editable="false" layoutX="1.0" layoutY="54.0" prefHeight="139.0" prefWidth="765.0" text="TESTO DELLA DOMANDA TESTO DELLA DOMANDATESTO DELLA DOMANDATESTO DELLA DOMANDATESTO DELLA DOMANDATESTO DELLA DOMANDATESTO DELLA DOMANDATESTO DELLA DOMANDATESTO DELLA DOMANDA&#10;TESTO DELLA DOMANDATESTO DELLA DOMANDATESTO DELLA DOMANDATESTO DELLA DOMANDATESTO DELLA DOMANDATESTO DELLA DOMANDA&#10;TESTO DELLA DOMANDATESTO DELLA DOMANDATESTO DELLA DOMANDATESTO DELLA DOMANDATESTO DELLA DOMANDATESTO DELLA DOMANDA&#10;TESTO DELLA DOMANDATESTO DELLA DOMANDATESTO DELLA DOMANDATESTO DELLA DOMANDA" wrapText="true" />
                   <TextField fx:id="numeroVotantiReferendum" editable="false" layoutX="14.0" layoutY="193.0" promptText="inserisci nome" style="-fx-background-color: #e9f5f9; -fx-border-color: #000000; -fx-border-radius: 10px; -fx-alignment: center;" text="Numero votanti:">
                      <font>
                         <Font name="Arial" size="18.0" />

@@ -49,6 +49,14 @@ public class VotazioniController implements Initializable {
 
         switch (selectedVotazione.getTipo()){
             case "referendum":
+
+                if (!(selectedVotazione.getStatus().equals("Draft"))){
+                    PanoramicaElezioniController pe = new PanoramicaElezioniController();
+                    pe.setUtenteEVotazione(u,selectedVotazione);
+                    Utils.changeScene(actionEvent, "PanoramicaElezioni.fxml", pe);
+                    break;
+                }
+
                 PanoramicaReferendumController pcr = new PanoramicaReferendumController();
                 pcr.setUtenteEVotazione(u,selectedVotazione);
                 Utils.changeScene(actionEvent, "panoramicaReferendum.fxml",pcr);

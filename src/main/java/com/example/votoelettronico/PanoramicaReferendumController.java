@@ -61,8 +61,15 @@ public class PanoramicaReferendumController implements Initializable {
         Utils.changeScene(actionEvent, "VotazioniScene.fxml",vc);
     }
 
-    public void ConfermaElezione(ActionEvent actionEvent) throws IOException {
-        Utils.changeScene(actionEvent, "Risultato.fxml");
+    public void ConfermaElezione(ActionEvent actionEvent) throws IOException, SQLException {
+        RisultatoController rc= new RisultatoController();
+        rc.setUtenteEVotazione(utente,votazione);
+        VotazioneDao vd = new VotazioneDaoImpl();
+        votazione.setDomanda(DomandaReferendum.getText());
+
+        vd.changeStatus(votazione, "Approvata");
+        vd.setDomanda(votazione, DomandaReferendum.getText());
+        Utils.changeScene(actionEvent, "Risultato.fxml", rc);
     }
 
 
@@ -75,6 +82,9 @@ public class PanoramicaReferendumController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+
+
         try {
             utenteDao = new UtenteDaoImpl();
         } catch (Exception e) {
