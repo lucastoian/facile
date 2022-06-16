@@ -14,6 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ResourceBundle;
 
 public class VotazioniController implements Initializable {
@@ -87,6 +88,13 @@ public class VotazioniController implements Initializable {
         try {
             votazioneDao = new VotazioneDaoImpl();
             votazioniList = FXCollections.observableList(votazioneDao.getAllVotazioniByCodFiscale(u.getCodFiscale()));
+            Timestamp actualTimestamp = new Timestamp(System.currentTimeMillis());
+            for (Votazione v: votazioniList) {
+                if(!(v.getStatus().equals("Terminata")) && v.getFine().before(actualTimestamp)){
+                    v.setStatus("Terminata");
+                    votazioneDao.changeStatus(v, "Terminata");
+                }
+            }
 
 
         } catch (SQLException e) {
