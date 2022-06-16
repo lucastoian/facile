@@ -5,10 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -54,6 +51,10 @@ public class VoteController implements Initializable {
     TableView<Utente> tabellaCandidati1;
     @FXML
     TableColumn<Utente, String> nome1, cognome1, codFiscale1;
+
+    //REFERENDUM
+    @FXML
+    TextArea testoDomanda;
 
 
 
@@ -119,7 +120,7 @@ public class VoteController implements Initializable {
     public void initialize(URL location, ResourceBundle resources){
 
             try {
-
+                testoDomanda.setText(v.getDomanda());
                 nomeElezione.setText(v.getNome());
                 votazioneDao = new VotazioneDaoImpl();
                 utenteDao = new UtenteDaoImpl();
