@@ -14,7 +14,7 @@ public class Main extends Application {
 
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("LoginScene.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
-        stage.setTitle("VotoFacile.it");
+        stage.setTitle("VotoFacile");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

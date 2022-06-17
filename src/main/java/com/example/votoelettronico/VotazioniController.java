@@ -75,7 +75,11 @@ public class VotazioniController implements Initializable {
 
     }
 
-    public void deleteElection(ActionEvent actionEvent) {
+    public void deleteElection(ActionEvent actionEvent) throws SQLException {
+        selectedVotazione = tabVotazioni.getSelectionModel().getSelectedItem();
+        votazioneDao.deleteVotazione(selectedVotazione);
+        votazioniList.remove(selectedVotazione);
+
     }
 
     public Votazione getSelectedVotazione(){
@@ -86,6 +90,9 @@ public class VotazioniController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
+
+            UserNameLabel.setText(u.getName());
+
             votazioneDao = new VotazioneDaoImpl();
             votazioniList = FXCollections.observableList(votazioneDao.getAllVotazioniByCodFiscale(u.getCodFiscale()));
             Timestamp actualTimestamp = new Timestamp(System.currentTimeMillis());

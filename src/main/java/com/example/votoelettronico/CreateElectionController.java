@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
@@ -27,6 +28,8 @@ public class CreateElectionController implements Initializable {
     @FXML
     private TextField nameField;
     @FXML
+    private Label UserNameLabel;
+    @FXML
     private Text allertVot;
     @FXML
     private ComboBox<String> tipiBox;
@@ -35,6 +38,15 @@ public class CreateElectionController implements Initializable {
     public void Logout(ActionEvent actionEvent) throws IOException {
         Utils.changeScene(actionEvent, "LoginScene.fxml");
     }
+
+
+    public void goIndietro(ActionEvent actionEvent) throws IOException {
+        VotazioniController vc = new VotazioniController();
+        vc.setUtente(u);
+        Utils.changeScene(actionEvent, "VotazioniScene.fxml", vc);
+    }
+
+
 
     public void createElection(ActionEvent actionEvent)throws IOException {
         try {
@@ -45,10 +57,22 @@ public class CreateElectionController implements Initializable {
             Votazione v = new Votazione(u.getCodFiscale(), nameField.getText(), String.valueOf(r.nextInt(1000000)), tipiBox.getValue(), Timestamp.valueOf(LocalDateTime.of(initialDate, LocalTime.now())), Timestamp.valueOf(LocalDateTime.of(finalDate, LocalTime.now())));
             VotazioneDaoImpl vt = new VotazioneDaoImpl();
             vt.addVotazione(v);
-            VotazioniController vc = new VotazioniController();
-            vc.setUtente(u);
 
-            Utils.changeScene(actionEvent, "VotazioniScene.fxml", vc);
+            switch(v.getTipo()){
+                case "referendum":
+                    PanoramicaReferendumController prc = new PanoramicaReferendumController();
+                    prc.setUtenteEVotazione(u,v);
+                    Utils.changeScene(actionEvent, "panoramicaReferendum.fxml", prc);
+                    break;
+
+                default:
+                    PanoramicaElezioniController pec = new PanoramicaElezioniController();
+                    pec.setUtenteEVotazione(u,v);
+
+                    Utils.changeScene(actionEvent, "panoramicaElezioni.fxml", pec);
+
+            }
+
         }catch (SQLException sqlException){
             allertVot.setText(Utils.gestioneConstraint(sqlException));
             allertVot.setVisible(true);
@@ -67,5 +91,6 @@ public class CreateElectionController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         allertVot.setVisible(false);
         tipiBox.getItems().addAll(tipiElezioni);
+        UserNameLabel.setText(u.getName());
     }
 }

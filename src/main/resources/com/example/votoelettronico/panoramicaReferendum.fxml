@@ -85,7 +85,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Text fx:id="allertConfermaElezione" fill="RED" layoutX="59.0" layoutY="556.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Messaggio di errore Messaggio di errore Messaggio di erroreMessaggio di erroreMessaggio di erroreMessaggio di errore" textAlignment="CENTER" wrappingWidth="754.5367431640625">
+      <Text fx:id="allertConfermaElezione" fill="RED" layoutX="159.0" layoutY="556.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Messaggio di errore Messaggio di errore Messaggio di erroreMessaggio di erroreMessaggio di erroreMessaggio di errore" textAlignment="CENTER" wrappingWidth="754.5367431640625">
          <font>
             <Font size="18.0" />
          </font>

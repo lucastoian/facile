@@ -79,8 +79,32 @@ public class VotazioneDaoImpl implements VotazioneDao{
     }
 
     @Override
-    public void deleteVotazione(Votazione v) {
+    public void deleteVotazione(Votazione v) throws SQLException {
 
+        String query = "DELETE FROM candidati WHERE id = ?";
+        Connection con = openConnection();
+        PreparedStatement pst = con.prepareStatement(query);
+        pst.setString(1, v.getId());
+        pst.executeUpdate();
+        System.out.println("Candidati eliminati");
+
+
+        query = "DELETE FROM votanti WHERE id = ?";
+        con = openConnection();
+        pst = con.prepareStatement(query);
+        pst.setString(1, v.getId());
+        pst.executeUpdate();
+        System.out.println("Votante eliminato");
+
+
+
+        query = "DELETE FROM votazione WHERE id = ?";
+        con = openConnection();
+        pst = con.prepareStatement(query);
+        pst.setString(1, v.getId());
+        pst.executeUpdate();
+        System.out.println("Votazione eliminata");
+        con.close();
     }
 
     @Override
