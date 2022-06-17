@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #e9f5f9;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.votoelettronico.RegisterController">
    <children>
-      <Text fill="#145369" layoutX="304.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome Applicazione">
+      <Text fill="#145369" layoutX="396.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VotoFacile">
          <font>
             <Font name="System Bold Italic" size="36.0" />
          </font>
@@ -42,7 +42,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="RegisterButton" layoutX="82.0" layoutY="422.0" mnemonicParsing="false" onAction="#RegisterAndGoToLoginScene" prefHeight="25.0" prefWidth="266.0" style="-fx-background-color: #be4d25;" text="REGISTER" textFill="WHITE">
+            <Button fx:id="RegisterButton" layoutX="82.0" layoutY="422.0" mnemonicParsing="false" onAction="#RegisterAndGoToLoginScene" prefHeight="25.0" prefWidth="266.0" style="-fx-background-color: #be4d25;" text="REGISTRATI" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>

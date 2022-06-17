@@ -22,12 +22,17 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Text fill="#145369" layoutX="68.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome Applicazione" textAlignment="CENTER" wrappingWidth="375.48046875">
+            <Text fill="#145369" layoutX="163.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VotoFacile" textAlignment="CENTER" wrappingWidth="375.48046875">
                <font>
                   <Font name="SansSerif Bold Italic" size="36.0" />
                </font>
             </Text>
             <Button layoutX="921.0" layoutY="37.0" mnemonicParsing="false" onAction="#Logout" style="-fx-background-color: #e9f5f9;" text="Logout" textFill="#145369">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="25.0" layoutY="32.0" mnemonicParsing="false" onAction="#goIndietro" style="-fx-background-color: #e9f5f9;" text="Indietro" textFill="#145369">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
