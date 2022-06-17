@@ -42,7 +42,7 @@ public class RisultatoController implements Initializable {
     TextField numeroVotantiReferendum,numeroVotantiFavorevoliReferendum,numeroVotantiContrariReferendum;
 
     @FXML
-    public Button NomeElezione;
+    public Button NomeElezione, candidati,conferma;
 
     @FXML
     public Label UserNameLabel;
@@ -61,18 +61,6 @@ public class RisultatoController implements Initializable {
         Utils.changeScene(actionEvent,"VotazioniScene.fxml", vc );
     }
 
-    public void goToRisultato(ActionEvent actionEvent) throws IOException{
-        RisultatoController rc = new RisultatoController();
-        rc.setUtenteEVotazione(utente,votazione);
-        Utils.changeScene(actionEvent, "Partecipanti.fxml",rc);
-    }
-
-    public void goToPartecipanti(ActionEvent actionEvent) throws IOException {
-        PartecipantiController pc = new PartecipantiController();
-        pc.setUtenteEVotazione(utente,votazione);
-        Utils.changeScene(actionEvent, "Partecipanti.fxml",pc);
-    }
-
 
     public void goToManager(ActionEvent actionEvent) throws IOException {
         System.out.println("panoramica");
@@ -82,9 +70,21 @@ public class RisultatoController implements Initializable {
     }
 
     public void goToCandidati(ActionEvent actionEvent) throws IOException {
-        PanoramicaCandidatiController ca = new PanoramicaCandidatiController();
-        ca.setUtenteEVotazione(utente,votazione);
-        Utils.changeScene(actionEvent, "PanoramicaCandidati.fxml",ca);
+
+        switch(votazione.getTipo()){
+            case "referendum":
+                candidati.setText("Domanda");
+                PanoramicaReferendumController pec = new PanoramicaReferendumController();
+                pec.setUtenteEVotazione(utente,votazione);
+                Utils.changeScene(actionEvent, "panoramicaReferendum.fxml",pec);
+                break;
+            default:
+                PanoramicaCandidatiController pcc = new PanoramicaCandidatiController();
+                pcc.setUtenteEVotazione(utente,votazione);
+                Utils.changeScene(actionEvent, "panoramicaCandidati.fxml",pcc);
+
+        }
+
     }
 
     public void goToOption(ActionEvent actionEvent) throws IOException {
@@ -95,7 +95,27 @@ public class RisultatoController implements Initializable {
 
     }
 
+    public void ConfermaElezione(ActionEvent actionEvent) throws IOException, SQLException {
 
+                if(votazione.getTipo().equals("referendum") && votazione.getDomanda()==null){
+                    allertVot.setText(allertVot.getText() + "\nNON PUOI CONFERMARE UN REFERENDUM SENZA UNA DOMANDA");
+                    return;
+                }
+
+        if( votazione.getCandidatiSize()<2){
+            allertVot.setText("DEVI AGGIUNGERE ALMENO 2 CANDIDATI");
+            allertVot.setVisible(true);
+            return;
+        }
+
+
+        PanoramicaElezioniController pec = new PanoramicaElezioniController();
+        pec.setUtenteEVotazione(utente,votazione);
+        VotazioneDao vd = new VotazioneDaoImpl();
+        vd.changeStatus(votazione, "Approvata");
+        Utils.changeScene(actionEvent, "PanoramicaElezioni.fxml",pec);
+
+    }
 
 
 
@@ -112,6 +132,22 @@ public class RisultatoController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        System.out.println(votazione);
+
+        if(!(votazione.getStatus().equals("Draft"))){
+            conferma.setVisible(false);
+
+        }
+
+        switch(votazione.getTipo()){
+            case "referendum":
+                candidati.setText("Domanda");
+                break;
+
+            default:
+                break;
+
+        }
 
         NomeElezione.setText(this.votazione.getNome());
         UserNameLabel.setText(this.utente.getName());

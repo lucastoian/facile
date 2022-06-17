@@ -23,7 +23,7 @@ public class PanoramicaCandidatiController implements Initializable {
     public Label  UserNameLabel, codFs, idElezione,DataInizio,DataDiFine;
 
     @FXML
-    public Button NomeElezione;
+    public Button NomeElezione,candidati,conferma;
 
     @FXML
     public TextField codFiscalefield,DataDiInizioField,DataDiFineField,IdElezioneField;
@@ -46,7 +46,11 @@ public class PanoramicaCandidatiController implements Initializable {
         Utils.changeScene(actionEvent, "panoramicaElezioni.fxml",op);
     }
 
-
+    public void goIndietro(ActionEvent actionEvent) throws IOException {
+        VotazioniController vc = new VotazioniController();
+        vc.setUtente(utente);
+        Utils.changeScene(actionEvent,"VotazioniScene.fxml", vc );
+    }
 
     public void goToRisultato(ActionEvent actionEvent) throws IOException{
         RisultatoController rc = new RisultatoController();
@@ -80,8 +84,11 @@ public class PanoramicaCandidatiController implements Initializable {
     public void AggiungiCandidato(ActionEvent actionEvent) {
         try {
             Utente u = utenteDao.getUtenteByCodFiscale(codFiscalefield.getText());
+            System.out.println(u);
             utenteDao.addCandidato(u, votazione);
+
             candidatoList.add(u);
+            votazione.addCandidato(u);
             allertCandidato.setVisible(false);
             aggiungiUnCandidato.setVisible(true);
         }catch (SQLException sqlException){
@@ -94,6 +101,7 @@ public class PanoramicaCandidatiController implements Initializable {
             aggiungiUnCandidato.setVisible(false);
         }
     }
+
     public void ConfermaElezione(ActionEvent actionEvent) throws SQLException, IOException {
         if(candidatoList.size() <= 1){
             allertConfermaElezione.setText("Devi aggiungere almeno due candidati");
@@ -107,6 +115,7 @@ public class PanoramicaCandidatiController implements Initializable {
 
         }
     }
+
 
     public void Logout(ActionEvent actionEvent) throws IOException {
 
@@ -125,6 +134,18 @@ public class PanoramicaCandidatiController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        if(!(votazione.getStatus().equals("Draft"))) {
+            conferma.setVisible(false);
+        }
+
+        switch(votazione.getTipo()){
+            case "referendum":
+                candidati.setText("Domanda");
+                break;
+
+        }
+
+
         try {
             utenteDao = new UtenteDaoImpl();
             candidatoList = FXCollections.observableList(utenteDao.getAllUtentiByIdVotazione(votazione.getId()));
@@ -137,7 +158,7 @@ public class PanoramicaCandidatiController implements Initializable {
             codFiscalefield.setVisible(false);
             aggiungiUnCandidato.setVisible(false);
             Aggiungi.setVisible(false);
-            Conferma.setVisible(false);
+            conferma.setVisible(false);
             codFs.setText("LISTA DEI CANDIDATI AGGIUNTI");
             codFs.setVisible(true);
             DataDiInizioField.setText(votazione.getInizio().toString());

@@ -108,6 +108,17 @@ public class VotazioneDaoImpl implements VotazioneDao{
     }
 
     @Override
+    public int getNumeroCandidatiById(Votazione v) throws SQLException {
+        String query = "Select Count(*) from candidati where id = ?";
+        Connection con= openConnection();
+        PreparedStatement pst = con.prepareStatement(query);
+        pst.setString(1, v.getId());
+        ResultSet result = pst.executeQuery();
+        result.next();
+        return result.getInt(1);
+    }
+
+    @Override
     public void changeStatus(Votazione v, String status) throws SQLException {
         String query = "UPDATE votazione SET status = ? WHERE id =?";
         Connection con = openConnection();

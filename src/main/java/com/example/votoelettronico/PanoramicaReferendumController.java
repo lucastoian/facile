@@ -30,18 +30,27 @@ public class PanoramicaReferendumController implements Initializable {
     @FXML
     public Button Aggiungi,NomeElezione;
     @FXML
-    public Text allertConfermaElezione;
+    public Text allertConfermaElezione,testo;
     @FXML
-    public Button Conferma;
+    public Button Conferma,conferma;
 
     private Utente utente;
     private Votazione votazione;
 
+
+
+    public void goIndietro(ActionEvent actionEvent) throws IOException {
+        VotazioniController vc = new VotazioniController();
+        vc.setUtente(utente);
+        Utils.changeScene(actionEvent,"VotazioniScene.fxml", vc );
+    }
+
+
     public void goToManager(ActionEvent actionEvent) throws IOException {
-        PanoramicaReferendumController prc = new PanoramicaReferendumController();
+        PanoramicaElezioniController prc = new PanoramicaElezioniController();
         prc.setUtenteEVotazione(utente,votazione);
         System.out.println("refresh");
-        Utils.changeScene(actionEvent, "panoramicaReferendum.fxml",prc);
+        Utils.changeScene(actionEvent, "panoramicaElezioni.fxml",prc);
     }
 
     public void goToPartecipanti(ActionEvent actionEvent) throws IOException {
@@ -61,23 +70,44 @@ public class PanoramicaReferendumController implements Initializable {
         Utils.changeScene(actionEvent, "VotazioniScene.fxml",vc);
     }
 
-    public void ConfermaElezione(ActionEvent actionEvent) throws IOException, SQLException {
-        RisultatoController rc= new RisultatoController();
-        rc.setUtenteEVotazione(utente,votazione);
+    public void salvaDomanda(ActionEvent actionEvent) throws IOException, SQLException {
+        PanoramicaElezioniController pec = new PanoramicaElezioniController();
+        pec.setUtenteEVotazione(utente,votazione);
+
         VotazioneDao vd = new VotazioneDaoImpl();
         votazione.setDomanda(DomandaReferendum.getText());
 
-        vd.changeStatus(votazione, "Approvata");
         vd.setDomanda(votazione, DomandaReferendum.getText());
-        Utils.changeScene(actionEvent, "Risultato.fxml", rc);
+        Utils.changeScene(actionEvent, "panoramicaElezioni.fxml", pec);
     }
 
+    public void ConfermaElezione(ActionEvent actionEvent) throws IOException, SQLException {
 
+        if(votazione.getTipo().equals("referendum") && votazione.getDomanda()==null){
+            allertConfermaElezione.setText("NON PUOI CONFERMARE UN REFERENDUM SENZA UNA DOMANDA");
+            allertConfermaElezione.setVisible(true);
+            return;
+        }
+
+
+        PanoramicaElezioniController pec = new PanoramicaElezioniController();
+        pec.setUtenteEVotazione(utente,votazione);
+        VotazioneDao vd = new VotazioneDaoImpl();
+        vd.changeStatus(votazione, "Approvata");
+        Utils.changeScene(actionEvent, "PanoramicaElezioni.fxml",pec);
+
+    }
 
 
     public void setUtenteEVotazione(Utente u, Votazione v){
         this.utente=u;
         this.votazione=v;
+    }
+
+    public void goToRisultato(ActionEvent actionEvent) throws IOException{
+        RisultatoController rc = new RisultatoController();
+        rc.setUtenteEVotazione(utente,votazione);
+        Utils.changeScene(actionEvent, "Risultato.fxml",rc);
     }
 
     @Override
@@ -94,7 +124,13 @@ public class PanoramicaReferendumController implements Initializable {
         NomeElezione.setText(this.votazione.getNome());
         allertConfermaElezione.setVisible(false);
         UserNameLabel.setText(this.utente.getName());
+        DomandaReferendum.setText(votazione.getDomanda());
 
+        if( !(votazione.getStatus().equals("Draft"))){
+            Conferma.setVisible(false);
+            conferma.setVisible(false);
+            testo.setText("LA DOMANDA DI QUESTO REFERENDUM E':");
+        }
     }
 
 

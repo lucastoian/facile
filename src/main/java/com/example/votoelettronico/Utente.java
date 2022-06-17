@@ -4,12 +4,16 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Utente {
     private String name;
     private String surname;
     private String email;
     private String password;
     private String codFiscale;
+    private List<Utente> candidati;
 
 
 
@@ -24,6 +28,7 @@ public class Utente {
         this.email = email;
         this.password = password;
         this.codFiscale = codFiscale;
+        this.candidati = new ArrayList<>();
         
     }
 
@@ -48,7 +53,13 @@ public class Utente {
         this.password = password;
     }
 
+    public void addCandidato(Utente u){
+        candidati.add(u);
+    }
 
+    public int getCandidatiSize(){
+        return candidati.size();
+    }
 
 
     public String getName(){

@@ -2,11 +2,14 @@ package com.example.votoelettronico;
 
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Votazione {
 
     private String proprietario,nome,id,tipo,domanda,status;
     private Timestamp inizio,fine;
+    private List<Utente> candidati;
 
     
     public Votazione(String proprietario, String nome, String id, String tipo, Timestamp inizio, Timestamp fine, String domanda, String status){
@@ -18,6 +21,7 @@ public class Votazione {
         this.setTipo(tipo);
         this.status = status;
         this.domanda = domanda;
+        this.candidati = new ArrayList<>();
     }
 
     public Votazione(String prop, String nome, String id, String tipo, Timestamp inizio, Timestamp fine){
@@ -28,6 +32,7 @@ public class Votazione {
         this.setNome(nome); 
         this.setTipo(tipo);
         this.status = "Draft";
+        this.candidati = new ArrayList<>();
     }
 
 
@@ -35,6 +40,13 @@ public class Votazione {
         return proprietario;
     }
 
+    public void addCandidato(Utente u){
+        candidati.add(u);
+    }
+
+    public int getCandidatiSize(){
+        return candidati.size();
+    }
 
     public void setProp(String prop) {
         this.proprietario = prop;

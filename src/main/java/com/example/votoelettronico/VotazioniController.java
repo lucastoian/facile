@@ -48,29 +48,11 @@ public class VotazioniController implements Initializable {
     public void goToElection(ActionEvent actionEvent) throws IOException {
         selectedVotazione = tabVotazioni.getSelectionModel().getSelectedItem();
 
-        switch (selectedVotazione.getTipo()){
-            case "referendum":
-
-                if (!(selectedVotazione.getStatus().equals("Draft"))){
-                    PanoramicaElezioniController pe = new PanoramicaElezioniController();
-                    pe.setUtenteEVotazione(u,selectedVotazione);
-                    Utils.changeScene(actionEvent, "PanoramicaElezioni.fxml", pe);
-                    break;
-                }
-
-                PanoramicaReferendumController pcr = new PanoramicaReferendumController();
-                pcr.setUtenteEVotazione(u,selectedVotazione);
-                Utils.changeScene(actionEvent, "panoramicaReferendum.fxml",pcr);
-                break;
-
-            default:
                 PanoramicaElezioniController pe = new PanoramicaElezioniController();
                 pe.setUtenteEVotazione(u,selectedVotazione);
                 pe.setUtenteEVotazione(u,selectedVotazione);
                 Utils.changeScene(actionEvent, "PanoramicaElezioni.fxml", pe);
-                break;
 
-        }
 
 
     }

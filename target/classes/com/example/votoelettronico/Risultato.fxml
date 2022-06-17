@@ -101,17 +101,17 @@
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#goToCandidati" prefHeight="65.0" prefWidth="215.0" styleClass="button-blue" text="Candidati" textFill="WHITE">
+                  <Button fx:id="candidati" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#goToCandidati" prefHeight="65.0" prefWidth="215.0" styleClass="button-blue" text="Candidati" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button layoutX="10.0" layoutY="95.0" mnemonicParsing="false" onAction="#goToPartecipanti" prefHeight="65.0" prefWidth="215.0" styleClass="button-blue" text="Partecipanti" textFill="WHITE">
+                  <Button layoutX="10.0" layoutY="265.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="215.0" styleClass="button-blue" text="Risultati" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button layoutX="10.0" layoutY="265.0" mnemonicParsing="false" onAction="#goToRisultato" prefHeight="64.0" prefWidth="215.0" styleClass="button-blue" text="Risultati" textFill="WHITE">
+                  <Button fx:id="conferma" mnemonicParsing="false" onAction="#ConfermaElezione" prefHeight="64.0" prefWidth="215.0" style="-fx-background-color: #00FF00; -fx-border-color: #008000; -fx-border-radius: 15px; -fx-border-width: 10px;" styleClass="button-blue" text="CONFERMA" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>

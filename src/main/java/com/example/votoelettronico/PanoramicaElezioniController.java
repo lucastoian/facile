@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -21,12 +22,27 @@ public class PanoramicaElezioniController implements Initializable {
 
     private VotazioneDao votazioneDao;
 
+    private int numCandidati;
+
     @FXML
-    Text allertVot;
+    private Text allertVot;
+
+    @FXML
+    private TextField nameField, dataInizioField, dataFineField, oraInizioField, oraFineField;
+    @FXML
+    private Label statusLabel, idLabel;
+
+    @FXML
+    private Label candidatiLabel;
+    @FXML
+    Button candidati,conferma,termina,Salva;
+
 
 
     public void goIndietro(ActionEvent actionEvent) throws IOException {
-
+        VotazioniController vc = new VotazioniController();
+        vc.setUtente(utente);
+        Utils.changeScene(actionEvent,"VotazioniScene.fxml", vc );
     }
     public void SalvaButton(ActionEvent actionEvent) throws IOException {
 
@@ -34,7 +50,7 @@ public class PanoramicaElezioniController implements Initializable {
     public void TerminaSubitoButton(ActionEvent actionEvent) throws IOException, SQLException {
     votazioneDao= new VotazioneDaoImpl();
     votazioneDao.changeEndDate(votazione, Timestamp.valueOf(LocalDateTime.now()));
-    allertVot.setText("La votazione è terminata!");
+    allertVot.setText("La votazione è terminata! \n Puoi consultare i risultati nella sezione 'Risultati'");
     allertVot.setVisible(true);
     }
 
@@ -48,6 +64,23 @@ public class PanoramicaElezioniController implements Initializable {
 
 
     public void cambiaElezione(ActionEvent actionEvent) throws IOException{
+
+    }
+    public void goToCandidati(ActionEvent actionEvent) throws IOException {
+
+        switch(votazione.getTipo()){
+            case "referendum":
+                candidati.setText("Domanda");
+                PanoramicaReferendumController pec = new PanoramicaReferendumController();
+                pec.setUtenteEVotazione(utente,votazione);
+                Utils.changeScene(actionEvent, "panoramicaReferendum.fxml",pec);
+                break;
+            default:
+                PanoramicaCandidatiController pcc = new PanoramicaCandidatiController();
+                pcc.setUtenteEVotazione(utente,votazione);
+                Utils.changeScene(actionEvent, "panoramicaCandidati.fxml",pcc);
+
+        }
 
     }
 
@@ -71,21 +104,94 @@ public class PanoramicaElezioniController implements Initializable {
         Utils.changeScene(actionEvent, "panoramicaElezioni.fxml",op);
     }
 
-    public void goToCandidati(ActionEvent actionEvent) throws IOException {
-        PanoramicaCandidatiController ca = new PanoramicaCandidatiController();
-        ca.setUtenteEVotazione(utente,votazione);
-        Utils.changeScene(actionEvent, "PanoramicaCandidati.fxml",ca);
-    }
+
 
     public void Logout(ActionEvent actionEvent) throws IOException {
         Utils.changeScene(actionEvent, "LoginScene.fxml");
     }
+    public void ConfermaElezione(ActionEvent actionEvent) throws IOException, SQLException {
+                switch(votazione.getTipo()){
+                    case "referendum":
+                        if(votazione.getDomanda()==null){
+                                allertVot.setText("DEVI INSERIRE UNA DOMANDA");
+                                allertVot.setVisible(true);
+                            return;
+                        }
+                        break;
+                    default:
+                        if(numCandidati<2){
+                                allertVot.setText("DEVI AGGIUNGERE ALMENO 2 CANDIDATI");
+                            allertVot.setVisible(true);
+                            return;
+                        }
+
+                }
+                VotazioneDao vd = new VotazioneDaoImpl();
+                vd.changeStatus(votazione, "Approvata");
+                statusLabel.setText("Status: Approvata");
+                conferma.setVisible(false);
+
+
+
+
+    }
+
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        candidatiLabel.setText("casd");
+
+        try {
+            votazioneDao = new VotazioneDaoImpl();
+            numCandidati = votazioneDao.getNumeroCandidatiById(votazione);
+            System.out.println("Numero candidati = " + numCandidati);
+            candidatiLabel.setText("Numero candidati: "+ numCandidati);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        termina.setVisible(false);
+
+        switch(votazione.getTipo()){
+            case "referendum":
+                candidati.setText("Domanda");
+                candidatiLabel.setVisible(false);
+                break;
+            default:
+                candidatiLabel.setVisible(true);
+        }
+
+        if(!(votazione.getStatus().equals("Draft"))){
+            conferma.setVisible(false);
+        }
+
+        if((votazione.getStatus().equals("Approvata"))){
+            termina.setVisible(true);
+        }
+        if((votazione.getStatus().equals("Terminata"))){
+            Salva.setVisible(false);
+        }
+
+        allertVot.setVisible(false);
+        idLabel.setText("Id: "+ votazione.getId());
+        candidatiLabel.setText("Candidati iscritti: " + votazione.getCandidatiSize());
         NomeElezione.setText(this.votazione.getNome());
         UserNameLabel.setText(this.utente.getName());
+        nameField.setText(votazione.getNome());
+        Timestamp votationEndTime = votazione.getFine();
+        String dataFine = votationEndTime.toLocalDateTime().getDayOfMonth() + "/" + votationEndTime.toLocalDateTime().getMonthValue() + "/" + votationEndTime.toLocalDateTime().getYear();
+        String oraFine = votationEndTime.toLocalDateTime().getHour()+":"+votationEndTime.toLocalDateTime().getMinute();
+
+        Timestamp votationStartTime = votazione.getInizio();
+        String dataInizio = votationStartTime.toLocalDateTime().getDayOfMonth() + "/" + votationStartTime.toLocalDateTime().getMonthValue() + "/" + votationStartTime.toLocalDateTime().getYear();
+        String oraInizio = votationStartTime.toLocalDateTime().getHour()+":"+votationStartTime.toLocalDateTime().getMinute();
+        dataFineField.setText(dataFine);
+        oraFineField.setText(oraFine);
+        dataInizioField.setText(dataInizio);
+        oraInizioField.setText(oraInizio);
+        statusLabel.setText("STATUS: " + votazione.getStatus());
+
     }
 
     public void setUtenteEVotazione(Utente u, Votazione v){

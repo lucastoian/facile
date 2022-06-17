@@ -54,24 +54,17 @@ public class CreateElectionController implements Initializable {
             LocalDate initialDate = finalDateField.getValue();
             LocalDate finalDate = initialDateField.getValue();
             Random r = new Random();
-            Votazione v = new Votazione(u.getCodFiscale(), nameField.getText(), String.valueOf(r.nextInt(1000000)), tipiBox.getValue(), Timestamp.valueOf(LocalDateTime.of(initialDate, LocalTime.now())), Timestamp.valueOf(LocalDateTime.of(finalDate, LocalTime.now())));
+            Votazione v = new Votazione(u.getCodFiscale(), nameField.getText(), String.valueOf(r.nextInt(1000000)), tipiBox.getValue(), Timestamp.valueOf(LocalDateTime.of(initialDate, LocalTime.now())), Timestamp.valueOf(LocalDateTime.of(finalDate, LocalTime.of(23,59,0))));
             VotazioneDaoImpl vt = new VotazioneDaoImpl();
             vt.addVotazione(v);
 
-            switch(v.getTipo()){
-                case "referendum":
-                    PanoramicaReferendumController prc = new PanoramicaReferendumController();
-                    prc.setUtenteEVotazione(u,v);
-                    Utils.changeScene(actionEvent, "panoramicaReferendum.fxml", prc);
-                    break;
 
-                default:
                     PanoramicaElezioniController pec = new PanoramicaElezioniController();
                     pec.setUtenteEVotazione(u,v);
 
                     Utils.changeScene(actionEvent, "panoramicaElezioni.fxml", pec);
 
-            }
+
 
         }catch (SQLException sqlException){
             allertVot.setText(Utils.gestioneConstraint(sqlException));
