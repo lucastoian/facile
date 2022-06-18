@@ -12,14 +12,10 @@ public interface UtenteDao {
     public void addUtente(Utente u) throws SQLException;
     public void deleteUtente();
 
-    /**
-     * permette di fare il log-in
-     *
-     * @param email
-     * @param password
-     * @return true se esistono queste credenziali nel db
-     */
     public Boolean loginUtente(String email, String password) throws SQLException;
+
+    public Utente getUtente(String email, String password) throws SQLException;
+
     public void addCandidato(Utente u, Votazione v) throws  SQLException;
     public Utente getUtenteByCodFiscale(String codFiscale) throws  SQLException;
     public Utente getUtenteByEmail(String email) throws SQLException;

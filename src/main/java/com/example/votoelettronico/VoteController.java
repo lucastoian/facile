@@ -119,6 +119,10 @@ public class VoteController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources){
 
+        ToggleGroup tg = new ToggleGroup();
+        si.setToggleGroup(tg);
+        no.setToggleGroup(tg);
+
             try {
                 testoDomanda.setText(v.getDomanda());
                 nomeElezione.setText(v.getNome());

@@ -34,7 +34,7 @@ public class CreateElectionController implements Initializable {
     @FXML
     private ComboBox<String> tipiBox;
 
-    private String[] tipiElezioni = {"ordinale","categorico","categorico con preferenze","referendum"};
+    private String[] tipiElezioni = {"ordinale","categorica","referendum"};
     public void Logout(ActionEvent actionEvent) throws IOException {
         Utils.changeScene(actionEvent, "LoginScene.fxml");
     }

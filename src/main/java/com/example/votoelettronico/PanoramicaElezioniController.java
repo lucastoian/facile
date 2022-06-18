@@ -61,6 +61,7 @@ public class PanoramicaElezioniController implements Initializable {
             Date inizio = formatter1.parse(dataInizio);
             Date fine = formatter1.parse(dataFine);
             votazione.setNome(nameField.getText());
+
             NomeElezione.setText(nameField.getText());
 
             // int year,
@@ -74,6 +75,8 @@ public class PanoramicaElezioniController implements Initializable {
             Timestamp f = new Timestamp(fine.getYear(), fine.getMonth(), fine.getDate(), Integer.parseInt(oraFine[0]), Integer.parseInt(oraFine[1]), 0, 0);
 
             votazioneDao.updateOrari(i, f, votazione);
+            votazione.setInizio(i);
+            votazione.setFine(f);
         } catch (ParseException p){
 
             allertVot.setText("Il formato inserito non è corretto. \nIl formato per le date è : GIORNO/MESE/ANNO \nil formato per le ore è: ORA/MINUTI");
@@ -82,8 +85,13 @@ public class PanoramicaElezioniController implements Initializable {
         } catch (SQLException s){
             allertVot.setText(Utils.gestioneConstraint(s));
             allertVot.setVisible(true);
+        } catch (Exception e){
+            allertVot.setText("Il formato inserito non è corretto. \nIl formato per le date è : GIORNO/MESE/ANNO \nil formato per le ore è: ORA/MINUTI");
+            allertVot.setVisible(true);
         }
 
+
+        allertVot.setVisible(false);
         /**
         String oraInizio = oraInizioField.getText();
         Timestamp inizio = new Timestamp();
@@ -188,13 +196,13 @@ public class PanoramicaElezioniController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        candidatiLabel.setText("casd");
+
 
         try {
             votazioneDao = new VotazioneDaoImpl();
             numCandidati = votazioneDao.getNumeroCandidatiById(votazione);
-            System.out.println("Numero candidati = " + numCandidati);
-            candidatiLabel.setText("Numero candidati: "+ numCandidati);
+
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -224,7 +232,8 @@ public class PanoramicaElezioniController implements Initializable {
         allertVot.setVisible(false);
         idLabel.setText("Id: "+ votazione.getId());
         tipologiaLabel.setText("Tipologia: " + votazione.getTipo());
-        candidatiLabel.setText("Candidati iscritti: " + votazione.getCandidatiSize());
+
+        candidatiLabel.setText("Candidati iscritti: "+ numCandidati);
         NomeElezione.setText(this.votazione.getNome());
         UserNameLabel.setText(this.utente.getName());
         nameField.setText(votazione.getNome());

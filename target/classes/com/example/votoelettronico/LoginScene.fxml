@@ -28,7 +28,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="EmailField" layoutX="17.0" layoutY="66.0" prefHeight="31.0" prefWidth="266.0" />
+            <TextField fx:id="EmailField" layoutX="17.0" layoutY="66.0" prefHeight="31.0" prefWidth="266.0" promptText="inserisci l'email" />
             <Label layoutX="16.0" layoutY="39.0" prefHeight="17.0" prefWidth="268.0" text="indirizzo email" textFill="#145369">
                <font>
                   <Font size="18.0" />
@@ -44,7 +44,7 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <PasswordField fx:id="PasswordField" layoutX="17.0" layoutY="191.0" prefHeight="25.0" prefWidth="266.0" />
+            <PasswordField fx:id="PasswordField" layoutX="17.0" layoutY="191.0" prefHeight="25.0" prefWidth="266.0" promptText="inserisci la password" />
          </children>
       </AnchorPane>
       <Label alignment="CENTER" layoutX="118.0" layoutY="139.0" prefHeight="31.0" prefWidth="298.0" text="Accedi per creare le tue elezioni" textFill="#145369">
@@ -64,7 +64,7 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <TextField fx:id="VotazioneField" layoutX="12.0" layoutY="193.0" prefHeight="27.0" prefWidth="319.0" promptText="inserisci l'ID della votazione" />
+            <TextField fx:id="VotazioneField" layoutX="12.0" layoutY="193.0" prefHeight="27.0" prefWidth="319.0" promptText="inserisci l'ID della votazione per la quale vuoi votare" />
             <Label layoutX="12.0" layoutY="166.0" prefHeight="27.0" prefWidth="319.0" text="ID Votazione" textFill="#145369">
                <font>
                   <Font size="18.0" />
@@ -75,9 +75,15 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Text fill="#145369" layoutX="15.0" layoutY="347.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Non devi essere per forza registrato per poter votare!" />
-            <TextField fx:id="CODField" layoutX="12.0" layoutY="67.0" prefHeight="31.0" prefWidth="319.0" promptText="inserisci il tuo codice fiscale" />
-            <Label layoutX="13.0" layoutY="40.0" prefHeight="17.0" prefWidth="268.0" text="Codice Fiscale" textFill="#145369">
+            <Text fill="#145369" layoutX="15.0" layoutY="347.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Per poter votare devi prima esserti registrato!" />
+            <TextField fx:id="emailField2" layoutX="12.0" layoutY="53.0" prefHeight="31.0" prefWidth="319.0" promptText="inserisci l'email" />
+            <Label layoutX="13.0" layoutY="26.0" prefHeight="17.0" prefWidth="268.0" text="indirizzo email" textFill="#145369">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="passwordField2" accessibleRole="PASSWORD_FIELD" layoutX="14.0" layoutY="125.0" prefHeight="31.0" prefWidth="266.0" promptText="inserisci la password" />
+            <Label layoutX="13.0" layoutY="97.0" prefHeight="17.0" prefWidth="267.0" text="password" textFill="#145369">
                <font>
                   <Font size="18.0" />
                </font>

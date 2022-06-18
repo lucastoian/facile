@@ -28,7 +28,7 @@ public class LoginController implements Initializable{
 
 
     @FXML
-    private TextField PasswordField, EmailField, CODField, VotazioneField;
+    private TextField PasswordField, EmailField, emailField2, passwordField2, VotazioneField;
     @FXML
     private Text allert,allertVot;
 
@@ -65,7 +65,21 @@ public class LoginController implements Initializable{
         VoteController vc = new VoteController();
         votazioneDao = new VotazioneDaoImpl();
         Votazione v = votazioneDao.getVotazioneById(VotazioneField.getText());
-        u = utenteDao.getUtenteByCodFiscale(CODField.getText());
+        //u = utenteDao.getUtenteByCodFiscale(CODField.getText());
+        u = utenteDao.getUtente(emailField2.getText(), passwordField2.getText());
+
+        if(v==null){
+            allertVot.setText("Id della votazione non trovato");
+            allertVot.setVisible(true);
+            return;
+        }
+
+        if(u==null){
+            allertVot.setText("Le credenziali inserite sono errate");
+            allertVot.setVisible(true);
+            return;
+        }
+
         if(votazioneDao.haGiaVotato(u,v)){
             allertVot.setText("L'utente ha gia votato");
             allertVot.setVisible(true);
@@ -75,7 +89,7 @@ public class LoginController implements Initializable{
                 allertVot.setVisible(true);
                 return;
             }
-            vc.setCodFiscaleAndVotazione(CODField.getText(), v);
+            vc.setCodFiscaleAndVotazione(u.getCodFiscale(), v);
             try {
                 if (v.getStatus().equals("Approvata")) {
                     Utils.changeScene(actionEvent, "VoteScene.fxml", vc);
@@ -100,10 +114,7 @@ public class LoginController implements Initializable{
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(LocalTime.MIDNIGHT);
-        VotazioneField.setText("12362");
-        EmailField.setText("lucastoian@outlook.com");
-        PasswordField.setText("topogigio");
+
         allert.setVisible(false);
         allertVot.setVisible(false);
     }

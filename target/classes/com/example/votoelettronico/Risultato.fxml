@@ -24,7 +24,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Text fill="#145369" layoutX="98.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VotoFacile.it" textAlignment="CENTER" wrappingWidth="375.48046875">
+            <Text fill="#145369" layoutX="98.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VotoFacile" textAlignment="CENTER" wrappingWidth="375.48046875">
                <font>
                   <Font name="SansSerif Bold Italic" size="36.0" />
                </font>

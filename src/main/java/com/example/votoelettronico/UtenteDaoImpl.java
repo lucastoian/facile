@@ -7,9 +7,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class UtenteDaoImpl implements UtenteDao{
     //credenziali per accedere al db hostato su heroku
@@ -92,6 +90,24 @@ public class UtenteDaoImpl implements UtenteDao{
         }
         con.close();
         return false;
+    }
+
+    @Override
+    public Utente getUtente(String email, String password) throws SQLException {
+        Connection con = openConnection();
+        String query = "SELECT * FROM utente WHERE email = ? AND password = ?";
+        PreparedStatement pst = con.prepareStatement(query);
+        pst.setString(1, email);
+        pst.setString(2, encryption.encrypt(password));
+        ResultSet result = pst.executeQuery();
+
+        while(result.next()){
+            Utente u = new Utente(result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5));
+            con.close();
+            return u;
+        }
+        con.close();
+        return null;
     }
 
     @Override
