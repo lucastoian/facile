@@ -50,7 +50,6 @@ public class VotazioniController implements Initializable {
 
                 PanoramicaElezioniController pe = new PanoramicaElezioniController();
                 pe.setUtenteEVotazione(u,selectedVotazione);
-                pe.setUtenteEVotazione(u,selectedVotazione);
                 Utils.changeScene(actionEvent, "PanoramicaElezioni.fxml", pe);
 
 

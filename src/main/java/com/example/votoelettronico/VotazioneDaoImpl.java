@@ -119,6 +119,31 @@ public class VotazioneDaoImpl implements VotazioneDao{
     }
 
     @Override
+        public String getMaxId() throws SQLException {
+        String query = "Select MAX(id) from votazione";
+        Connection con= openConnection();
+        PreparedStatement pst = con.prepareStatement(query);
+        ResultSet result = pst.executeQuery();
+        result.next();
+        return String.valueOf(result.getInt(1));
+    }
+
+    @Override
+    public void updateOrari(Timestamp inizio, Timestamp fine, Votazione v) throws SQLException {
+        String query = "UPDATE votazione SET inizio = ?, fine = ?, nome = ? WHERE id = ?";
+
+        Connection con = openConnection();
+        PreparedStatement pst = con.prepareStatement(query);
+        pst.setTimestamp(1, inizio);
+        pst.setTimestamp(2, fine);
+        pst.setString(4, v.getId());
+        pst.setString(3, v.getNome());
+        pst.executeUpdate();
+        System.out.println("Orari aggiornati");
+        con.close();
+    }
+
+    @Override
     public void changeStatus(Votazione v, String status) throws SQLException {
         String query = "UPDATE votazione SET status = ? WHERE id =?";
         Connection con = openConnection();

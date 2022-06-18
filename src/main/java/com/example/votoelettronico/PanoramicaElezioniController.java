@@ -12,7 +12,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class PanoramicaElezioniController implements Initializable {
@@ -33,7 +37,7 @@ public class PanoramicaElezioniController implements Initializable {
     private Label statusLabel, idLabel;
 
     @FXML
-    private Label candidatiLabel;
+    private Label candidatiLabel, tipologiaLabel;
     @FXML
     Button candidati,conferma,termina,Salva;
 
@@ -45,6 +49,48 @@ public class PanoramicaElezioniController implements Initializable {
         Utils.changeScene(actionEvent,"VotazioniScene.fxml", vc );
     }
     public void SalvaButton(ActionEvent actionEvent) throws IOException {
+
+        try {
+            String dataInizio = dataInizioField.getText();
+            String[] oraInizio = oraInizioField.getText().split(":");
+
+            String dataFine = dataFineField.getText();
+            String[] oraFine = oraFineField.getText().split(":");
+
+            DateFormat formatter1 = new SimpleDateFormat("dd/MM/yyyy");
+            Date inizio = formatter1.parse(dataInizio);
+            Date fine = formatter1.parse(dataFine);
+            votazione.setNome(nameField.getText());
+            NomeElezione.setText(nameField.getText());
+
+            // int year,
+            //    int month,
+            //    int date,
+            //    int hour,
+            //    int minute,
+            //    int second,
+            //    int nano
+            Timestamp i = new Timestamp(inizio.getYear(), inizio.getMonth(), inizio.getDate(), Integer.parseInt(oraInizio[0]), Integer.parseInt(oraInizio[1]), 0, 0);
+            Timestamp f = new Timestamp(fine.getYear(), fine.getMonth(), fine.getDate(), Integer.parseInt(oraFine[0]), Integer.parseInt(oraFine[1]), 0, 0);
+
+            votazioneDao.updateOrari(i, f, votazione);
+        } catch (ParseException p){
+
+            allertVot.setText("Il formato inserito non è corretto. \nIl formato per le date è : GIORNO/MESE/ANNO \nil formato per le ore è: ORA/MINUTI");
+            allertVot.setVisible(true);
+
+        } catch (SQLException s){
+            allertVot.setText(Utils.gestioneConstraint(s));
+            allertVot.setVisible(true);
+        }
+
+        /**
+        String oraInizio = oraInizioField.getText();
+        Timestamp inizio = new Timestamp();
+         */
+
+
+
 
     }
     public void TerminaSubitoButton(ActionEvent actionEvent) throws IOException, SQLException {
@@ -60,6 +106,8 @@ public class PanoramicaElezioniController implements Initializable {
 
     @FXML
     public Label UserNameLabel;
+
+
 
 
 
@@ -175,22 +223,25 @@ public class PanoramicaElezioniController implements Initializable {
 
         allertVot.setVisible(false);
         idLabel.setText("Id: "+ votazione.getId());
+        tipologiaLabel.setText("Tipologia: " + votazione.getTipo());
         candidatiLabel.setText("Candidati iscritti: " + votazione.getCandidatiSize());
         NomeElezione.setText(this.votazione.getNome());
         UserNameLabel.setText(this.utente.getName());
         nameField.setText(votazione.getNome());
         Timestamp votationEndTime = votazione.getFine();
-        String dataFine = votationEndTime.toLocalDateTime().getDayOfMonth() + "/" + votationEndTime.toLocalDateTime().getMonthValue() + "/" + votationEndTime.toLocalDateTime().getYear();
+        String dataFine = votationEndTime.toLocalDateTime().getDayOfMonth() + "/" + votationEndTime.toLocalDateTime().getMonthValue() + "/"  + votationEndTime.toLocalDateTime().getYear();
         String oraFine = votationEndTime.toLocalDateTime().getHour()+":"+votationEndTime.toLocalDateTime().getMinute();
 
         Timestamp votationStartTime = votazione.getInizio();
-        String dataInizio = votationStartTime.toLocalDateTime().getDayOfMonth() + "/" + votationStartTime.toLocalDateTime().getMonthValue() + "/" + votationStartTime.toLocalDateTime().getYear();
+        String dataInizio = votationStartTime.toLocalDateTime().getDayOfMonth() + "/" + votationStartTime.toLocalDateTime().getMonthValue() +"/" + votationStartTime.toLocalDateTime().getYear();
         String oraInizio = votationStartTime.toLocalDateTime().getHour()+":"+votationStartTime.toLocalDateTime().getMinute();
         dataFineField.setText(dataFine);
         oraFineField.setText(oraFine);
         dataInizioField.setText(dataInizio);
         oraInizioField.setText(oraInizio);
         statusLabel.setText("STATUS: " + votazione.getStatus());
+
+
 
     }
 

@@ -57,7 +57,8 @@ public class CreateElectionController implements Initializable {
             Votazione v = new Votazione(u.getCodFiscale(), nameField.getText(), String.valueOf(r.nextInt(1000000)), tipiBox.getValue(), Timestamp.valueOf(LocalDateTime.of(initialDate, LocalTime.now())), Timestamp.valueOf(LocalDateTime.of(finalDate, LocalTime.of(23,59,0))));
             VotazioneDaoImpl vt = new VotazioneDaoImpl();
             vt.addVotazione(v);
-
+            v.setId(vt.getMaxId());
+            //qui problema id
 
                     PanoramicaElezioniController pec = new PanoramicaElezioniController();
                     pec.setUtenteEVotazione(u,v);

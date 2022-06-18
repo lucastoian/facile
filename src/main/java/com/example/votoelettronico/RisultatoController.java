@@ -102,7 +102,7 @@ public class RisultatoController implements Initializable {
                     return;
                 }
 
-        if( votazione.getCandidatiSize()<2){
+        if( !(votazione.getTipo().equals("referendum")) && votazione.getCandidatiSize()<2){
             allertVot.setText("DEVI AGGIUNGERE ALMENO 2 CANDIDATI");
             allertVot.setVisible(true);
             return;

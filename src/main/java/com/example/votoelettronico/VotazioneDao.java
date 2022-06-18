@@ -13,6 +13,10 @@ public interface VotazioneDao {
 
     int getNumeroCandidatiById(Votazione v) throws SQLException;
 
+    String getMaxId() throws SQLException;
+
+    void updateOrari(Timestamp inizio, Timestamp fine, Votazione v) throws SQLException;
+
     public void changeStatus(Votazione v, String status) throws SQLException;
     public Votazione getVotazioneById(String id) throws SQLException;
 

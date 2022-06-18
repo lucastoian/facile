@@ -21,7 +21,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Text fill="#145369" layoutX="98.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VotoFacile.it" textAlignment="CENTER" wrappingWidth="375.48046875">
+            <Text fill="#145369" layoutX="98.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VotoFacile" textAlignment="CENTER" wrappingWidth="375.48046875">
                <font>
                   <Font name="SansSerif Bold Italic" size="36.0" />
                </font>
@@ -45,7 +45,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="dataInizioField" layoutX="242.0" layoutY="125.0" prefHeight="36.0" prefWidth="322.0" promptText="Data di inizio" style="-fx-background-color: #e9f5f9; -fx-border-color: #000000; -fx-border-radius: 10px; -fx-alignment: center;">
+            <TextField fx:id="dataInizioField" layoutX="242.0" layoutY="125.0" prefHeight="36.0" prefWidth="322.0" promptText="mese/giorno/anno" style="-fx-background-color: #e9f5f9; -fx-border-color: #000000; -fx-border-radius: 10px; -fx-alignment: center;">
                <font>
                   <Font name="Arial" size="18.0" />
                </font>
@@ -70,7 +70,7 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <TextField fx:id="dataFineField" layoutX="242.0" layoutY="211.0" prefHeight="36.0" prefWidth="322.0" promptText="Data di fine" style="-fx-background-color: #e9f5f9; -fx-border-color: #000000; -fx-border-radius: 10px; -fx-alignment: center;">
+            <TextField fx:id="dataFineField" layoutX="242.0" layoutY="211.0" prefHeight="36.0" prefWidth="322.0" promptText="mese/giorno/anno" style="-fx-background-color: #e9f5f9; -fx-border-color: #000000; -fx-border-radius: 10px; -fx-alignment: center;">
                <font>
                   <Font name="Arial" size="18.0" />
                </font>
@@ -116,6 +116,11 @@
                </font>
             </Label>
             <Label fx:id="candidatiLabel" layoutX="38.0" layoutY="447.0" prefHeight="17.0" prefWidth="167.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="tipologiaLabel" layoutX="38.0" layoutY="368.0" prefHeight="27.0" prefWidth="296.0" text="Tipologia:">
                <font>
                   <Font size="18.0" />
                </font>
