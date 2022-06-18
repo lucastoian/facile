@@ -46,11 +46,16 @@ public class VotazioniController implements Initializable {
     }
 
     public void goToElection(ActionEvent actionEvent) throws IOException {
-        selectedVotazione = tabVotazioni.getSelectionModel().getSelectedItem();
+        try {
+            selectedVotazione = tabVotazioni.getSelectionModel().getSelectedItem();
+            System.out.println("HAI SELEZIONATO: " + selectedVotazione);
 
-                PanoramicaElezioniController pe = new PanoramicaElezioniController();
-                pe.setUtenteEVotazione(u,selectedVotazione);
-                Utils.changeScene(actionEvent, "PanoramicaElezioni.fxml", pe);
+            PanoramicaElezioniController pe = new PanoramicaElezioniController();
+            pe.setUtenteEVotazione(u, selectedVotazione);
+            Utils.changeScene(actionEvent, "panoramicaElezioni.fxml", pe);
+        } catch (Exception e){
+            System.out.println("errore");
+        }
 
 
 
