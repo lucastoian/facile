@@ -21,11 +21,11 @@ public class Encryption {
     public static final String DESEDE_ENCRYPTION_SCHEME = "DESede";
     private KeySpec ks;
     private SecretKeyFactory skf;
-    private Cipher cipher;
+    private static Cipher cipher;
     byte[] arrayBytes;
     private String myEncryptionKey;
     private String myEncryptionScheme;
-    SecretKey key;
+    static SecretKey key;
 
     public Encryption(String s) throws UnsupportedEncodingException, InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeySpecException {
         myEncryptionKey = s;
@@ -37,7 +37,7 @@ public class Encryption {
         key = skf.generateSecret(ks);
     }
 
-    public String encrypt(String unencryptedString) {
+    public static String encrypt(String unencryptedString) {
         String encryptedString = null;
         try {
             cipher.init(Cipher.ENCRYPT_MODE, key);
