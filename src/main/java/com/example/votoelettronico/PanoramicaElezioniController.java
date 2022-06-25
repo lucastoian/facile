@@ -23,6 +23,7 @@ public class PanoramicaElezioniController implements Initializable {
 
     private Utente utente;
     private Votazione votazione;
+    private Timestamp actual = Timestamp.valueOf(LocalDateTime.now());
 
     private VotazioneDao votazioneDao;
 
@@ -103,7 +104,9 @@ public class PanoramicaElezioniController implements Initializable {
     }
     public void TerminaSubitoButton(ActionEvent actionEvent) throws IOException, SQLException {
     votazioneDao= new VotazioneDaoImpl();
-    votazioneDao.changeEndDate(votazione, Timestamp.valueOf(LocalDateTime.now()));
+    //votazioneDao.changeEndDate(votazione, Timestamp.valueOf(LocalDateTime.now()));
+
+    votazioneDao.updateOrari(actual, Timestamp.valueOf(LocalDateTime.now()), votazione);
     allertVot.setText("La votazione è terminata! \n Puoi consultare i risultati nella sezione 'Risultati'");
     allertVot.setVisible(true);
     }
