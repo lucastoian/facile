@@ -65,7 +65,7 @@ public class VotazioniController implements Initializable {
         selectedVotazione = tabVotazioni.getSelectionModel().getSelectedItem();
         votazioneDao.deleteVotazione(selectedVotazione);
         votazioniList.remove(selectedVotazione);
-
+        LogRecord.fakeRecord();
     }
 
     public Votazione getSelectedVotazione(){

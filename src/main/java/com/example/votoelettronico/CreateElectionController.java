@@ -12,6 +12,7 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -58,13 +59,17 @@ public class CreateElectionController implements Initializable {
             VotazioneDaoImpl vt = new VotazioneDaoImpl();
             vt.addVotazione(v);
             v.setId(vt.getMaxId());
-            //qui problema id
 
+            //prova auditing
+            //LogRecord rec = new LogRecord(new Timestamp(System.currentTimeMillis()),v.getNome(),"crea-elezione",v.getStatus());
+            //rec.createRecord();
+            //prova auditing
+
+            //qui problema id
                     PanoramicaElezioniController pec = new PanoramicaElezioniController();
                     pec.setUtenteEVotazione(u,v);
 
                     Utils.changeScene(actionEvent, "panoramicaElezioni.fxml", pec);
-
 
 
         }catch (SQLException sqlException){
