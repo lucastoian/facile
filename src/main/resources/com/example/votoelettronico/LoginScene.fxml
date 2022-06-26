@@ -82,12 +82,12 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="passwordField2" accessibleRole="PASSWORD_FIELD" layoutX="14.0" layoutY="125.0" prefHeight="31.0" prefWidth="266.0" promptText="inserisci la password" />
             <Label layoutX="13.0" layoutY="97.0" prefHeight="17.0" prefWidth="267.0" text="password" textFill="#145369">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
+            <PasswordField fx:id="passwordField2" layoutX="12.0" layoutY="126.0" prefHeight="31.0" prefWidth="319.0" promptText="inserisci la password" />
          </children>
       </AnchorPane>
       <Label alignment="CENTER" layoutX="522.0" layoutY="139.0" prefHeight="31.0" prefWidth="345.0" text="inserisci i dati per partecipare all'elezione" textFill="#145369">

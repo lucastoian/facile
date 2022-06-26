@@ -15,7 +15,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #ffffff;" stylesheets="@all.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane layoutX="231.0" prefHeight="91.0" prefWidth="708.0" style="-fx-background-color: #e9f5f9;">
+      <AnchorPane layoutX="227.0" prefHeight="91.0" prefWidth="773.0" style="-fx-background-color: #e9f5f9;">
          <children>
             <QuadCurve controlX="-10.0" controlY="-112.0" endX="7.0" endY="-75.0" fill="DODGERBLUE" layoutX="543.0" layoutY="140.0" startX="-26.0" startY="-75.0" stroke="BLACK" strokeType="INSIDE" />
             <Circle fill="DODGERBLUE" layoutX="533.0" layoutY="40.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
@@ -90,7 +90,7 @@
       </Text>
       <Label fx:id="nomeElezione" alignment="CENTER" layoutX="241.0" layoutY="-124.0" prefHeight="85.0" prefWidth="197.0" style="-fx-font-size: 25;" text="NOME ELEZIONE" textAlignment="CENTER" textFill="#ff5500" />
       <AnchorPane prefHeight="91.0" prefWidth="231.0" style="-fx-background-color: #e9f5f9;" visible="false" />
-      <AnchorPane layoutX="-2.0" layoutY="-3.0" prefHeight="606.0" prefWidth="243.0" style="-fx-background-color: #2596BE;">
+      <AnchorPane layoutX="-2.0" layoutY="-3.0" prefHeight="606.0" prefWidth="231.0" style="-fx-background-color: #2596BE;">
          <children>
             <VBox layoutX="-24.0" layoutY="181.0" prefHeight="323.0" prefWidth="215.0" spacing="20.0">
                <children>
@@ -109,7 +109,7 @@
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="conferma" mnemonicParsing="false" onAction="#ConfermaElezione" prefHeight="64.0" prefWidth="215.0" style="-fx-background-color: #00FF00; -fx-border-color: #008000; -fx-border-radius: 15px; -fx-border-width: 10px;" styleClass="button-blue" text="CONFERMA" textFill="WHITE">
+                  <Button fx:id="conferma" mnemonicParsing="false" onAction="#ConfermaElezione" prefHeight="64.0" prefWidth="215.0" styleClass="button-green" text="CONFERMA" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
