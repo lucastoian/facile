@@ -59,3 +59,25 @@
 }
 
 
+.button-green{
+    -fx-background-color:   #28B828;
+    -fx-border-color:  #008000;
+    -fx-background-radius:   20;
+    -fx-border-width:  10;
+    -fx-border-radius:  15;
+
+}
+
+
+.button-green:hover{
+    -fx-background-color:   #2ED92E;
+    -fx-background-radius:  20;
+}
+
+.button-green:pressed{
+    -fx-background-color:   #1C8A1C;
+    -fx-background-radius:  20;
+}
+
+
+

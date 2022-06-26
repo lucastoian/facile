@@ -88,7 +88,6 @@ public class VotazioneDaoImpl implements VotazioneDao{
         pst.executeUpdate();
         System.out.println("Candidati eliminati");
 
-
         query = "DELETE FROM votanti WHERE id = ?";
         con = openConnection();
         pst = con.prepareStatement(query);

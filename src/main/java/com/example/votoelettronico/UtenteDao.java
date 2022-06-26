@@ -10,7 +10,7 @@ public interface UtenteDao {
      */
     public List<Utente> getAllUtenti();
     public void addUtente(Utente u) throws SQLException;
-    public void deleteUtente();
+    public void deleteUtente(String email) throws SQLException;
 
     public Boolean loginUtente(String email, String password) throws SQLException;
 

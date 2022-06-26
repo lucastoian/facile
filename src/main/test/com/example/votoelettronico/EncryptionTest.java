@@ -14,6 +14,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class EncryptionTest {
 
 
+    /*
+    * il test verifica il corretto funzionamento della funzione di encryption delle passoword
+    * */
     @Test
     void encrypt() throws UnsupportedEncodingException, NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException {
         Encryption enc = new Encryption("LucaDamonChiaveTopSecret");
@@ -28,14 +31,5 @@ class EncryptionTest {
         assertEquals("A99hEZm+TKHChiDO8M1Oo4ovH9DJwOgo",test3);
         assertEquals("FbVwLGzNgmeXPQexQKFUrQ==",test4);
     }
-
-
-/*
-     @Test
-     void decrypt() throws UnsupportedEncodingException, NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException {
-        Encryption enc = new Encryption("LucaDamonChiaveTopSecret");
-        String test1 = "VGjFHaHcfKGi4qRFnx+1qw==";
-        assertEquals("password",Encryption.decrypt(test1));
-    }*/
 
 }

@@ -66,12 +66,19 @@ public class UtenteDaoImpl implements UtenteDao{
         utenti.add(u);
         System.out.println("UTENTE REGISTRATO CON SUCCESSO");
         con.close();
-
-
     }
 
     @Override
-    public void deleteUtente() {
+    public void deleteUtente(String email) throws SQLException {
+        String query = "DELETE FROM utente WHERE email = ?";
+
+        Connection con = DriverManager.getConnection(url, user, password);
+        PreparedStatement pst = con.prepareStatement(query);
+        pst.setString(1, email);
+        pst.executeUpdate();
+
+        System.out.println("UTENTE CANCELLATO CON SUCCESSO");
+        con.close();
 
     }
 
