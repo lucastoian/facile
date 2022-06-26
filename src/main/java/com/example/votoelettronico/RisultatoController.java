@@ -113,6 +113,10 @@ public class RisultatoController implements Initializable {
         pec.setUtenteEVotazione(utente,votazione);
         VotazioneDao vd = new VotazioneDaoImpl();
         vd.changeStatus(votazione, "Approvata");
+
+        LogRecord rec = new LogRecord(votazione.getNome(),"approve-election",votazione.getStatus());
+        rec.createRecord();
+
         Utils.changeScene(actionEvent, "PanoramicaElezioni.fxml",pec);
 
     }

@@ -25,21 +25,20 @@ public class LogRecord {
     private Timestamp data;
 
 
-    public LogRecord(int logid,Timestamp data,String votazione,String action,String state) {
+    public LogRecord(String votazione,String action,String state) {
         this.action = action;
-        this.logid = logid;
         this.votazione = votazione;
         this.state = state;
-        this.data = data;
     }
 
+/*
     public LogRecord(Timestamp data,String votazione,String action,String state) {
         this.action = action;
         //this.logid = ;
         this.votazione = votazione;
         this.state = state;
         this.data = data;
-    }
+    }*/
 
     public static void fakeRecord() throws SQLException {
         System.out.println("prima della query");
@@ -47,9 +46,6 @@ public class LogRecord {
 
         Connection con = DriverManager.getConnection(url, user, password);
         PreparedStatement pst = con.prepareStatement(query);
-        //pst.setString(1, "default");
-        //pst.setString(1, this.getLogid());
-        //pst.setTimestamp(2, new Timestamp(System.currentTimeMillis()));
         pst.setString(1, "");
         pst.setString(2, "");
         pst.setString(3, "");
@@ -61,20 +57,18 @@ public class LogRecord {
 
     public void createRecord() throws SQLException {
 
-        String query = "INSERT INTO log VALUES(default,? , ?, ?, ?)";
-
+        String query = "INSERT INTO LOG VALUES(default,NOW() , ?, ?, ?)";
         Connection con = DriverManager.getConnection(url, user, password);
         PreparedStatement pst = con.prepareStatement(query);
 
         //pst.setString(1, "default");
-        //pst.setString(1, this.getLogid());
-        pst.setTimestamp(2, this.getData());
-        pst.setString(3, this.getVotazione());
-        pst.setString(4, this.getAction());
-        pst.setString(5, this.getState());
+        //pst.setString(2, "NOW());
+        pst.setString(1, this.getVotazione());
+        pst.setString(2, this.getAction());
+        pst.setString(3, this.getState());
 
         pst.executeUpdate();
-        System.out.println("log aggiunto");
+        System.out.println("nuovo record sul log");
         con.close();
     }
 

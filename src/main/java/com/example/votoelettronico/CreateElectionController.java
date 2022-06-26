@@ -61,8 +61,8 @@ public class CreateElectionController implements Initializable {
             v.setId(vt.getMaxId());
 
             //prova auditing
-            //LogRecord rec = new LogRecord(new Timestamp(System.currentTimeMillis()),v.getNome(),"crea-elezione",v.getStatus());
-            //rec.createRecord();
+            LogRecord rec = new LogRecord(v.getNome(),"create-election",v.getStatus());
+            rec.createRecord();
             //prova auditing
 
             //qui problema id

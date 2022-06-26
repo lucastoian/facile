@@ -78,6 +78,10 @@ public class PanoramicaElezioniController implements Initializable {
             votazioneDao.updateOrari(i, f, votazione);
             votazione.setInizio(i);
             votazione.setFine(f);
+
+            LogRecord rec = new LogRecord(votazione.getNome(),"change-settings",votazione.getStatus());
+            rec.createRecord();
+
         } catch (ParseException p){
 
             allertVot.setText("Il formato inserito non è corretto. \nIl formato per le date è : GIORNO/MESE/ANNO \nil formato per le ore è: ORA/MINUTI");
@@ -103,12 +107,16 @@ public class PanoramicaElezioniController implements Initializable {
 
     }
     public void TerminaSubitoButton(ActionEvent actionEvent) throws IOException, SQLException {
-    votazioneDao= new VotazioneDaoImpl();
-    //votazioneDao.changeEndDate(votazione, Timestamp.valueOf(LocalDateTime.now()));
+        votazioneDao= new VotazioneDaoImpl();
+        //votazioneDao.changeEndDate(votazione, Timestamp.valueOf(LocalDateTime.now()));
 
-    votazioneDao.updateOrari(actual, Timestamp.valueOf(LocalDateTime.now()), votazione);
-    allertVot.setText("La votazione è terminata! \n Puoi consultare i risultati nella sezione 'Risultati'");
-    allertVot.setVisible(true);
+        votazioneDao.updateOrari(actual, Timestamp.valueOf(LocalDateTime.now()), votazione);
+
+        LogRecord rec = new LogRecord(votazione.getNome(),"end-election-now",votazione.getStatus());
+        rec.createRecord();
+
+        allertVot.setText("La votazione è terminata! \n Puoi consultare i risultati nella sezione 'Risultati'");
+        allertVot.setVisible(true);
     }
 
 
@@ -168,6 +176,7 @@ public class PanoramicaElezioniController implements Initializable {
     public void Logout(ActionEvent actionEvent) throws IOException {
         Utils.changeScene(actionEvent, "LoginScene.fxml");
     }
+
     public void ConfermaElezione(ActionEvent actionEvent) throws IOException, SQLException {
                 switch(votazione.getTipo()){
                     case "referendum":
@@ -187,10 +196,12 @@ public class PanoramicaElezioniController implements Initializable {
                 }
                 VotazioneDao vd = new VotazioneDaoImpl();
                 vd.changeStatus(votazione, "Approvata");
+
+            LogRecord rec = new LogRecord(votazione.getNome(),"approve-election",votazione.getStatus());
+            rec.createRecord();
+
                 statusLabel.setText("Status: Approvata");
                 conferma.setVisible(false);
-
-
 
 
     }

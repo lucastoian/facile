@@ -87,6 +87,9 @@ public class PanoramicaCandidatiController implements Initializable {
             System.out.println(u);
             utenteDao.addCandidato(u, votazione);
 
+            LogRecord rec = new LogRecord(votazione.getNome(),"add-candidate: "+u.getCodFiscale(),votazione.getStatus());
+            rec.createRecord();
+
             candidatoList.add(u);
             votazione.addCandidato(u);
             allertCandidato.setVisible(false);
@@ -109,6 +112,10 @@ public class PanoramicaCandidatiController implements Initializable {
         }else {
             votazioneDao = new VotazioneDaoImpl();
             votazioneDao.changeStatus(votazione, "Approvata");
+
+            LogRecord rec = new LogRecord(votazione.getNome(),"approve-election",votazione.getStatus());
+            rec.createRecord();
+
             VotazioniController vc = new VotazioniController();
             vc.setUtente(utente);
             Utils.changeScene(actionEvent, "VotazioniScene.fxml", vc);

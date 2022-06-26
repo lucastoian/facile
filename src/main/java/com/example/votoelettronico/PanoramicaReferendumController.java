@@ -78,6 +78,10 @@ public class PanoramicaReferendumController implements Initializable {
         votazione.setDomanda(DomandaReferendum.getText());
 
         vd.setDomanda(votazione, DomandaReferendum.getText());
+
+        LogRecord rec = new LogRecord(votazione.getNome(),"change-referendum-question",votazione.getStatus());
+        rec.createRecord();
+
         Utils.changeScene(actionEvent, "panoramicaElezioni.fxml", pec);
     }
 
@@ -94,6 +98,10 @@ public class PanoramicaReferendumController implements Initializable {
         pec.setUtenteEVotazione(utente,votazione);
         VotazioneDao vd = new VotazioneDaoImpl();
         vd.changeStatus(votazione, "Approvata");
+
+        LogRecord rec = new LogRecord(votazione.getNome(),"approve-election",votazione.getStatus());
+        rec.createRecord();
+
         Utils.changeScene(actionEvent, "PanoramicaElezioni.fxml",pec);
 
     }

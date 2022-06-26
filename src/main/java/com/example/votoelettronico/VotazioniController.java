@@ -58,14 +58,16 @@ public class VotazioniController implements Initializable {
         }
 
 
-
     }
 
     public void deleteElection(ActionEvent actionEvent) throws SQLException {
         selectedVotazione = tabVotazioni.getSelectionModel().getSelectedItem();
         votazioneDao.deleteVotazione(selectedVotazione);
         votazioniList.remove(selectedVotazione);
-        LogRecord.fakeRecord();
+
+        LogRecord rec = new LogRecord(selectedVotazione.getNome(),"delete-election",selectedVotazione.getStatus());
+        rec.createRecord();
+
     }
 
     public Votazione getSelectedVotazione(){

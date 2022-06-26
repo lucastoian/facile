@@ -5,8 +5,6 @@ public class Candidato extends Utente{
         private String id;
         private int punteggio;
 
-
-
         public Candidato(String name,String surname,String codFiscale, String id,int punteggio){
             super(name,surname,null,null,codFiscale);
             this.id = id;
