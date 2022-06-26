@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Main-Class: com.example.votoelettronico.Launcher
+Class-Path: postgresql-42.3.4.jar javafx-fxml-17.0.1-win.jar ikonli-core
+ -12.2.0.jar javafx-controls-17.0.1-win.jar bootstrapfx-core-0.4.0.jar j
+ avafx-controls-17.0.1.jar javafx-graphics-17.0.1-win.jar javafx-web-17.
+ 0.1.jar tilesfx-11.48.jar javafx-media-17.0.1-win.jar checker-qual-3.5.
+ 0.jar javafx-web-17.0.1-win.jar javafx-graphics-17.0.1.jar controlsfx-1
+ 1.1.0.jar validatorfx-0.1.13.jar javafx-base-17.0.1-win.jar ikonli-java
+ fx-12.2.0.jar javafx-fxml-17.0.1.jar javafx-media-17.0.1.jar javafx-bas
+ e-17.0.1.jar
+
