@@ -19,7 +19,6 @@ class UtenteDaoImplTest {
     void loginUtente() throws SQLException, UnsupportedEncodingException, NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException {
 
         assertTrue(new UtenteDaoImpl().loginUtente("email@gmail.com","password"));
-        assertTrue(new UtenteDaoImpl().loginUtente("email@mail.com","password"));
         assertFalse(new UtenteDaoImpl().loginUtente("pog", "gers"));
         assertFalse(new UtenteDaoImpl().loginUtente(null, null));
     }
