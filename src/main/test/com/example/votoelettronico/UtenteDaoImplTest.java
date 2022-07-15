@@ -15,6 +15,14 @@ import static org.junit.jupiter.api.Assertions.*;
 /*la classe permette di testare i principali metodi di gestione degli utente dell'applicazione*/
 class UtenteDaoImplTest {
 
+    @Test
+    void loginUtente() throws SQLException, UnsupportedEncodingException, NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException {
+
+        assertTrue(new UtenteDaoImpl().loginUtente("email@gmail.com","password"));
+        assertTrue(new UtenteDaoImpl().loginUtente("email@mail.com","password"));
+        assertFalse(new UtenteDaoImpl().loginUtente("pog", "gers"));
+        assertFalse(new UtenteDaoImpl().loginUtente(null, null));
+    }
 
     @Test
     void addUtente() throws SQLException, UnsupportedEncodingException, NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException {
@@ -40,14 +48,11 @@ class UtenteDaoImplTest {
 
         Utente result = new UtenteDaoImpl().getUtente("email@gmail.com","password");
         assertNull(result);
+
+
     }
 
 
-    @Test
-    void loginUtente() throws SQLException, UnsupportedEncodingException, NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException {
-
-        assertTrue(new UtenteDaoImpl().loginUtente("email@gmail.com","password"));
-    }
 
 
 }

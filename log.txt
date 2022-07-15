@@ -1,0 +1,21 @@
+2022-06-26 17:23:35.774983 | delete-election | bdfs | Draft
+2022-06-26 17:23:39.458866 | delete-election | sadasdas | Draft
+2022-06-26 17:24:46.727087 | create-election | autding | Draft
+2022-06-26 17:25:30.702651 | change-settings | papopeauyddsfa | Draft
+2022-06-26 17:26:29.635698 | add-candidate: SRBDSM99A50Z129L | papopeauyddsfa | Draft
+2022-06-26 17:26:59.274434 | add-candidate: STNLCU00H23Z129G | papopeauyddsfa | Draft
+2022-06-26 17:27:11.325903 | approve-election | papopeauyddsfa | Approvata
+2022-06-26 17:27:54.116468 | end-election-now | papopeauyddsfa | Approvata
+2022-06-26 17:28:29.459658 | create-election | rerrefee | Draft
+2022-06-26 17:29:29.202313 | change-referendum-question | rerrefee | Draft
+2022-06-26 17:29:32.933854 | change-settings | rerrefee | Draft
+2022-06-26 17:30:19.577707 | approve-election | rerrefee | Approvata
+2022-06-26 17:30:26.543656 | end-election-now | rerrefee | Approvata
+2022-06-27 14:25:26.273895 | change-settings | culo2 | Draft
+2022-06-27 14:25:58.338586 | create-election | q2e | Draft
+2022-07-01 11:15:29.101686 | create-election | elezione comunale | Draft
+2022-07-01 11:15:48.099767 | add-candidate: STNLCU00H23Z129G | elezione comunale | Draft
+2022-07-01 11:15:56.15039 | add-candidate: STNLCU00H23Z129U | elezione comunale | Draft
+2022-07-01 11:16:10.925183 | add-candidate: SRBDSM99A50Z129L | elezione comunale | Draft
+2022-07-01 11:16:35.423166 | approve-election | elezione comunale | Approvata
+2022-07-01 11:17:59.427371 | end-election-now | elezione comunale | Approvata

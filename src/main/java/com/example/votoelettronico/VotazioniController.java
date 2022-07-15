@@ -60,7 +60,7 @@ public class VotazioniController implements Initializable {
 
     }
 
-    public void deleteElection(ActionEvent actionEvent) throws SQLException {
+    public void deleteElection(ActionEvent actionEvent) throws SQLException, IOException {
         selectedVotazione = tabVotazioni.getSelectionModel().getSelectedItem();
         votazioneDao.deleteVotazione(selectedVotazione);
         votazioniList.remove(selectedVotazione);

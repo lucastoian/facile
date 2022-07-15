@@ -1,6 +1,11 @@
 package com.example.votoelettronico;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LogRecord {
 
@@ -20,7 +25,7 @@ public class LogRecord {
 
     private String action;
     private String state;
-    private int logid;
+    private String logid;
     private String votazione ;
     private Timestamp data;
 
@@ -31,16 +36,16 @@ public class LogRecord {
         this.state = state;
     }
 
-/*
-    public LogRecord(Timestamp data,String votazione,String action,String state) {
+
+    public LogRecord(String logid,Timestamp data,String votazione,String action,String state) {
         this.action = action;
-        //this.logid = ;
+        this.logid = logid;
         this.votazione = votazione;
         this.state = state;
         this.data = data;
-    }*/
+    }
 
-    public static void fakeRecord() throws SQLException {
+/*    public static void fakeRecord() throws SQLException {
         System.out.println("prima della query");
         String query = "INSERT INTO LOG VALUES(default,NOW(), ? ,? , ?)";
 
@@ -53,14 +58,12 @@ public class LogRecord {
         pst.executeUpdate();
         System.out.println("log aggiunto");
         con.close();
-    }
+    }*/
 
-    public void createRecord() throws SQLException {
-
+    public void createRecord() throws SQLException, IOException {
         String query = "INSERT INTO LOG VALUES(default,NOW() , ?, ?, ?)";
         Connection con = DriverManager.getConnection(url, user, password);
         PreparedStatement pst = con.prepareStatement(query);
-
         //pst.setString(1, "default");
         //pst.setString(2, "NOW());
         pst.setString(1, this.getVotazione());
@@ -70,7 +73,38 @@ public class LogRecord {
         pst.executeUpdate();
         System.out.println("nuovo record sul log");
         con.close();
+        //writeToTxt();
     }
+
+
+
+    public static List<LogRecord> getAllRecords() throws SQLException {
+        List<LogRecord> log = new ArrayList<>();
+        String query = "SELECT * FROM log ORDER BY data";
+        Connection con= openConnection();
+        PreparedStatement pst = con.prepareStatement(query);
+        ResultSet result = pst.executeQuery();
+
+        while(result.next()){
+            LogRecord record = new LogRecord(result.getString(1), result.getTimestamp(2), result.getString(3), result.getString(4), result.getString(5));
+            log.add(record);
+        }
+        closeConnection(con);
+        return log;
+    }
+
+    public static void writeToTxt() throws SQLException, IOException {
+        List<LogRecord> log = getAllRecords(); ;
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter("log.txt"));
+
+        for (LogRecord l: log) {
+            writer.write(l.getData()+" | "+l.getAction()+" | "+l.getVotazione()+" | "+l.getState()+"\n");
+        }
+
+        writer.close();
+    }
+
 
     public LogRecord getRecord(){
         return null;

@@ -102,6 +102,8 @@ public class PanoramicaCandidatiController implements Initializable {
             allertCandidato.setText(s.getMessage());
             allertCandidato.setVisible(true);
             aggiungiUnCandidato.setVisible(false);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
