@@ -25,7 +25,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGBmmxZhhb+qao="
 							},
-							"name": "SequenceDiagram1",
+							"name": "VotoFacile",
 							"ownedViews": [
 								{
 									"_type": "UMLFrameView",
@@ -46,9 +46,9 @@
 											"font": "Arial;13;0",
 											"left": 24.72998046875,
 											"top": 13,
-											"width": 115.9052734375,
+											"width": 61.70263671875,
 											"height": 13,
-											"text": "SequenceDiagram1"
+											"text": "VotoFacile"
 										},
 										{
 											"_type": "LabelView",
@@ -323,9 +323,9 @@
 											"font": "Arial;13;0",
 											"left": 192.72998046875,
 											"top": 293,
-											"width": 123.1162109375,
+											"width": 37.86083984375,
 											"height": 13,
-											"text": "CombinedFragment1"
+											"text": "Log-In"
 										},
 										{
 											"_type": "LabelView",
@@ -1599,9 +1599,9 @@
 											"font": "Arial;13;0",
 											"left": 251.578125,
 											"top": 725,
-											"width": 123.1162109375,
+											"width": 45.0908203125,
 											"height": 13,
-											"text": "CombinedFragment2"
+											"text": "Log-out"
 										},
 										{
 											"_type": "LabelView",
@@ -1701,9 +1701,9 @@
 											"font": "Arial;13;0",
 											"left": 261.07177734375,
 											"top": 789,
-											"width": 123.1162109375,
+											"width": 147.68798828125,
 											"height": 13,
-											"text": "CombinedFragment4"
+											"text": "Gestisci Sessione di Voto"
 										},
 										{
 											"_type": "LabelView",
@@ -2032,9 +2032,9 @@
 											"font": "Arial;13;0",
 											"left": 280.72998046875,
 											"top": 1021,
-											"width": 123.1162109375,
+											"width": 86.26806640625,
 											"height": 13,
-											"text": "CombinedFragment3"
+											"text": "Crea Sessione"
 										},
 										{
 											"_type": "LabelView",
@@ -2168,12 +2168,12 @@
 												"$ref": "AAAAAAGBn0QTrSvocfg="
 											},
 											"font": "Arial;13;0",
-											"left": 635,
-											"top": 956,
+											"left": 632,
+											"top": 952,
 											"width": 171.15185546875,
 											"height": 13,
-											"alpha": 1.5707963267948966,
-											"distance": 10,
+											"alpha": 0.9827948770943706,
+											"distance": 7.211102550927978,
 											"hostEdge": {
 												"$ref": "AAAAAAGBn0QTrivpVaw="
 											},
@@ -2389,9 +2389,9 @@
 											"font": "Arial;13;0",
 											"left": 307.578125,
 											"top": 1293,
-											"width": 123.1162109375,
+											"width": 114.47705078125,
 											"height": 13,
-											"text": "CombinedFragment5"
+											"text": "Aggiungi Candidato"
 										},
 										{
 											"_type": "LabelView",
@@ -3102,7 +3102,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGBmmxZhhb+qao="
 							},
-							"name": "CombinedFragment1",
+							"name": "Log-In",
 							"preconditions": [
 								{
 									"_type": "UMLConstraint",
@@ -3149,7 +3149,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGBmmxZhhb+qao="
 							},
-							"name": "CombinedFragment2",
+							"name": "Log-out",
 							"interactionOperator": "loop",
 							"operands": [
 								{
@@ -3169,7 +3169,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGBmmxZhhb+qao="
 							},
-							"name": "CombinedFragment4",
+							"name": "Gestisci Sessione di Voto",
 							"interactionOperator": "opt",
 							"operands": [
 								{
@@ -3189,7 +3189,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGBmmxZhhb+qao="
 							},
-							"name": "CombinedFragment3",
+							"name": "Crea Sessione",
 							"preconditions": [
 								{
 									"_type": "UMLConstraint",
@@ -3228,7 +3228,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGBmmxZhhb+qao="
 							},
-							"name": "CombinedFragment5",
+							"name": "Aggiungi Candidato",
 							"interactionOperator": "loop",
 							"operands": [
 								{
@@ -3270,7 +3270,8 @@
 					"_parent": {
 						"$ref": "AAAAAAGBmmxZhhb9rFA="
 					},
-					"name": "Role3"
+					"name": "Role3",
+					"type": ""
 				},
 				{
 					"_type": "UMLAttribute",
@@ -3278,7 +3279,8 @@
 					"_parent": {
 						"$ref": "AAAAAAGBmmxZhhb9rFA="
 					},
-					"name": "Role4"
+					"name": "Role4",
+					"type": ""
 				},
 				{
 					"_type": "UMLAttribute",
@@ -3286,7 +3288,8 @@
 					"_parent": {
 						"$ref": "AAAAAAGBmmxZhhb9rFA="
 					},
-					"name": "Role5"
+					"name": "Role5",
+					"type": ""
 				},
 				{
 					"_type": "UMLAttribute",
@@ -3294,7 +3297,8 @@
 					"_parent": {
 						"$ref": "AAAAAAGBmmxZhhb9rFA="
 					},
-					"name": "Role6"
+					"name": "Role6",
+					"type": ""
 				},
 				{
 					"_type": "UMLAttribute",
@@ -3302,7 +3306,8 @@
 					"_parent": {
 						"$ref": "AAAAAAGBmmxZhhb9rFA="
 					},
-					"name": "Role7"
+					"name": "Role7",
+					"type": ""
 				},
 				{
 					"_type": "UMLAttribute",
@@ -3310,7 +3315,8 @@
 					"_parent": {
 						"$ref": "AAAAAAGBmmxZhhb9rFA="
 					},
-					"name": "Role8"
+					"name": "Role8",
+					"type": ""
 				}
 			]
 		}
