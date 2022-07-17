@@ -19,3 +19,16 @@
 2022-07-01 11:16:10.925183 | add-candidate: SRBDSM99A50Z129L | elezione comunale | Draft
 2022-07-01 11:16:35.423166 | approve-election | elezione comunale | Approvata
 2022-07-01 11:17:59.427371 | end-election-now | elezione comunale | Approvata
+2022-07-16 16:54:21.818833 | create-election | busto arsizio | Draft
+2022-07-16 16:54:37.098834 | change-referendum-question | busto arsizio | Draft
+2022-07-16 16:54:46.906255 | approve-election | busto arsizio | Approvata
+2022-07-16 16:55:43.694317 | change-settings | busto arsizio | Approvata
+2022-07-16 16:56:38.564071 | end-election-now | busto arsizio | Approvata
+2022-07-16 23:11:47.89003 | create-election | elezione prova | Draft
+2022-07-16 23:21:57.607498 | add-candidate: SRBDSM99A50Z129L | elezione prova | Draft
+2022-07-16 23:22:32.606597 | add-candidate: STNLCU00H23Z129G | elezione prova | Draft
+2022-07-16 23:22:45.51793 | add-candidate: STNLCU00H23Z129U | elezione prova | Draft
+2022-07-16 23:23:00.291005 | add-candidate: STNLCU00H23Z129P | elezione prova | Draft
+2022-07-16 23:23:23.473266 | add-candidate: STNLCU00H23Z129O | elezione prova | Draft
+2022-07-16 23:36:06.701297 | change-settings | elezione prova | Draft
+2022-07-16 23:36:13.930816 | approve-election | elezione prova | Approvata

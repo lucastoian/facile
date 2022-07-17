@@ -25,11 +25,14 @@ class EncryptionTest {
         String test2 = Encryption.encrypt("123456768");
         String test3 = Encryption.encrypt("Qualcosad!Segret0%");
         String test4 = Encryption.encrypt("$@#^%#&$%&@#^^&");
+        String test5 = Encryption.encrypt(null);
+
 
         assertEquals("VGjFHaHcfKGi4qRFnx+1qw==",test1);
         assertEquals("mhR6Ob8PHifoEo+sq6CTPg==",test2);
         assertEquals("A99hEZm+TKHChiDO8M1Oo4ovH9DJwOgo",test3);
         assertEquals("FbVwLGzNgmeXPQexQKFUrQ==",test4);
+        assertEquals("password non valida",test5);
     }
 
 }

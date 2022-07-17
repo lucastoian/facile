@@ -38,6 +38,9 @@ public class Encryption {
     }
 
     public static String encrypt(String unencryptedString) {
+        if(unencryptedString == null) {
+            return "password non valida";
+        }
         String encryptedString = null;
         try {
             cipher.init(Cipher.ENCRYPT_MODE, key);

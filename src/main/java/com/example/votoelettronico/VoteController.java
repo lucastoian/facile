@@ -32,11 +32,13 @@ public class VoteController implements Initializable {
     private UtenteDao utenteDao;
     ObservableList<Utente> candidatoList = FXCollections.observableArrayList();
 
+
+
     @FXML
     RadioButton si, no;
 
     @FXML
-    Text nomeElezione;
+    Text nomeElezione,seiSicuro;
     @FXML
     AnchorPane ORDINALE,CATEGORICA,REFERENDUM;
 
@@ -55,6 +57,64 @@ public class VoteController implements Initializable {
     //REFERENDUM
     @FXML
     TextArea testoDomanda;
+
+    @FXML
+    Button confButton,votaButton,noButton;
+
+
+    public void deConferma(ActionEvent actionEvent) {
+        noButton.setVisible(false);
+        noButton.setDisable(true);
+
+        confButton.setDisable(true);
+        confButton.setVisible(false);
+
+        votaButton.setDisable(false);
+        votaButton.setVisible(true);
+
+        seiSicuro.setVisible(false);
+        nomeElezione.setVisible(true);
+
+        switch (v.getTipo()) {
+            case "categorico":
+                CATEGORICA.setVisible(true);
+                ORDINALE.setVisible(false);
+                REFERENDUM.setVisible(false);
+
+                break;
+            case "referendum":
+                REFERENDUM.setVisible(true);
+                CATEGORICA.setVisible(false);
+                ORDINALE.setVisible(false);
+                break;
+            case "ordinale":
+                ORDINALE.setVisible(true);
+                CATEGORICA.setVisible(false);
+                REFERENDUM.setVisible(false);
+                break;
+        }
+
+    }
+
+
+
+        public void preConferma(ActionEvent actionEvent){
+        noButton.setVisible(true);
+        noButton.setDisable(false);
+
+        confButton.setDisable(false);
+        confButton.setVisible(true);
+
+        votaButton.setDisable(true);
+        votaButton.setVisible(false);
+
+        seiSicuro.setVisible(true);
+        nomeElezione.setVisible(false);
+
+        REFERENDUM.setVisible(false);
+        CATEGORICA.setVisible(false);
+        ORDINALE.setVisible(false);
+    }
 
 
 
@@ -141,7 +201,6 @@ public class VoteController implements Initializable {
                 codFiscale1.setCellValueFactory(new PropertyValueFactory<Utente, String>("codFiscale"));
                 tabellaCandidati1.setItems(candidatoList);
                 switch (v.getTipo()) {
-
 
                     case "categorico":
                         CATEGORICA.setVisible(true);

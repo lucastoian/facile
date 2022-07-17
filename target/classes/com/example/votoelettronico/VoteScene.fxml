@@ -65,21 +65,36 @@
                   </Label>
                </children>
             </AnchorPane>
-            <Button fx:id="confButton" layoutX="351.0" layoutY="412.0" mnemonicParsing="false" onAction="#confermaVoto" prefHeight="25.0" prefWidth="266.0" styleClass="button-orange" text="conferma" textFill="WHITE">
+            <Button fx:id="confButton" disable="true" layoutX="353.0" layoutY="403.0" mnemonicParsing="false" onAction="#confermaVoto" prefHeight="25.0" prefWidth="266.0" styleClass="button-green" text="conferma" textFill="WHITE" visible="false">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Text fx:id="nomeElezione" fill="#145369" layoutX="375.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome Elezione">
+            <Text fx:id="nomeElezione" fill="#145369" layoutX="375.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome Elezione">
                <font>
                   <Font name="System Bold Italic" size="32.0" />
                </font>
             </Text>
+            <Text fx:id="seiSicuro" fill="#145369" layoutX="276.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sei sicuro della tua scelta? " visible="false">
+               <font>
+                  <Font name="System Bold Italic" size="32.0" />
+               </font>
+            </Text>
+            <Button fx:id="votaButton" layoutX="353.0" layoutY="413.0" mnemonicParsing="false" onAction="#preConferma" prefHeight="25.0" prefWidth="266.0" styleClass="button-orange" text="vota" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
       <Button layoutX="921.0" layoutY="27.0" mnemonicParsing="false" onAction="#Logout" style="-fx-background-color: #e9f5f9;" text="Indietro" textFill="#145369">
          <font>
             <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="noButton" disable="true" layoutX="391.0" layoutY="555.0" mnemonicParsing="false" onAction="#deConferma" prefHeight="31.0" prefWidth="207.0" styleClass="button-orange" text="no" textFill="WHITE" visible="false">
+         <font>
+            <Font name="System Bold" size="15.0" />
          </font>
       </Button>
    </children>
