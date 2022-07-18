@@ -111,7 +111,7 @@
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="conferma" mnemonicParsing="false" onAction="#ConfermaElezione" prefHeight="64.0" prefWidth="215.0" style="-fx-background-color: #00FF00; -fx-border-color: #008000; -fx-border-radius: 15px; -fx-border-width: 10px;" styleClass="button-blue" text="CONFERMA" textFill="WHITE">
+                  <Button fx:id="conferma" mnemonicParsing="false" onAction="#ConfermaElezione" prefHeight="64.0" prefWidth="215.0" styleClass="button-green" text="CONFERMA" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>

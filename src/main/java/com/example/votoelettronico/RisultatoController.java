@@ -26,8 +26,9 @@ import java.util.ResourceBundle;
 
 public class RisultatoController implements Initializable {
 
+
     @FXML
-    Text allertVot;
+    Text allertVot,maggioranza,vincitore;
     @FXML
     AnchorPane ORDINALE_CATEGORICO, REFERENDUM;
     @FXML

@@ -48,5 +48,6 @@ class VotazioneDaoImplTest {
 
     @Test
     void getRisultatoReferendum() {
+
     }
 }

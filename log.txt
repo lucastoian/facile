@@ -32,3 +32,7 @@
 2022-07-16 23:23:23.473266 | add-candidate: STNLCU00H23Z129O | elezione prova | Draft
 2022-07-16 23:36:06.701297 | change-settings | elezione prova | Draft
 2022-07-16 23:36:13.930816 | approve-election | elezione prova | Approvata
+2022-07-17 18:21:40.521487 | create-election | rafefe | Draft
+2022-07-17 18:22:10.012076 | change-referendum-question | rafefe | Draft
+2022-07-17 18:22:42.547841 | approve-election | rafefe | Approvata
+2022-07-17 18:31:14.055692 | end-election-now | elezione prova | Approvata
