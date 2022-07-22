@@ -24,7 +24,6 @@ class UtenteDaoImplTest {
         assertFalse(new UtenteDaoImpl().loginUtente("email@gmail.com", null));
         assertFalse(new UtenteDaoImpl().loginUtente(null, "password"));
 
-
     }
 
     @Test

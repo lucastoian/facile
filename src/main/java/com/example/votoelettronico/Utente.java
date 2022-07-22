@@ -94,7 +94,6 @@ public class Utente {
 
     @Override
     public boolean equals(Object o){
-
         if (!(o instanceof Utente)) {
             return false;
         }

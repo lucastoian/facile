@@ -9,8 +9,6 @@ public class Candidato extends Utente{
             super(name,surname,null,null,codFiscale);
             this.id = id;
             this.punteggio = punteggio;
-
-
         }
 
         public String getId(){

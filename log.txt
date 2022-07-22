@@ -11,7 +11,6 @@
 2022-06-26 17:29:32.933854 | change-settings | rerrefee | Draft
 2022-06-26 17:30:19.577707 | approve-election | rerrefee | Approvata
 2022-06-26 17:30:26.543656 | end-election-now | rerrefee | Approvata
-2022-06-27 14:25:26.273895 | change-settings | culo2 | Draft
 2022-06-27 14:25:58.338586 | create-election | q2e | Draft
 2022-07-01 11:15:29.101686 | create-election | elezione comunale | Draft
 2022-07-01 11:15:48.099767 | add-candidate: STNLCU00H23Z129G | elezione comunale | Draft
@@ -36,3 +35,7 @@
 2022-07-17 18:22:10.012076 | change-referendum-question | rafefe | Draft
 2022-07-17 18:22:42.547841 | approve-election | rafefe | Approvata
 2022-07-17 18:31:14.055692 | end-election-now | elezione prova | Approvata
+2022-07-18 16:07:16.694983 | end-election-now | rafefe | Approvata
+2022-07-22 06:26:44.02949 | create-election | maresciallo non ti temo | Draft
+2022-07-22 06:26:47.957249 | change-settings | maresciallo non ti temo | Draft
+2022-07-22 19:06:50.04061 | create-election | fdg | Draft

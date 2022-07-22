@@ -110,9 +110,9 @@
                         <configuration>
                             <mainClass>com.example.votoelettronico/com.example.votoelettronico.Main
                             </mainClass>
-                            <launcher>app</launcher>
-                            <jlinkZipName>app</jlinkZipName>
-                            <jlinkImageName>app</jlinkImageName>
+                            <launcher>Main</launcher>
+                            <jlinkZipName>Main</jlinkZipName>
+                            <jlinkImageName>Main</jlinkImageName>
                             <noManPages>true</noManPages>
                             <stripDebug>true</stripDebug>
                             <noHeaderFiles>true</noHeaderFiles>
