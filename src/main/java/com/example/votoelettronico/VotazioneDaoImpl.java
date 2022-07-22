@@ -6,16 +6,18 @@ import java.util.List;
 
 public class VotazioneDaoImpl implements VotazioneDao{
     //credenziali per accedere al db hostato su heroku
-    private static final String url = "jdbc:postgresql://ec2-34-255-134-200.eu-west-1.compute.amazonaws.com:5432/du00brnb1t9ok";
-    private static final String user = "ykeiygtowzihlm";
-    private static final String password = "70c908bb89427bd76a11350372a669f02b455e056c3fd572f4a94d1d2b65d48c";
+
+
+    private static Connection con;
+
     private List<Votazione> votazioni;
     public VotazioneDaoImpl() throws SQLException {
-
+        SingletonDbConnection singletonDb = new SingletonDbConnection();
+        con = singletonDb.getConnection();
     }
 
     private static Connection openConnection() throws SQLException {
-        return DriverManager.getConnection(url, user, password);
+        return con;
     }
     private static void closeConnection(Connection con) throws SQLException {
         con.close();
@@ -50,7 +52,7 @@ public class VotazioneDaoImpl implements VotazioneDao{
             Votazione vot = new Votazione(result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getTimestamp(5), result.getTimestamp(6), result.getString(7), result.getString(8));
             v.add(vot);
         }
-        closeConnection(con);
+      //  closeConnection(con);
         return v;
     }
 
@@ -59,7 +61,7 @@ public class VotazioneDaoImpl implements VotazioneDao{
 
         String query = "INSERT INTO votazione VALUES(?, ?, default, ?, ?, ?, ?, ?)";
 
-        Connection con = DriverManager.getConnection(url, user, password);
+
         PreparedStatement pst = con.prepareStatement(query);
         pst.setString(1, v.getProp());
         pst.setString(2, v.getNome());
@@ -74,7 +76,7 @@ public class VotazioneDaoImpl implements VotazioneDao{
         pst.executeUpdate();
         //votazioni.add(v);
         System.out.println("Votazione aggiunta");
-        con.close();
+      //  con.close();
 
     }
 
@@ -103,7 +105,7 @@ public class VotazioneDaoImpl implements VotazioneDao{
         pst.setString(1, v.getId());
         pst.executeUpdate();
         System.out.println("Votazione eliminata");
-        con.close();
+     //   con.close();
     }
 
     @Override
@@ -139,7 +141,7 @@ public class VotazioneDaoImpl implements VotazioneDao{
         pst.setString(3, v.getNome());
         pst.executeUpdate();
         System.out.println("Orari aggiornati");
-        con.close();
+    //    con.close();
     }
 
     @Override
@@ -152,7 +154,7 @@ public class VotazioneDaoImpl implements VotazioneDao{
         pst.executeUpdate();
         System.out.println("Status aggiornato");
         v.setStatus(status);
-        con.close();
+     //   con.close();
 
 
     }
@@ -164,7 +166,7 @@ public class VotazioneDaoImpl implements VotazioneDao{
         PreparedStatement pst = con.prepareStatement(query);
         pst.setString(1, id);
         ResultSet result = pst.executeQuery();
-        con.close();
+      //  con.close();
         if(result.next()){
             Votazione vot = new Votazione(result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getTimestamp(5), result.getTimestamp(6), result.getString(7), result.getString(8));
             return vot;
@@ -191,7 +193,7 @@ public class VotazioneDaoImpl implements VotazioneDao{
             pst.setInt(5, 1);
             pst.setTimestamp(6, data);
             pst.executeUpdate();
-            con.close();
+        //    con.close();
             System.out.println("Ho votato con successo");
         }catch (Exception e){
             e.printStackTrace();
@@ -211,7 +213,7 @@ public class VotazioneDaoImpl implements VotazioneDao{
             pst.setTimestamp(6,data);
             pst.executeUpdate();
         }
-        con.close();
+    //    con.close();
 
 
     }
@@ -228,7 +230,7 @@ public class VotazioneDaoImpl implements VotazioneDao{
         pst.setInt(5, punteggio);
         pst.setTimestamp(6,data);
         pst.executeUpdate();
-        con.close();
+      //  con.close();
         System.out.println("Ho votato con successo");
 
     }
@@ -241,7 +243,7 @@ public class VotazioneDaoImpl implements VotazioneDao{
         pst.setString(1, domanda);
         pst.setString(2, v.getId());
         pst.executeUpdate();
-        con.close();
+    //    con.close();
     }
 
     @Override
@@ -266,10 +268,10 @@ public class VotazioneDaoImpl implements VotazioneDao{
         if(result.next()) {
             Timestamp inizio = result.getTimestamp(1);
             Timestamp fine = result.getTimestamp(2);
-            con.close();
+        //    con.close();
             if (t.after(inizio)&& t.before(fine)) return  true;
         }
-        con.close();
+      //  con.close();
         return false;
     }
 
@@ -282,7 +284,7 @@ public class VotazioneDaoImpl implements VotazioneDao{
         ResultSet result = pst.executeQuery();
         if(result.next()) {
             Timestamp inizio = result.getTimestamp(1);
-            con.close();
+        //    con.close();
             return inizio;
         }
         return null;
@@ -297,7 +299,7 @@ public class VotazioneDaoImpl implements VotazioneDao{
         pst.setTimestamp(1, t);
         pst.setString(2, v.getId());
         pst.executeUpdate();
-        con.close();
+    //    con.close();
     }
 
 
@@ -314,7 +316,7 @@ public class VotazioneDaoImpl implements VotazioneDao{
         PreparedStatement pst = con.prepareStatement(query);
         pst.setString(1, v.getId());
         ResultSet result = pst.executeQuery();
-        con.close();
+     //   con.close();
         result.next();
         queryResult[0] = result.getInt(1);
 
